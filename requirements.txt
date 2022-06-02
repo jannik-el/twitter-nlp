@@ -4,3 +4,4 @@ wordcloud
 pillow
 snscrape
 twitterscraper
+emoji
