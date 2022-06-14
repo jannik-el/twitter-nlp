@@ -165,7 +165,7 @@ def auto_predic():
     st.sidebar.write("---------------------")
     st.sidebar.success("Page showing on the right:")
 
-    trump_df = pd.read_csv("./streamlit/data/trump_df.csv")
+    
 
     st.write("""
     Task 4 stuff goes here
@@ -176,7 +176,8 @@ def data_aug():
     st.sidebar.write("---------------------")
     st.sidebar.success("Page showing on the right:")
 
-
+    trump_df = pd.read_csv("./streamlit/data/trump_df.csv")
+    st.table(trump_df)
 
     st.write("""
     Task 5 shit goes here
