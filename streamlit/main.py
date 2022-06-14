@@ -1,15 +1,9 @@
 import streamlit as st
-import datetime as dt
 import pandas as pd
-import json
 import time
 import matplotlib.image as img
 import matplotlib.pyplot as plt
-import cv2
 import numpy as np
-from skimage.segmentation import slic, mark_boundaries
-from PIL import Image
-import requests
 
 st.set_page_config(layout="wide")
 
