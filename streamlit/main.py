@@ -27,7 +27,7 @@ sidebar_options = (
     "Data Augmentation")
 
 ##### PAGE CODE ##########
-with open("style.css") as f:
+with open("./streamlit/styles.css") as f:
     st.markdown('<style>{}</style>'.format(f.read()), unsafe_allow_html=True)
 
 def start_page():
