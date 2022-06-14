@@ -121,6 +121,7 @@ def data_char():
     hs_wo_stopwords_dict_lf = dict((k, v) for k, v in hs_wo_stopwords_dict.items() if v <= 3) #least frequent hate (value <= 3)
     emoji_wo_stopwords_dict_lf = dict((k,v) for k, v in emoji_wo_stopwords_dict.items() if v <= 3) #least frequent emoji (value <=3)
 
+    plt.figure(figsize=(15,10))
     wordcloud = WordCloud(background_color = 'white',
                         width = 1200,
                         height = 1000)
@@ -128,7 +129,7 @@ def data_char():
     plt.imshow(wordcloud, interpolation="bilinear")
     plt.axis('off')
     plt.show()
-    st.pyplot()
+    st.pyplot(fig)
     
     return
 
