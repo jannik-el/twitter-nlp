@@ -251,9 +251,6 @@ def man_anot():
         (https://dl.acm.org/doi/10.1162/coli.07-034-R2))
         """)
         
-        # Pie plot 
-
-
         #Kappa and agreement table
         d = {'Name': ['juraj','mirka','gust','jannik','franek'], 
         'Avg Agreement': [0.73,0.78,0.80,0.70,0.84],
@@ -318,8 +315,8 @@ def data_aug():
     hs_pred, not_hs_pred = classify_and_seperate(str(random_tweet["Tweets"]))
 
     col1, col2, col3 = st.columns(3)
-    col1.metric("Hatespeech Prob.", str(hs_pred*100+"%"))
-    col2.metric("Not Hatespeech Prob.", str(not_hs_pred*100+"%"))
+    col1.metric("Hatespeech Prob.", str(hs_pred*100))
+    col2.metric("Not Hatespeech Prob.", str(not_hs_pred*100))
     col3.metric("Insult Label", bool(random_tweet["Labels"]))
 
     st.write("----------")
