@@ -65,11 +65,9 @@ def preprocessing():
 
         map_df = pd.DataFrame()
         emoji_map = ['❤', '😍', '😂', '💕', '🔥', '😊', '😎', '✨', '💙', '😘', '📷', '🇺🇸', '☀', '💜', '😉', '💯', '😁', '🎄', '📸', '😜']
-        no_map = [i for i in range(0, 20)]
         map_df["Emoji"] = emoji_map
-        map_df["Mapping"] = no_map
-        # map_df = map_df.T
-        st.table(map_df)     
+        map_df = map_df.T
+        st.table(map_df) 
 
 
     with st.expander("Testing Tokenizers"):
@@ -200,7 +198,7 @@ def custom_wc(data):
     fig = plt.figure(figsize=(15,10))
     plt.imshow(wordcloud, interpolation="bilinear")
     plt.axis("off")
-    st.pyplot(fig=plt)
+    st.pyplot(fig)
 
 ###### DOWNLOADING IMAGE DATA CODE ###############
 
