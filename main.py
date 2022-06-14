@@ -356,7 +356,7 @@ def data_aug():
     not_hs_preda = int(not_hs_preda)*100
     col1a, col2a = st.columns(2)
     col1a.metric("Hatespeech Prob.", f"{hs_preda}%")
-    col2a.metric("Not Hatespeech Prob.", f"{not_hs_preda)}%")
+    col2a.metric("Not Hatespeech Prob.", f"{not_hs_preda}%")
 
 ############## NLP Code ###################
 
