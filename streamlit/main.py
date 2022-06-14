@@ -27,8 +27,6 @@ sidebar_options = (
     "Data Augmentation")
 
 ##### PAGE CODE ##########
-with open("./streamlit/styles.css") as f:
-    st.markdown('<style>{}</style>'.format(f.read()), unsafe_allow_html=True)
 
 def start_page():
     st.sidebar.write("---------------------")
@@ -95,7 +93,11 @@ def preprocessing():
         st.table(token_stats)
     
         st.write("We also looked at how the tokenizers compare across the top 100 most frequent tokens:")
-        st.image("./streamlit/data/token_comparison.png")
+
+        with open("./streamlit/styles.css") as f:
+            st.markdown('<style>{}</style>'.format(f.read()), unsafe_allow_html=True)
+
+        st.image("./streamlit/data/token_comparison.png", width = 200)
     
 
 def data_char():
