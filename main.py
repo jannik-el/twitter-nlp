@@ -199,7 +199,7 @@ def man_anot():
 
     with st.expander("Group manual annotation"):
         st.write("""
-        For the manual annotation, a random sample of 100 tweets was selected. 
+        For the manual annotation, a random sample of 100 tweets from the hate speech dataset was selected. 
         To annotate the data semi-automatically, a script was created and run locally. 
         The group members went through the sample independently and without consulting the ground truth,
         and labelled them according to the same scheme. """)
@@ -282,7 +282,7 @@ def auto_predic():
 
     scores = pd.read_csv("./streamlit/data/hs_scores.csv")
     scores = scores[['F1 score', 'Accuracy Score', 'Recall Score', 'Precision Score']]
-
+    
     lst = scores.values.tolist()
     fig, axes = plt.subplots(figsize=(9, 4))
     x = [1,2,3,4]
@@ -340,6 +340,7 @@ def data_aug():
 
     st.write("And the same tweet tokenized using our tokenizer:")
     st.code(func_regex(random_tweet["Tweets"]))
+    st.write("Here you can see what label our Model is giving the tweet, and what label was given by the New York Times:")
 
     hs_pred, not_hs_pred = classify_and_seperate(str(random_tweet["Tweets"]))
     hs_pred = float(hs_pred)*100 
@@ -351,7 +352,7 @@ def data_aug():
     col3.metric("Insult Label", bool(random_tweet["Labels"]))
     st.write("----------")
 
-    test_input = st.text_input("Input anything here, and see what our model classifies it as:", "Hello there u cunt")
+    test_input = st.text_input("Input anything here, and see what our model classifies it as:", "Democrats Hillary Weak #MAGA")
 
     hs_preda, not_hs_preda = classify_and_seperate(test_input)
     hs_preda = float(hs_preda)*100 
