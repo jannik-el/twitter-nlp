@@ -195,7 +195,6 @@ def man_anot():
     st.sidebar.write("---------------------")
     st.sidebar.success("Page showing on the right:")
 
-    st.write("We also did some manual annotation of the hatespeech dataset:")
     st.write("")
 
     with st.expander("Group manual annotation"):
@@ -270,11 +269,11 @@ def auto_predic():
     lst = scores.values.tolist()
     fig, axes = plt.subplots(figsize=(9, 4))
     x = [1,2,3,4]
-    axes.plot(x,multi,label='MultinomialNB', marker='o')
-    axes.plot(x,sgd,label='SGD Classifier', marker='o')
-    axes.plot(x,knn,label='K-Nearest neighbors', marker='o')
-    axes.plot(x,dtc,label='Decision Tree', marker='o')
-    axes.plot(x,rf,label='Random Forest', marker='o')
+    axes.plot(x,lst[0],label='MultinomialNB', marker='o')
+    axes.plot(x,lst[1],label='SGD Classifier', marker='o')
+    axes.plot(x,lst[2],label='K-Nearest neighbors', marker='o')
+    axes.plot(x,lst[3],label='Decision Tree', marker='o')
+    axes.plot(x,lst[4],label='Random Forest', marker='o')
     axes.set_xticks([1,2,3,4])
     axes.set_xticklabels(["F1 Score", "Accuracy Score", "Recall Score", "Precision Score"]), 
     axes.set_title("Hatespeech Different Model Scores")
@@ -416,7 +415,7 @@ def open_jar(file_address):
 def classify_and_seperate(sentence):
     """Return Hatespeech, Not Hatespeech value"""
     hatespeech_array = classify_sentence(sentence)
-    return round(hatespeech_array[0][1], 4), round(hatespeech_array[0][0], 4)
+    return round(hatespeech_array[0][1], 2), round(hatespeech_array[0][0], 2)
 
 ###### DOWNLOADING IMAGE DATA CODE ###############
 
