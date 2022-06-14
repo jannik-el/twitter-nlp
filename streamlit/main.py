@@ -124,15 +124,16 @@ def data_char():
     emoji_wo_stopwords_dict_lf = dict((k,v) for k, v in emoji_wo_stopwords_dict.items() if v <= 3) #least frequent emoji (value <=3)
 
     custom_wc(hs_wo_stopwords_dict_lf)
+    custom_wc(emoji_wo_stopwords_dict_lf)
     
     return
 
 
-def man_annot():
+def man_anot():
     st.sidebar.write("---------------------")
     st.sidebar.success("Page showing on the right:")
 
-    take_picture = st.camera_input("Take a picture to test it for melanoma:")
+    st.write("We also did a manual annotati")
 
     if take_picture:
         st.image(take_picture)
@@ -249,7 +250,7 @@ def main():
         data_char()
 
     elif app_mode == sidebar_options[3]:
-        man_annot()
+        man_anot()
 
     elif app_mode == sidebar_options[4]:
         test_bulk_img()
