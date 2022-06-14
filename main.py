@@ -179,7 +179,7 @@ def data_char():
     sns.lineplot(x='idx', y='cumul_frq', data=emoji_stopwords[:10000], ax=axes[1,1]).set_title("Emoji Cumulative frequency by index, top 10000 tokens", size=18)
 
     emoji_stopwords['log_frq'] = np.log(emoji_stopwords.frequency)
-    emoji_stopwords['log_rank'] = np.log(emoji_wo_stopwords.frequency.rank(ascending=False))
+    emoji_stopwords['log_rank'] = np.log(emoji_stopwords.frequency.rank(ascending=False))
     sns.regplot(x='log_rank', y='log_frq', data=emoji_stopwords, ax=axes[1,2], line_kws={"color": "red"}).set_title("Emoji Log-log plot for Zipf's law", size=18);
 
     return
