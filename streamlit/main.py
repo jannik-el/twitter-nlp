@@ -152,7 +152,7 @@ def data_aug():
     st.sidebar.success("Page showing on the right:")
 
     st.write("""
-    
+    Task 5 shit goes here
     """)
 
 ############## NLP Code ###################
@@ -213,7 +213,7 @@ def custom_wc(data):
     plt.imshow(wordcloud, interpolation="bilinear")
     plt.axis("off")
     plt.show()
-    st.pyplot(fig=plt, figsize=(5, 5))
+    st.pyplot(fig=plt, figsize=(2, 2))
 
 
 ###### DOWNLOADING IMAGE DATA CODE ###############
@@ -258,6 +258,9 @@ def main():
 
     elif app_mode == sidebar_options[4]:
         auto_predic()
+
+    elif app_mode == sidebar_options[5]:
+        aug_data()
 
 if __name__ == "__main__":
     main()
