@@ -101,6 +101,13 @@ def data_char():
     corpus_data = corpus_data[['Dataset', 'Corpus size', 'Vocabulary size', 'Type to Token ratio']]
     st.dataframe(corpus_data)
 
+    # creating dicts, to make wordclouds
+    hs_wo_stopwords_dict = dict(zip(list(hsw_stopwords['token']), list(hsw_stopwords['frequency'])))
+    emoji_wo_stopwords_dict = dict(zip(list(emoji_stopwords['token']), list(emoji_stopwords['frequency'])))
+    hs_wo_stopwords_dict_lf = dict((k, v) for k, v in hs_wo_stopwords_dict.items() if v <= 3) #least frequent hate (value <= 3)
+    emoji_wo_stopwords_dict_lf = dict((k,v) for k, v in emoji_wo_stopwords_dict.items() if v <= 3) #least frequent emoji (value <=3)
+
+
     col1, col2 = st.columns(2)
 
     with col1:
@@ -123,21 +130,6 @@ def data_char():
         st.write("**Least frequent words in emoji dataset**")
         custom_wc(emoji_wo_stopwords_dict_lf)
 
-    # creating dicts, to make wordclouds
-    hs_wo_stopwords_dict = dict(zip(list(hsw_stopwords['token']), list(hsw_stopwords['frequency'])))
-    emoji_wo_stopwords_dict = dict(zip(list(emoji_stopwords['token']), list(emoji_stopwords['frequency'])))
-    hs_wo_stopwords_dict_lf = dict((k, v) for k, v in hs_wo_stopwords_dict.items() if v <= 3) #least frequent hate (value <= 3)
-    emoji_wo_stopwords_dict_lf = dict((k,v) for k, v in emoji_wo_stopwords_dict.items() if v <= 3) #least frequent emoji (value <=3)
-
-    # col1, col2 = st.columns(2)
-
-    # with col1:
-    #     st.write("**Least frequent words in hatespeech dataset**")
-    #     custom_wc(hs_wo_stopwords_dict_lf)
-
-    # with col2:
-    #     st.write("**Least frequent words in emoji dataset**")
-    #     custom_wc(emoji_wo_stopwords_dict_lf)
     return
 
 
