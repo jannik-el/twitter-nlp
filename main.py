@@ -71,7 +71,7 @@ def preprocessing():
 
     st.write("To be able to create a model for the different tasks we had, we first had to do some prepocessing.")
 
-    with st.expander("Our Datasets"):
+    with st.expander("Our datasets"):
         st.write("Both the hatespeech detection and the emoji predicion dataset came from the same source:")
         st.caption("https://github.com/cardiffnlp/tweeteval")
 
@@ -84,7 +84,7 @@ def preprocessing():
         st.dataframe(map_df)
 
 
-    with st.expander("Testing Tokenizers"):
+    with st.expander("Testing tokenizers"):
         st.write("We created our own regex tokenizer and looked at how it worked compared to other tokenizers:")
 
         line = st.text_input('Try it out below:', "Time for some BBQ and whiskey libations. Chomp, belch, chomp! (@ Lucille's Smokehouse Bar-B-Que)😍")
@@ -94,7 +94,7 @@ def preprocessing():
             st.write(i, ":")
             st.code(str(tokenize_lines(i, line)))
 
-    with st.expander("Comparing Tokenizers on the hatespeech dataset"):
+    with st.expander("Comparing tokenizers on the hatespeech dataset"):
         st.write("First we looked at how many tokens are 'leftover', after tokenizing:")
     
         token_stats = pd.DataFrame()
@@ -258,7 +258,7 @@ def man_anot():
             plt.title('Agreement of survey results and ground truth labels')
             st.pyplot(fig=plt)
     
-    with st.expander("Inter-annotator Agreement"):
+    with st.expander("Inter-annotator agreement"):
         st.markdown("""
         To report on the inter-annotator we have decided to use the Cohen's kappa as our primary metric, as:
         - Each coder had their own preferences (individual annotator bias)
@@ -309,7 +309,7 @@ def data_aug():
     st.sidebar.write("---------------------")
     st.sidebar.success("Page showing on the right:")
 
-    st.markdown("## Labeling Trumps twitter insults")
+    st.markdown("## Labeling Trump's twitter insults")
     st.markdown("""
     We took Trumps insults (provided by the New York Times) and combined those with all his other tweets.
     >https://www.nytimes.com/interactive/2021/01/19/upshot/trump-complete-insult-list.html \\
@@ -343,7 +343,7 @@ def data_aug():
     st.write("Here you can see what label our Model is giving the tweet, and what label was given by the New York Times:")
 
     hs_pred, not_hs_pred = classify_and_seperate(str(random_tweet["Tweets"]))
-    hs_pred = float(hs_pred)*100 
+    hs_pred = str(float(hs_pred)*100)[0:6] 
     not_hs_pred = float(not_hs_pred)*100
 
     col1, col2, col3 = st.columns(3)
