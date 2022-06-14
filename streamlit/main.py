@@ -45,9 +45,9 @@ def start_page():
 
 
     with col2:
-        st.image(melanoma_image, caption='Put Twitter Word Cloud image Here', width=400)
         im = Image.open("./misc/Twitter.png")
-        im.show()
+        st.image(im, caption='Put Twitter Word Cloud image Here', width=400)
+        # im.show()
 
     return
 
