@@ -144,7 +144,7 @@ def data_char():
         st.write("**Least frequent words in emoji dataset**")
         custom_wc(emoji_wo_stopwords_dict_lf)
     
-    im = Image.open("./streamlit/data/zipfslaw.svg")
+    im = Image.open("./streamlit/data/plotlol.png")
     st.image(im, caption='Zipfs law graphs', width=400)
 
     return
@@ -157,14 +157,8 @@ def man_anot():
     st.write("We also did some manual annotation of the hatespeech dataset:")
     st.write("Place noice graphics and shit here, can do it with columns, ask jannik")
     #showing
-    col1= st.columns(1)
-    with col1:
-        dfcrowd= pd.read_csv("./streamlit/data/survey.csv")
-        GT= pd.read_csv("./streamlit/data/GT.csv")
-        plt.plot(dfcrowd['ours'],label='Group annotation',linewidth=4.5)
-        plt.plot(GT['value'],label='Original label',linewidth=4.5)
-        plt.plot(dfcrowd['annotation'],label='Crowd annotation')
-        plt.legend()
+    im = Image.open("./streamlit/data/ourannot.svg")
+    st.image(im, caption='', width=400)
     return 
 
 def auto_predic():
@@ -186,6 +180,7 @@ def data_aug():
 
     with st.expander("Click here to see what the data frame looks like after labelling each tweet based on our model:"):
         trump_df = pd.read_csv("./streamlit/data/trump_df.csv")
+        trump_df = trump_df.rename(columns={"Insult Labels: Labels, Tweets: Tweets"})
         trump_df = trump_df[['Labels', 'Tweets', 'HS_Label']]
         st.table(trump_df.iloc[0:10])
 
