@@ -193,6 +193,11 @@ def man_anot():
 
     st.write("We also did some manual annotation of the hatespeech dataset:")
     st.write("")
+
+   with st.expander("Group manual annotation"):
+        st.write("textext:")
+
+
     fig = plt.figure(figsize = (10,2))
     dfcrowd = pd.read_csv("./streamlit/data/survey.csv")
     GT = pd.read_csv("./streamlit/data/GT.csv")
@@ -201,13 +206,14 @@ def man_anot():
     plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0);
     st.pyplot(fig=plt)
     
-    fig2 = plt.figure(figsize = (10,2))
-    plt.plot(dfcrowd['annotation'],label='Crowd annotation',color='red',linewidth=3)
-    plt.plot(dfcrowd['ours'],color='green',label='Group annotation',linewidth=3)
-    plt.title('Result of our manual annotation compared to the survey')
-    plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0);
-    #plt.plot(dfcrowd['annotation'],label='Crowd annotation')
-    st.pyplot(fig2=plt)
+    with st.expander("Plot of "):
+        fig2 = plt.figure(figsize = (10,2))
+        plt.plot(dfcrowd['annotation'],label='Crowd annotation',color='red',linewidth=3)
+        plt.plot(dfcrowd['ours'],color='green',label='Group annotation',linewidth=3)
+        plt.title('Result of our manual annotation compared to the survey')
+        plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0);
+        #plt.plot(dfcrowd['annotation'],label='Crowd annotation')
+        st.pyplot(fig2=plt)
     return 
 
 
@@ -255,7 +261,8 @@ def data_aug():
 
     random_tweet = trump_df.iloc[random.randrange(0, len(trump_df), 1)]
 
-    st.markdown(f">{}".format(random_tweet["Tweets"]))
+    # st.markdown(f">{}".format(random_tweet["Tweets"]))
+    st.markdown(f">"+trump_df["Tweets"])
 
 
 ############## NLP Code ###################
