@@ -198,6 +198,7 @@ def man_anot():
     plt.plot(GT['value'],label='Original label',linewidth=3.0)
     plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0);
     st.pyplot(fig=plt)
+    
     fig2 = plt.figure(figsize = (10,2))
     plt.plot(dfcrowd['annotation'],label='Crowd annotation',color='red',linewidth=3)
     plt.plot(dfcrowd['ours'],color='green',label='Group annotation',linewidth=3)
@@ -247,6 +248,10 @@ def data_aug():
         trump_df = trump_df[['Labels', 'Tweets', 'HS_Label']]
         trump_df = trump_df.rename(columns={"Insult Labels": "Labels", "Tweets": "Tweets", "HS_Label":"HS_Label"})
         st.table(trump_df.iloc[0:10])
+
+    st.write("Below is a random tweet from our dataset, with it's insult label, and hatespeech probability according to our model:")
+
+    
 
     
 
