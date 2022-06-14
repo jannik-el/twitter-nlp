@@ -302,7 +302,7 @@ def auto_predic():
     st.pyplot()
 
     y_train_emoji_counts = open_jar("./streamlit/ytrainemojicounts.pkl")
-    emoji_classes= pd.read_csv("/work/twitter-nlp/streamlit/data/mapping-2.txt", sep = "	", header=None)
+    emoji_classes= pd.read_csv("./streamlit/data/mapping-2.txt", sep = "	", header=None)
     plt.rcParams['font.size'] = 11.0
     plt.pie(collections.Counter(list(y_train_emoji_counts)).values(), labels=list(emoji_classes[2]), autopct = lambda p:f'{p:.2f}%');
     st.pyplot()
