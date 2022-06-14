@@ -68,7 +68,8 @@ def preprocessing():
         no_map = [i for i in range(0, 20)]
         map_df["Emoji"] = emoji_map
         map_df["Mapping"] = no_map
-        st.table(map_df.T)     
+        map_df = map_df.T
+        st.table(map_df)     
 
 
     with st.expander("Testing Tokenizers"):
