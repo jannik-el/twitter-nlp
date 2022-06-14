@@ -342,6 +342,8 @@ def data_aug():
     st.code(func_regex(random_tweet["Tweets"]))
 
     hs_pred, not_hs_pred = classify_and_seperate(str(random_tweet["Tweets"]))
+    hs_pred = int(hs_pred)*100 
+    not_hs_pred = int(not_hs_pred)*100
 
     col1, col2, col3 = st.columns(3)
     col1.metric("Hatespeech Prob.", f"{str(int(hs_pred)*100)}%")
