@@ -342,8 +342,8 @@ def data_aug():
     st.code(func_regex(random_tweet["Tweets"]))
 
     hs_pred, not_hs_pred = classify_and_seperate(str(random_tweet["Tweets"]))
-    hs_pred = int(hs_pred)*100 
-    not_hs_pred = int(not_hs_pred)*100
+    hs_pred = float(hs_pred)*100 
+    not_hs_pred = float(not_hs_pred)*100
 
     col1, col2, col3 = st.columns(3)
     col1.metric("Hatespeech Prob.", f"{str(int(hs_pred)*100)}%")
@@ -354,8 +354,8 @@ def data_aug():
     test_input = st.text_input("Input anything here, and see what our model classifies it as:", "Hello there u cunt")
 
     hs_preda, not_hs_preda = classify_and_seperate(test_input)
-    hs_preda = int(hs_preda)*100 
-    not_hs_preda = int(not_hs_preda)*100
+    hs_preda = float(hs_preda)*100 
+    not_hs_preda = float(not_hs_preda)*100
     col1a, col2a = st.columns(2)
     col1a.metric("Hatespeech Prob.", f"{hs_preda}%")
     col2a.metric("Not Hatespeech Prob.", f"{not_hs_preda}%")
