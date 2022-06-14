@@ -181,7 +181,7 @@ def data_char():
     emoji_stopwords['log_frq'] = np.log(emoji_stopwords.frequency)
     emoji_stopwords['log_rank'] = np.log(emoji_stopwords.frequency.rank(ascending=False))
     sns.regplot(x='log_rank', y='log_frq', data=emoji_stopwords, ax=axes[1,2], line_kws={"color": "red"}).set_title("Emoji Log-log plot for Zipf's law", size=18);
-
+    st.pyplot(fig)
     return
 
 
@@ -197,8 +197,8 @@ def man_anot():
     fig = plt.figure(figsize = (10,3))
     dfcrowd = pd.read_csv("./streamlit/data/survey.csv")
     GT = pd.read_csv("./streamlit/data/GT.csv")
-    plt.plot(dfcrowd['ours'],label='Group annotation',linewidth=4.5)
-    plt.plot(GT['value'],label='Original label',linewidth=4.5)
+    plt.plot(dfcrowd['ours'],label='Group annotation',linewidth=3.0)
+    plt.plot(GT['value'],label='Original label',linewidth=3.0)
 
     #plt.plot(dfcrowd['annotation'],label='Crowd annotation')
     plt.legend()
