@@ -193,7 +193,7 @@ def man_anot():
     ##showing
     #im = Image.open("./streamlit/data/ourannot.svg")
     #st.image(im, caption='Comparison of our annotation and Ground Truth Values', width=400)
-    
+    fig = plt.figure(figsize = (5,10))
     dfcrowd = pd.read_csv("./streamlit/data/survey.csv")
     GT = pd.read_csv("./streamlit/data/GT.csv")
     plt.plot(dfcrowd['ours'],label='Group annotation',linewidth=4.5)
@@ -201,6 +201,7 @@ def man_anot():
 
     #plt.plot(dfcrowd['annotation'],label='Crowd annotation')
     plt.legend()
+    st.pyplot(fig=plt)
     return 
 
 
