@@ -96,12 +96,10 @@ def preprocessing():
 
         col1, col2, col3 = st.columns(3)
 
-        with col1:
-            st.write("")
+        
         with col2:
-            st.image("./streamlit/data/token_comparison.png", width = 400)
-        with col3:
-            st.write("")
+            st.image("./streamlit/data/token_comparison.png", width = 500)
+        
     
 
 def data_char():
