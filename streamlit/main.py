@@ -61,7 +61,7 @@ def preprocessing():
 
         for i in tokenizers:
             st.write(i, ":")
-            st.write(tokenize_lines(i, line))
+            st.write(str(tokenize_lines(i, line)))
         
 
 def example_results_page():
