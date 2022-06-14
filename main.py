@@ -226,9 +226,17 @@ def man_anot():
         #plt.plot(dfcrowd['annotation'],label='Crowd annotation')
         st.pyplot(fig2=plt)
 
+        ax1[0].pie([81,100-len(lst)],labels=['Agreed','Disagreed'],colors=['#2596be','#eab676'],explode=(0, 0.1),autopct='%1.1f%%');
+        ax1[0].set_title('Agreement of group annotation and ground truth labels')
+        ax1[1].pie([len(lst2),100-len(lst2)],labels=['Agreed','Disagreed'],colors=['#eab676','#2596be'],explode=(0, 0.1),autopct='%1.1f%%');
+        ax1[1].set_title('Agreement of survey results and ground truth labels')
+
     
-    with st.expander("Agreement"):
-        st.write(":")
+    with st.expander("Inter-annotator Agreement"):
+        st.write("""After collecting the data from the group and survey annotation, 
+        we have reported on the inter-annotator agreement using various metrics.
+         Based on the assumptions of each metric, we have decided to choose the Cohen's kappa
+          as our primary metric, as:""")
         # Pie plot 
 
 
@@ -285,7 +293,8 @@ def data_aug():
     st.write("And the same tweet tokenized using our tokenizer:")
     st.code(func_regex(random_tweet["Tweets"]))
 
-    
+    trump_predict = classify_sentence(random_tweet["Tweets"])
+    st.write(trump_predict)
 
 
 ############## NLP Code ###################
@@ -347,6 +356,14 @@ def custom_wc(data):
     plt.axis("off")
     plt.show()
     st.pyplot(fig=plt)
+
+### Classifying based on model:
+
+def classify_sentence(text):
+    classifier = open_jar('./data/pickle/models/hatespeech_model_MultinomialNB2.sav')
+    cv = open_jar('./data/pickle/models/hate/vectorizer.pkl')
+    return classifier.predict_proba(cv.transform([text]).toarray())
+
 
 
 ###### DOWNLOADING IMAGE DATA CODE ###############
