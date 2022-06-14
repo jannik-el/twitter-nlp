@@ -322,9 +322,12 @@ def data_aug():
     hs_preda, not_hs_preda = classify_and_seperate(test_input)
     hs_preda = str(float(hs_preda)*100)[0:6] 
     not_hs_preda = str(float(not_hs_preda)*100)[0:6]
-    col1a, col2a = st.columns(2)
+    emoji_pred = label_to_emoji(test_input)
+
+    col1a, col2a, col3a = st.columns(3)
     col1a.metric("Hatespeech Prob.", f"{hs_preda}%")
     col2a.metric("Not Hatespeech Prob.", f"{not_hs_preda}%")
+    col3a.metric("Most likely emoji predicted", emoji_pred)
 
     st.write("-------------")
 
@@ -450,6 +453,24 @@ def classify_and_seperate(sentence):
     """Return Hatespeech, Not Hatespeech value"""
     hatespeech_array = classify_sentence(sentence)
     return '{:.4f}'.format((hatespeech_array[0][1])), '{:.4f}'.format(hatespeech_array[0][0])
+
+def classify_emoji_sentence(text):
+    classifier = open_jar('/work/twitter-nlp/data/pickle/models/emoji_GaussianNB.sav')
+    cv = open_jar('/work/twitter-nlp/data/pickle/models/emoji/vectorizer_sss.pkl')
+    data = classifier.predict_proba(cv.transform([text]).toarray())
+    return [round(i, 10) for i in data[0]]
+
+def label_to_emoji(text):
+    data = classify_emoji_sentence(text)
+    data = [float(i) for i in data]
+    emoji_map = ['❤', '😍', '😂', '💕', '🔥', '😊', '😎', '✨', '💙', '😘', '📷', '🇺🇸', '☀', '💜', '😉', '💯', '😁', '🎄', '📸', '😜']
+    counter=0
+    prev=data[0]
+    for i, j in enumerate(data):
+        if j > prev:
+            prev = j
+            counter=i
+    return emoji_map[counter]
 
 ###### DOWNLOADING IMAGE DATA CODE ###############
 
