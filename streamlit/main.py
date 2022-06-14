@@ -94,10 +94,11 @@ def data_char():
     st.dataframe(corpus_data)
 
     hsw_stopwords = pd.read_csv("./streamlit/data/hsw_stopwords.csv")
-    #hsw_stopwords.iloc[0:50].plot.bar(x='token',y='frequency', figsize=(17,5))
-    st.pyplot(hsw_stopwords.iloc[0:50])
-    #plt.title("Most frequent words in hatespeech dataset (top 50) without stopwords")
-    #plt.xticks(rotation = 90)
+    fig = plt.figure(figsize = (10, 5))
+    hsw_stopwords.iloc[0:50].plot.bar(x='token',y='frequency', figsize=(17,5))
+    plt.title("Most frequent words in hatespeech dataset (top 50) without stopwords")
+    plt.xticks(rotation = 90)
+    st.pyplot(fig)
 
 
     return
