@@ -37,8 +37,9 @@ def start_page():
     with col1:
         st.write("""
         This interactive app is designed as a representation of our groups submission
-        for the First Year Project 2, using different NLP Machine Learning Models, to classify different features.
-        These project is focused on data scraped of twitter  
+        for the First Year Project 2, using different NLP Machine Learning Models to classify hatespeech, and emojis.
+        The hatespeech model is our binary classification task, and the emoji detection is our multi classification task.
+        Both datasets consist of data scraped off twitter, and therefore our project is also later in the data augmentation task, focussed on twitter datasets.
         On the left hand side you can choose different options from the sidebar.
         These are all different tasks of our project.  
         """)
@@ -81,7 +82,7 @@ def data_char():
 
     st.write("some text comes here")
 
-    with st.expander("")
+    df = pd.read_csv("./streamlit/data/corpus_data.csv")
 
     return
 
