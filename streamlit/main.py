@@ -113,7 +113,7 @@ def data_char():
     with col1:
         
         fig = plt.figure(figsize = (5,10))
-        hsw_stopwords.iloc[0:50].plot.barh(x='token',y='frequency', figsize=(5,13))
+        hsw_stopwords.iloc[0:30].plot.barh(x='token',y='frequency', figsize=(5,13))
         plt.title("Most frequent words in hatespeech dataset (top 50) without stopwords")
         plt.xticks(rotation = 90)
         st.pyplot(fig=plt)
@@ -123,7 +123,7 @@ def data_char():
     with col2: 
         
         fig = plt.figure(figsize = (5,10))
-        emoji_stopwords.iloc[0:50].plot.barh(x='token',y='frequency', figsize=(5,13))
+        emoji_stopwords.iloc[0:30].plot.barh(x='token',y='frequency', figsize=(5,13))
         plt.title("Most frequent words in emoji dataset (top 50) without stopwords")
         plt.xticks(rotation = 90)
         st.pyplot(fig=plt)
