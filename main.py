@@ -333,8 +333,8 @@ def data_aug():
 
     st.write("-------------")
 
-    st.write("Using this, we decided to look")
-    st.markdown("## Labeling Trump's twitter insults")
+    st.write("Using this, we decided to looked at two datasets, that we thought could prove interesting results:")
+    st.markdown("## 1. Labeling Trump's twitter insults")
     st.markdown("""
     We took Trumps insults (provided by the New York Times) and combined those with all his other tweets.
     >https://www.nytimes.com/interactive/2021/01/19/upshot/trump-complete-insult-list.html \\
