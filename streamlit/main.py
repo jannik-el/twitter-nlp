@@ -160,7 +160,6 @@ def man_anot():
     GT= pd.read_csv("./streamlit/data/GT.csv")
     plt.plot(dfcrowd['ours'],label='Group annotation',linewidth=4.5)
     plt.plot(GT['value'],label='Original label',linewidth=4.5)
-
     plt.plot(dfcrowd['annotation'],label='Crowd annotation')
     plt.legend()
     return 
