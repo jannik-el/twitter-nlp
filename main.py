@@ -119,74 +119,76 @@ def data_char():
     st.sidebar.write("---------------------")
     st.sidebar.success("Page showing on the right:")
 
-    corpus_data = pd.read_csv("./streamlit/data/corpus_data.csv")
-    corpus_data = corpus_data[['Dataset', 'Corpus size', 'Vocabulary size', 'Type to Token ratio']]
-    st.dataframe(corpus_data)
+    with st.expander("Corpora statistics"):
+        corpus_data = pd.read_csv("./streamlit/data/corpus_data.csv")
+        corpus_data = corpus_data[['Dataset', 'Corpus size', 'Vocabulary size', 'Type to Token ratio']]
+        st.dataframe(corpus_data)
 
-    hsw_stopwords = pd.read_csv("./streamlit/data/hsw_stopwords.csv")
-    emoji_stopwords = pd.read_csv("./streamlit/data/emojiw_stopwords.csv")
-    # creating dicts, to make wordclouds
-    hs_wo_stopwords_dict = dict(zip(list(hsw_stopwords['token']), list(hsw_stopwords['frequency'])))
-    emoji_wo_stopwords_dict = dict(zip(list(emoji_stopwords['token']), list(emoji_stopwords['frequency'])))
-    hs_wo_stopwords_dict_lf = dict((k, v) for k, v in hs_wo_stopwords_dict.items() if v <= 3) #least frequent hate (value <= 3)
-    emoji_wo_stopwords_dict_lf = dict((k,v) for k, v in emoji_wo_stopwords_dict.items() if v <= 3) #least frequent emoji (value <=3)
+    with st.expander("Most frequent tokens"):
 
-    col1, col2 = st.columns(2)
-    with col1:
-        fig = plt.figure(figsize = (5,10))
-        hsw_stopwords.iloc[0:30].plot.barh(x='token',y='frequency', figsize=(5,14))
-        plt.title("Most frequent words in hatespeech dataset (top 50) without stopwords")
-        plt.xticks(rotation = 90)
-        st.pyplot(fig=plt)
-        st.write("**Least frequent words in hatespeech dataset**")
-        custom_wc(hs_wo_stopwords_dict_lf)
-        
-    with col2: 
-        fig = plt.figure(figsize = (5,10))
-        emoji_stopwords.iloc[0:30].plot.barh(x='token',y='frequency', figsize=(5,13))
-        plt.title("Most frequent words in emoji dataset (top 50) without stopwords")
-        plt.xticks(rotation = 90)
-        st.pyplot(fig=plt)
-        st.write("**Least frequent words in emoji dataset**")
-        custom_wc(emoji_wo_stopwords_dict_lf)
+        hsw_stopwords = pd.read_csv("./streamlit/data/hsw_stopwords.csv")
+        emoji_stopwords = pd.read_csv("./streamlit/data/emojiw_stopwords.csv")
+        # creating dicts, to make wordclouds
+        hs_wo_stopwords_dict = dict(zip(list(hsw_stopwords['token']), list(hsw_stopwords['frequency'])))
+        emoji_wo_stopwords_dict = dict(zip(list(emoji_stopwords['token']), list(emoji_stopwords['frequency'])))
+        hs_wo_stopwords_dict_lf = dict((k, v) for k, v in hs_wo_stopwords_dict.items() if v <= 3) #least frequent hate (value <= 3)
+        emoji_wo_stopwords_dict_lf = dict((k,v) for k, v in emoji_wo_stopwords_dict.items() if v <= 3) #least frequent emoji (value <=3)
 
-    ############### HATESPEECH Plots
-    hsw_stopwords['idx'] = hsw_stopwords.index + 1
-    hsw_stopwords['norm_freq'] = hsw_stopwords.frequency / len(hsw_stopwords)
-    hsw_stopwords['cumul_frq'] = hsw_stopwords.norm_freq.cumsum()
+        col1, col2 = st.columns(2)
+        with col1:
+            fig = plt.figure(figsize = (5,10))
+            hsw_stopwords.iloc[0:30].plot.barh(x='token',y='frequency', figsize=(5,14))
+            plt.title("Most frequent words in hatespeech dataset (top 50) without stopwords")
+            plt.xticks(rotation = 90)
+            st.pyplot(fig=plt)
+            st.write("**Least frequent words in hatespeech dataset**")
+            custom_wc(hs_wo_stopwords_dict_lf)
+            
+        with col2: 
+            fig = plt.figure(figsize = (5,10))
+            emoji_stopwords.iloc[0:30].plot.barh(x='token',y='frequency', figsize=(5,13))
+            plt.title("Most frequent words in emoji dataset (top 50) without stopwords")
+            plt.xticks(rotation = 90)
+            st.pyplot(fig=plt)
+            st.write("**Least frequent words in emoji dataset**")
+            custom_wc(emoji_wo_stopwords_dict_lf)
 
-    sns.set()
-    fig, axes = plt.subplots(2,3, figsize=(25,16))
-    fig.suptitle("Corpus Frequent Word Statistics", size=30)
-    sns.set_theme(style='whitegrid')
-    plt.subplots_adjust(hspace = 0.3)
+        ############### HATESPEECH Plots
+        hsw_stopwords['idx'] = hsw_stopwords.index + 1
+        hsw_stopwords['norm_freq'] = hsw_stopwords.frequency / len(hsw_stopwords)
+        hsw_stopwords['cumul_frq'] = hsw_stopwords.norm_freq.cumsum()
 
-    # axes[0,0].set_xscale('log')
-    sns.scatterplot(ax=axes[0,0], x='idx', y='cumul_frq', data=hsw_stopwords).set_title("Hatespeech Cumulative frequency by index", size=18)
+        sns.set()
+        fig, axes = plt.subplots(2,3, figsize=(25,16))
+        fig.suptitle("Corpus Frequent Word Statistics", size=30)
+        sns.set_theme(style='whitegrid')
+        plt.subplots_adjust(hspace = 0.3)
 
-    sns.lineplot(x='idx', y='cumul_frq', data=hsw_stopwords[:10000], ax=axes[0,1]).set_title("Hatespeech Cumulative frequency by index, top 10000 tokens", size=18)
+        # axes[0,0].set_xscale('log')
+        sns.scatterplot(ax=axes[0,0], x='idx', y='cumul_frq', data=hsw_stopwords).set_title("Hatespeech Cumulative frequency by index", size=18)
 
-    hsw_stopwords['log_frq'] = np.log(hsw_stopwords.frequency)
-    hsw_stopwords['log_rank'] = np.log(hsw_stopwords.frequency.rank(ascending=False))
-    sns.regplot(x='log_rank', y='log_frq', data=hsw_stopwords, ax=axes[0,2], line_kws={"color": "red"}).set_title("Hatespeech Log-log plot for Zipf's law", size=18)
+        sns.lineplot(x='idx', y='cumul_frq', data=hsw_stopwords[:10000], ax=axes[0,1]).set_title("Hatespeech Cumulative frequency by index, top 10000 tokens", size=18)
 
-    ###################### EMOJI PLOTS
-    #doing zipfs law on our frq dataframe and plotting
-    emoji_stopwords['idx'] = emoji_stopwords.index + 1
-    emoji_stopwords['norm_freq'] = emoji_stopwords.frequency / len(emoji_stopwords)
-    emoji_stopwords['cumul_frq'] = emoji_stopwords.norm_freq.cumsum()
+        hsw_stopwords['log_frq'] = np.log(hsw_stopwords.frequency)
+        hsw_stopwords['log_rank'] = np.log(hsw_stopwords.frequency.rank(ascending=False))
+        sns.regplot(x='log_rank', y='log_frq', data=hsw_stopwords, ax=axes[0,2], line_kws={"color": "red"}).set_title("Hatespeech Log-log plot for Zipf's law", size=18)
 
-    # Plots
-    # axes[1,0].set_xscale('log')
-    sns.scatterplot(ax=axes[1,0], x='idx', y='cumul_frq', data=emoji_stopwords).set_title("Emoji Cumulative frequency by index", size=18)
+        ###################### EMOJI PLOTS
+        #doing zipfs law on our frq dataframe and plotting
+        emoji_stopwords['idx'] = emoji_stopwords.index + 1
+        emoji_stopwords['norm_freq'] = emoji_stopwords.frequency / len(emoji_stopwords)
+        emoji_stopwords['cumul_frq'] = emoji_stopwords.norm_freq.cumsum()
 
-    sns.lineplot(x='idx', y='cumul_frq', data=emoji_stopwords[:10000], ax=axes[1,1]).set_title("Emoji Cumulative frequency by index, top 10000 tokens", size=18)
+        # Plots
+        # axes[1,0].set_xscale('log')
+        sns.scatterplot(ax=axes[1,0], x='idx', y='cumul_frq', data=emoji_stopwords).set_title("Emoji Cumulative frequency by index", size=18)
 
-    emoji_stopwords['log_frq'] = np.log(emoji_stopwords.frequency)
-    emoji_stopwords['log_rank'] = np.log(emoji_stopwords.frequency.rank(ascending=False))
-    sns.regplot(x='log_rank', y='log_frq', data=emoji_stopwords, ax=axes[1,2], line_kws={"color": "red"}).set_title("Emoji Log-log plot for Zipf's law", size=18);
-    st.pyplot(fig)
-    
+        sns.lineplot(x='idx', y='cumul_frq', data=emoji_stopwords[:10000], ax=axes[1,1]).set_title("Emoji Cumulative frequency by index, top 10000 tokens", size=18)
+
+        emoji_stopwords['log_frq'] = np.log(emoji_stopwords.frequency)
+        emoji_stopwords['log_rank'] = np.log(emoji_stopwords.frequency.rank(ascending=False))
+        sns.regplot(x='log_rank', y='log_frq', data=emoji_stopwords, ax=axes[1,2], line_kws={"color": "red"}).set_title("Emoji Log-log plot for Zipf's law", size=18);
+        st.pyplot(fig)
     return
 
 
@@ -296,6 +298,9 @@ def auto_predic():
     axes.set_title("Hatespeech Different Model Scores")
     axes.legend()
     st.pyplot(fig)
+
+
+    open_jar('./data/streamlit/ytraincounts.pkl")
     
 
     st.write("""
