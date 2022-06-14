@@ -53,11 +53,14 @@ def preprocessing():
     st.write("To be able to create a model for the different tasks we had, we first had to do some prepocessing.")
     with st.expander("Tokenisation"):
         st.write("We created our own regex tokenizer and looked at how it worked compared to other tokenizers:")
+
+        line = st.text_input('Movie title', 'Life of Brian')
         
         tokenizers = ["Regex", "NLTKTweetModified", "NLTKTweet", "NLTKTreeBank"]
 
         for i in tokenizers:
             st.write(i, ":")
+            st.write(tokenize_lines(i, line))
         
 
 def example_results_page():
@@ -93,6 +96,19 @@ def test_bulk_img():
 ############## NLP Code ###################
 
 #### Tokenizers:
+
+def tokenize_lines(tokenizer, line):
+    if tokenizer == "NLTKTweetModified":
+        func_nltktweetmodified(line)
+
+    elif tokenizer == "NLTKTweet":
+        func_nltktweet(line)
+
+    elif tokenizer == "NLTKTreeBank":
+        func_nltktreebank(line)
+
+    elif tokenizer == "Regex":
+        func_regex(line)
 
 def func_nltktweetmodified(line):
     filter_list = ['️','', '.', ',', '', '?', '!', '"', '~', "-"]
