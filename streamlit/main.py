@@ -57,7 +57,8 @@ def preprocessing():
     st.write("To be able to create a model for the different tasks we had, we first had to do some prepocessing.")
 
     with st.expander("Our Datasets"):
-        
+        st.write("Dont Break")
+
 
     with st.expander("Testing Tokenizers"):
         st.write("We created our own regex tokenizer and looked at how it worked compared to other tokenizers:")
@@ -70,8 +71,7 @@ def preprocessing():
             st.code(str(tokenize_lines(i, line)))
 
     with st.expander("Comparing Tokenizers on the hatespeech dataset"):
-
-    
+        st.write("Dont Break")
 
         
 
