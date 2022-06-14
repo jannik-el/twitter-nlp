@@ -47,7 +47,6 @@ def start_page():
     with col2:
         im = Image.open("./misc/Twitter.png")
         st.image(im, caption='Put Twitter Word Cloud image Here', width=400)
-        # im.show()
 
     return
 
@@ -56,7 +55,11 @@ def preprocessing():
     st.sidebar.success("Page showing on the right:")
 
     st.write("To be able to create a model for the different tasks we had, we first had to do some prepocessing.")
-    with st.expander("Tokenisation"):
+
+    with st.expander("Our Datasets"):
+        
+
+    with st.expander("Testing Tokenizers"):
         st.write("We created our own regex tokenizer and looked at how it worked compared to other tokenizers:")
 
         line = st.text_input('Try it out below:', "#Fabulous evening tonight, I'm so @home 😍")
@@ -65,6 +68,11 @@ def preprocessing():
         for i in tokenizers:
             st.write(i, ":")
             st.code(str(tokenize_lines(i, line)))
+
+    with st.expander("Comparing Tokenizers on the hatespeech dataset"):
+
+    
+
         
 
 def example_results_page():
