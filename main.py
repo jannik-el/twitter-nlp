@@ -275,7 +275,7 @@ def data_aug():
 
     st.write("And the same tweet tokenized using our tokenizer:")
     # st.markdown(f">_"+func_regex(str(random_tweet["Tweets"]))+"_")
-    st.write(func_regex(random_tweet["Tweets"]))
+    st.code(func_regex(random_tweet["Tweets"]))
 
 
 ############## NLP Code ###################
