@@ -128,7 +128,7 @@ def data_char():
     return
 
 
-def take_pic_page():
+def man_annot():
     st.sidebar.write("---------------------")
     st.sidebar.success("Page showing on the right:")
 
@@ -204,7 +204,7 @@ def custom_wc(data):
                         width = 1200,
                         height = 1000)
     wordcloud.generate_from_frequencies(data)
-    #plt.figure(figsize=(7.5,7.5))
+    plt.figure(figsize=(10,15))
     plt.imshow(wordcloud, interpolation="bilinear")
     plt.axis("off")
     plt.show()
@@ -249,7 +249,7 @@ def main():
         data_char()
 
     elif app_mode == sidebar_options[3]:
-        take_pic_page()
+        man_annot()
 
     elif app_mode == sidebar_options[4]:
         test_bulk_img()
