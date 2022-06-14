@@ -67,7 +67,7 @@ def preprocessing():
         emoji_map = ['❤', '😍', '😂', '💕', '🔥', '😊', '😎', '✨', '💙', '😘', '📷', '🇺', '🇸', '☀', '💜', '😉', '💯', '😁', '🎄', '📸', '😜']
         no_map = [i for i in range(0, 20)]
         map_df["Emoji"] = emoji_map
-        
+        map_df["Mapping"] = no_map
         st.table(map_df)     
 
 
