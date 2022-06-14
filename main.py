@@ -254,7 +254,7 @@ def data_aug():
     st.write("Below is a random tweet from our dataset, with it's insult label, and hatespeech probability according to our model:")
 
     random_tweet = trump_df.iloc[random.randrange(0, len(trump_df), 1)]
-    st.markdown(f">{0}".format(random_tweet["Tweets"]))
+    st.markdown(f">{0}".format([random_tweet["Tweets"]]))
     
 
 ############## NLP Code ###################
