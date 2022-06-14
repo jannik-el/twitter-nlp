@@ -4,7 +4,7 @@ import time
 import matplotlib.image as img
 import matplotlib.pyplot as plt
 import numpy as np
-import re, nltk, csv, pickle
+import re, nltk, csv
 from PIL import Image
 from wordcloud import WordCloud
 import seaborn as sns
@@ -16,6 +16,7 @@ import pickle
 import sys
 import numpy as np
 import random
+import pickle
 
 st.set_page_config(layout="wide")
 
@@ -235,6 +236,8 @@ def man_anot():
     with st.expander("Inter-annotator Agreement"):
         st.write("""To report on the inter-annotator we have decided to use the Cohen's kappa
          as our primary metric, as:""")
+        st.markdown("""- Each coder had their own preferences (individual annotator bias)
+        - Categories were not equally likely"""
         # Pie plot 
 
 
