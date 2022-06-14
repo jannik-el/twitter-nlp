@@ -83,6 +83,7 @@ def data_char():
     st.write("some text comes here")
 
     df = pd.read_csv("./streamlit/data/corpus_data.csv")
+    st.dataframe(df)
 
     return
 
