@@ -481,7 +481,7 @@ def plot_image(image):
 def main():
 
     st.sidebar.title("Checkout the following:")
-    st.text("""
+    st.sidebar.markdown("""
     - Start Page
     - Preprocessing
     - Data Characterisation
