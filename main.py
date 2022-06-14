@@ -494,15 +494,15 @@ def main():
     - Data Characterisation
         - Corpora Statistics
         - Most frequent tokens
-    - Manual Annotation
+    - _Manual Annotation_
         - Group Manual Annotation results
         - Survey Manual Annotation results
         - Comparisons of these
-    - Automatic Prediction
+    - _Automatic Prediction_
         - Comparisons between different machine learning models used
-    - Data Augmentation
+    - _Data Augmentation_
         - Interactive classification
-        - Labeling Trump's twitter insults
+        - **Labeling Trump's twitter insults**
         - Hatespeech and Offensive tweet classification comparison
     """)
 
