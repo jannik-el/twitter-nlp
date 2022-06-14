@@ -319,7 +319,8 @@ def data_aug():
     The most frequent unique keywords throughout the hatespeech dataset were: 
     > _migrant, refugee, #buildthatwall, bitch, hoe, women_
     These keywords are quite relevant when you look at Donald Trump's presidency, 
-    and since all the data was collected during the \\ period of July to September 2018 and, Trump's insult tweet/_normal_ tweet 
+    and since all the data was collected during the \\
+     period of July to September 2018 and, Trump's insult tweet/_normal_ tweet 
     dataset also included tweets from this time period, we hoped to get quite accurate and interesting results.
     """)
 
