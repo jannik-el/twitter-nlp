@@ -26,8 +26,9 @@ sidebar_options = (
     "Automatic Prediction", 
     "Data Augmentation")
 
-melanoma_image = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Twitter-logo.svg/768px-Twitter-logo.svg.png"
 ##### PAGE CODE ##########
+with open("style.css") as f:
+    st.markdown('<style>{}</style>'.format(f.read()), unsafe_allow_html=True)
 
 def start_page():
     st.sidebar.write("---------------------")
