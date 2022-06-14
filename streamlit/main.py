@@ -7,7 +7,7 @@ import numpy as np
 import re, nltk, csv
 from PIL import Image
 from wordcloud import WordCloud
-# import seaborn as sns
+import seaborn as sns
 import pandas as pd
 import pickle
 # from sklearn.feature_extraction.text import CountVectorizer
@@ -146,9 +146,9 @@ def data_char():
         custom_wc(emoji_wo_stopwords_dict_lf)
 
     ############### HATESPEECH Plots
-    hs_wo_stopwords['idx'] = hs_wo_stopwords.index + 1
-    hs_wo_stopwords['norm_freq'] = hs_wo_stopwords.frequency / len(hs_wo_stopwords)
-    hs_wo_stopwords['cumul_frq'] = hs_wo_stopwords.norm_freq.cumsum()
+    hsw_stopwords['idx'] = hsw_stopwords.index + 1
+    hsw_stopwords['norm_freq'] = hsw_stopwords.frequency / len(hsw_stopwords)
+    hsw_stopwords['cumul_frq'] = hsw_stopwords.norm_freq.cumsum()
 
     sns.set()
     fig, axes = plt.subplots(2,3, figsize=(25,16))
@@ -157,29 +157,29 @@ def data_char():
     plt.subplots_adjust(hspace = 0.3)
 
     # axes[0,0].set_xscale('log')
-    sns.scatterplot(ax=axes[0,0], x='idx', y='cumul_frq', data=hs_wo_stopwords).set_title("Hatespeech Cumulative frequency by index", size=18)
+    sns.scatterplot(ax=axes[0,0], x='idx', y='cumul_frq', data=hsw_stopwords).set_title("Hatespeech Cumulative frequency by index", size=18)
 
-    sns.lineplot(x='idx', y='cumul_frq', data=hs_wo_stopwords[:10000], ax=axes[0,1]).set_title("Hatespeech Cumulative frequency by index, top 10000 tokens", size=18)
+    sns.lineplot(x='idx', y='cumul_frq', data=hsw_stopwords[:10000], ax=axes[0,1]).set_title("Hatespeech Cumulative frequency by index, top 10000 tokens", size=18)
 
-    hs_wo_stopwords['log_frq'] = np.log(hs_wo_stopwords.frequency)
-    hs_wo_stopwords['log_rank'] = np.log(hs_wo_stopwords.frequency.rank(ascending=False))
-    sns.regplot(x='log_rank', y='log_frq', data=hs_wo_stopwords, ax=axes[0,2], line_kws={"color": "red"}).set_title("Hatespeech Log-log plot for Zipf's law", size=18)
+    hsw_stopwords['log_frq'] = np.log(hsw_stopwords.frequency)
+    hsw_stopwords['log_rank'] = np.log(hsw_stopwords.frequency.rank(ascending=False))
+    sns.regplot(x='log_rank', y='log_frq', data=hsw_stopwords, ax=axes[0,2], line_kws={"color": "red"}).set_title("Hatespeech Log-log plot for Zipf's law", size=18)
 
     ###################### EMOJI PLOTS
     #doing zipfs law on our frq dataframe and plotting
-    emoji_wo_stopwords['idx'] = emoji_wo_stopwords.index + 1
-    emoji_wo_stopwords['norm_freq'] = emoji_wo_stopwords.frequency / len(emoji_wo_stopwords)
-    emoji_wo_stopwords['cumul_frq'] = emoji_wo_stopwords.norm_freq.cumsum()
+    emoji_stopwords['idx'] = emoji_stopwords.index + 1
+    emoji_stopwords['norm_freq'] = emoji_stopwords.frequency / len(emoji_stopwords)
+    emoji_stopwords['cumul_frq'] = emoji_stopwords.norm_freq.cumsum()
 
     # Plots
     # axes[1,0].set_xscale('log')
-    sns.scatterplot(ax=axes[1,0], x='idx', y='cumul_frq', data=emoji_wo_stopwords).set_title("Emoji Cumulative frequency by index", size=18)
+    sns.scatterplot(ax=axes[1,0], x='idx', y='cumul_frq', data=emoji_stopwords).set_title("Emoji Cumulative frequency by index", size=18)
 
-    sns.lineplot(x='idx', y='cumul_frq', data=emoji_wo_stopwords[:10000], ax=axes[1,1]).set_title("Emoji Cumulative frequency by index, top 10000 tokens", size=18)
+    sns.lineplot(x='idx', y='cumul_frq', data=emoji_stopwords[:10000], ax=axes[1,1]).set_title("Emoji Cumulative frequency by index, top 10000 tokens", size=18)
 
-    emoji_wo_stopwords['log_frq'] = np.log(emoji_wo_stopwords.frequency)
-    emoji_wo_stopwords['log_rank'] = np.log(emoji_wo_stopwords.frequency.rank(ascending=False))
-    sns.regplot(x='log_rank', y='log_frq', data=emoji_wo_stopwords, ax=axes[1,2], line_kws={"color": "red"}).set_title("Emoji Log-log plot for Zipf's law", size=18);
+    emoji_stopwords['log_frq'] = np.log(emoji_stopwords.frequency)
+    emoji_stopwords['log_rank'] = np.log(emoji_wo_stopwords.frequency.rank(ascending=False))
+    sns.regplot(x='log_rank', y='log_frq', data=emoji_stopwords, ax=axes[1,2], line_kws={"color": "red"}).set_title("Emoji Log-log plot for Zipf's law", size=18);
 
     return
 
@@ -196,19 +196,11 @@ def man_anot():
     
     dfcrowd = pd.read_csv("./streamlit/data/survey.csv")
     GT = pd.read_csv("./streamlit/data/GT.csv")
-    st.pyplot(dfcrowd['ours'],label='Group annotation',linewidth=4.5)
-    st.pyplot(GT['value'],label='Original label',linewidth=4.5)
+    plt.plot(dfcrowd['ours'],label='Group annotation',linewidth=4.5)
+    plt.plot(GT['value'],label='Original label',linewidth=4.5)
 
     #plt.plot(dfcrowd['annotation'],label='Crowd annotation')
-    st.legend()
-    fig = plt.figure(figsize = (5,10))
-    st.pyplot(dfcrowd['ours'],label='Group annotation',linewidth=4.5)
-    st.pyplot(GT['value'],label='Original label',linewidth=4.5)
-        plt.title("Most frequent words in emoji dataset (top 50) without stopwords")
-        plt.xticks(rotation = 90)
-        st.pyplot(fig=plt)
-        st.write("**Least frequent words in emoji dataset**")
-        custom_wc(emoji_wo_stopwords_dict_lf)
+    plt.legend()
     return 
 
 
