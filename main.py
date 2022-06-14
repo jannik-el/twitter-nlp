@@ -256,8 +256,8 @@ def man_anot():
 
         #Kappa and agreement table
         d = {'Name': ['juraj','mirka','gust','jannik','franek'], 
-        'Avg Agreement': [3, 4],
-        'Kappa' : []}
+        'Avg Agreement': [0.73,0.78,0.80,0.70,0.84],
+        'Kappa' : [0.46,0.56,0.60,0.40,0.68]}
         kappa_df = pd.DataFrame(data=d)
         st.table(kappa_df)
 
@@ -297,6 +297,8 @@ def data_aug():
     dataset also included tweets from this time period, we hoped to get quite accurate and interesting results.
     """)
 
+    st.write("----------")
+
     st.write("So using those datasets, and our hatespeech model, we were able to create a dataset with all of Trump's tweets, labelled for being insulting and hatespeech.")
 
     trump_df = pd.read_csv("./streamlit/data/trump_df.csv")
@@ -319,6 +321,10 @@ def data_aug():
     col1.metric("Hatespeech Prob.", hs_pred)
     col2.metric("Not Hatespeech Prob.", not_hs_pred)
     col3.metric("Insult Label", random_tweet["Labels"])
+
+    st.write("----------")
+
+    
 
     
 
