@@ -227,6 +227,9 @@ def man_anot():
         plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0);
         #plt.plot(dfcrowd['annotation'],label='Crowd annotation')
         st.pyplot(fig2=plt)
+
+    with st.expander("Agreement with ground truth"):
+
         col1, col2 = st.columns(2)
         with col1:
             fig = plt.figure(figsize = (5,5))
@@ -334,7 +337,7 @@ def data_aug():
 
     hs_preda, not_hs_preda = classify_and_seperate(test_input)
     col1a, col2a = st.columns(2)
-    col1a.metric("Hatespeech Prob.", str(hs_preda*100))
+    col1a.metric("Hatespeech Prob.", f"{str(hs_preda*100))
     col2a.metric("Not Hatespeech Prob.", str(not_hs_preda*100))
 
     
