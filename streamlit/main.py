@@ -158,7 +158,7 @@ def man_anot():
     st.write("Place noice graphics and shit here, can do it with columns, ask jannik")
     #showing
     im = Image.open("./streamlit/data/ourannot.svg")
-    st.image(im, caption='', width=400)
+    st.image(im, caption='Comparison of our annotation and Ground Truth Values', width=400)
     return 
 
 def auto_predic():
@@ -180,7 +180,7 @@ def data_aug():
 
     with st.expander("Click here to see what the data frame looks like after labelling each tweet based on our model:"):
         trump_df = pd.read_csv("./streamlit/data/trump_df.csv")
-        trump_df = trump_df.rename(columns={"Insult Labels: Labels, Tweets: Tweets"})
+        trump_df = trump_df.rename(columns={"Insult Labels": "Labels", "Tweets": "Tweets", HS})
         trump_df = trump_df[['Labels', 'Tweets', 'HS_Label']]
         st.table(trump_df.iloc[0:10])
 
