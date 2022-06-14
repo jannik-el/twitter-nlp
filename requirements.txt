@@ -6,3 +6,4 @@ snscrape
 twitterscraper
 emoji
 seaborn
+sklearn

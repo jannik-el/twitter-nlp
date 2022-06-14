@@ -17,6 +17,7 @@ import sys
 import numpy as np
 import random
 import pickle
+import sklearn
 
 st.set_page_config(layout="wide")
 
@@ -226,6 +227,29 @@ def man_anot():
         plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0);
         #plt.plot(dfcrowd['annotation'],label='Crowd annotation')
         st.pyplot(fig2=plt)
+        col1, col2 = st.columns(2)
+        with col1:
+        fig = plt.figure(figsize = (5,5))
+        hsw_stopwords.iloc[0:30].plot.barh(x='token',y='frequency', figsize=(5,14))
+        plt.title("Most frequent words in hatespeech dataset (top 50) without stopwords")
+        plt.xticks(rotation = 90)
+        st.pyplot(fig=plt)
+        st.write("**Least frequent words in hatespeech dataset**")
+        custom_wc(hs_wo_stopwords_dict_lf)
+        
+        with col2: 
+        fig = plt.figure(figsize = (5,5))
+        plt.
+        plt.title("Most frequent words in emoji dataset (top 50) without stopwords")
+        plt.xticks(rotation = 90)
+        st.pyplot(fig=plt)
+        st.write("**Least frequent words in emoji dataset**")
+        custom_wc(emoji_wo_stopwords_dict_lf)
+
+
+
+
+
         _,ax1=plt.subplots(1,2,figsize=(15,7))
         ax1[0].pie([81,19],labels=['Agreed','Disagreed'],colors=['#2596be','#eab676'],explode=(0, 0.1),autopct='%1.1f%%');
         ax1[0].set_title('Agreement of group annotation and ground truth labels')
@@ -236,8 +260,10 @@ def man_anot():
     with st.expander("Inter-annotator Agreement"):
         st.write("""To report on the inter-annotator we have decided to use the Cohen's kappa
          as our primary metric, as:""")
-        st.markdown("""- Each coder had their own preferences (individual annotator bias)
-        - Categories were not equally likely""")
+        st.markdown("""
+        - Each coder had their own preferences (individual annotator bias) 
+        - Categories were not equally likely
+        """)
         # Pie plot 
 
 
