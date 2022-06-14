@@ -247,17 +247,14 @@ def man_anot():
         - Each coder had their own preferences (individual annotator bias)
         - Categories were not equally likely
         As there were more than two annotators, we are using the generalized version 
-        of the metric - multi-κ(Fleiss' kappa)""")
+        of the metric - multi-κ (Fleiss' kappa)""")
         
         #Kappa and agreement table
-        d = {'Name': ['juraj','mirka','gust','jannik','franek'], 
+        d = {'Name': ['Juraj','Mirka','Gust','Jannik','Franek'], 
         'Avg Agreement': [0.73,0.78,0.80,0.70,0.84],
         'Kappa' : [0.4599,0.5600,0.6000,0.3999,0.6799]}
         kappa_df = pd.DataFrame(data=d)
         st.table(kappa_df)
-
-        st.write("""In addition, for each class we used a confusion matrix to calculate theerrors of omission} (fraction of values that belong to a class but were predicted to be in a different class), \emph{errors of commission} (fraction of values that were predicted to be in a class but do not belong to that class), \emph{producer accuracy} (the probability that a value in a given class was classified correctly), and \emph{user accuracy} (the probability that a value predicted to be in a certain class really is that class). 
-        """)
 
     return 
 
@@ -269,6 +266,18 @@ def auto_predic():
     scores = pd.read_csv("./streamlit/data/hs_scores.csv")
     scores = scores[['F1 score', 'Accuracy Score', 'Recall Score', 'Precision Score']]
     st.table(scores)
+
+    fig, axes = plt.subplots(figsize=(9, 4))
+    x = [1,2,3,4]
+    axes.plot(x,multi,label='MultinomialNB', marker='o')
+    axes.plot(x,sgd,label='SGD Classifier', marker='o')
+    axes.plot(x,knn,label='K-Nearest neighbors', marker='o')
+    axes.plot(x,dtc,label='Decision Tree', marker='o')
+    axes.plot(x,rf,label='Random Forest', marker='o')
+    axes.set_xticks([1,2,3,4])
+    axes.set_xticklabels(["F1 Score", "Accuracy Score", "Recall Score", "Precision Score"]), 
+    axes.set_title("Hatespeech Different Model Scores")
+    axes.legend();
 
     st.write("""
     Task 4 stuff goes here
@@ -319,11 +328,14 @@ def data_aug():
     col1.metric("Hatespeech Prob.", str(hs_pred*100))
     col2.metric("Not Hatespeech Prob.", str(not_hs_pred*100))
     col3.metric("Insult Label", bool(random_tweet["Labels"]))
-
     st.write("----------")
+
     test_input = st.text_input("Input anything here, and see what our model classifies it as:", "Hello there u cunt")
-    
-    
+
+    hs_preda, not_hs_preda = classify_and_seperate(test_input)
+    col1a, col2a = st.columns(3)
+    col1a.metric("Hatespeech Prob.", str(hs_preda*100))
+    col2a.metric("Not Hatespeech Prob.", str(not_hs_preda*100))
 
     
 
