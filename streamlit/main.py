@@ -61,7 +61,7 @@ def preprocessing():
         st.write("Both the hatespeech-, and the emoji-detection dataset came from the same source:")
         st.caption("https://github.com/cardiffnlp/tweeteval")
 
-        st.write("The hatespeech dataset uses the classifiers 1 and 0, hatespeech and not hatespeech, while the emoji dataset ha")
+        st.write("The hatespeech dataset uses the classifiers 1 and 0, hatespeech and not hatespeech, while the emoji dataset had more classifiers.")
 
 
     with st.expander("Testing Tokenizers"):
@@ -85,7 +85,7 @@ def data_char():
     st.write("some text comes here")
 
     df = pd.read_csv("./streamlit/data/corpus_data.csv")
-    df = df['Dataset', 'Corpus size', 'Vocabulary size', 'Type to token ratio']
+    df = df[['Dataset', 'Corpus size', 'Vocabulary size', 'Type to token ratio']]
     st.dataframe(df)
 
     return
