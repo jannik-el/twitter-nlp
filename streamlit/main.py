@@ -83,17 +83,18 @@ def preprocessing():
 
     with st.expander("Comparing Tokenizers on the hatespeech dataset"):
         st.write("First we looked at how many tokens are 'leftover', after tokenizing:")
-        token_stats = pd.DataFrame()
-        token_stats["Regex"] = [185976]
-        token_stats["NLTKTweetModified"] = [197307]
-        token_stats["NLTKTweet"] = [213182]
-        token_stats["NLTKTreeBank"] = [218934]
-        st.table(token_stats)
+        col1, col2 = st.columns(2)
 
-        st.write("We also looked at how the tokenizers compare across the top 100 most frequent tokens:")
-        col1, col2, col3 = st.columns(3)
+        with col1:
+            token_stats = pd.DataFrame()
+            token_stats["Regex"] = [185976]
+            token_stats["NLTKTweetModified"] = [197307]
+            token_stats["NLTKTweet"] = [213182]
+            token_stats["NLTKTreeBank"] = [218934]
+            st.table(token_stats)
         
         with col2:
+            st.write("We also looked at how the tokenizers compare across the top 100 most frequent tokens:")
             st.image("./streamlit/data/token_comparison.png")
         
 
