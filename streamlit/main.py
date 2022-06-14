@@ -12,7 +12,7 @@ st.set_page_config(layout="wide")
 
 ##### HEADER #####
 
-st.title("Natural Language Processing on Twitter")
+st.title("Natural Languag teste Processing on Twitter")
 st.subheader("First Year Project, Project 3: NLP")
 st.markdown("""
 **IT-University of Copenhagen, Bsc. in Data Science** \\
@@ -146,6 +146,7 @@ def man_anot():
     st.sidebar.success("Page showing on the right:")
 
     st.write("We also did some manual annotation of the hatespeech dataset:")
+    col1, col2 = st.columns(2)
     st.write("Place noice graphics and shit here, can do it with columns, ask jannik")
 
     return
