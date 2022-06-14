@@ -89,7 +89,8 @@ def preprocessing():
         token_stats["NLTKTweet"] = [213182]
         token_stats["NLTKTreeBank"] = [218934]
         st.table(token_stats)
-        st.write("We also looked at how the tokenizers compare across the top 100 tweet")
+        st.write("We also looked at how the tokenizers compare across the top 100 most frequent tokens:")
+        st.image("./streamlit/data/token_comparison.png")
         
 
 def data_char():
