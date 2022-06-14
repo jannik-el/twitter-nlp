@@ -55,7 +55,7 @@ def preprocessing():
     with st.expander("Tokenisation"):
         st.write("We created our own regex tokenizer and looked at how it worked compared to other tokenizers:")
 
-        line = st.text_input('Try it out below:', "#Fabulous evening tonight, can't wait to be at home again!! :)")
+        line = st.text_input('Try it out below:', "#Fabulous evening tonight, can't wait to be at home again!! 😍")
         
         tokenizers = ["Regex", "NLTKTweetModified", "NLTKTweet", "NLTKTreeBank"]
 
