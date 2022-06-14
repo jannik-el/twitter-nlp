@@ -455,8 +455,8 @@ def classify_and_seperate(sentence):
     return '{:.4f}'.format((hatespeech_array[0][1])), '{:.4f}'.format(hatespeech_array[0][0])
 
 def classify_emoji_sentence(text):
-    classifier = open_jar('/work/twitter-nlp/data/pickle/models/emoji_GaussianNB.sav')
-    cv = open_jar('/work/twitter-nlp/data/pickle/models/emoji/vectorizer_sss.pkl')
+    classifier = open_jar('./data/pickle/models/emoji_GaussianNB.sav')
+    cv = open_jar('./data/pickle/models/emoji/vectorizer_sss.pkl')
     data = classifier.predict_proba(cv.transform([text]).toarray())
     return [round(i, 10) for i in data[0]]
 
