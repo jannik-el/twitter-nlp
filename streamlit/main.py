@@ -60,8 +60,7 @@ def preprocessing():
         tokenizers = ["Regex", "NLTKTweetModified", "NLTKTweet", "NLTKTreeBank"]
 
         for i in tokenizers:
-            st.write(i, ":")
-            st.write(tokenize_lines(i, line))
+            st.write(i, tokenize_lines(i, line))
         
 
 def example_results_page():
