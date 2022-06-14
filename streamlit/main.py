@@ -8,7 +8,7 @@ import re, nltk, csv
 from PIL import Image
 from wordcloud import WordCloud
 
-# st.set_page_config(layout="wide")
+st.set_page_config(layout="wide")
 
 ##### HEADER #####
 
