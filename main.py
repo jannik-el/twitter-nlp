@@ -191,24 +191,21 @@ def man_anot():
 
     st.write("We also did some manual annotation of the hatespeech dataset:")
     st.write("")
-    row1, row2 = st.rows(2)
-    with row1:
-        fig = plt.figure(figsize = (10,2))
-        dfcrowd = pd.read_csv("./streamlit/data/survey.csv")
-        GT = pd.read_csv("./streamlit/data/GT.csv")
-        plt.plot(dfcrowd['ours'],label='Group annotation',linewidth=3.0)
-        plt.plot(GT['value'],label='Original label',linewidth=3.0)
-        plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0);
-        st.pyplot(fig=plt)
-    with row2:
-        fig = plt.figure(figsize = (10,2))
-        plt.plot(dfcrowd['annotation'],label='Crowd annotation',color='red',linewidth=3)
-        plt.plot(dfcrowd['ours'],color='green',label='Group annotation',linewidth=3)
-        plt.title('Result of our manual annotation compared to the survey')
-        plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0);
-        #plt.plot(dfcrowd['annotation'],label='Crowd annotation')
-        plt.legend()
-        st.pyplot(fig=plt)
+    fig = plt.figure(figsize = (10,2))
+    dfcrowd = pd.read_csv("./streamlit/data/survey.csv")
+    GT = pd.read_csv("./streamlit/data/GT.csv")
+    plt.plot(dfcrowd['ours'],label='Group annotation',linewidth=3.0)
+    plt.plot(GT['value'],label='Original label',linewidth=3.0)
+    plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0);
+    st.pyplot(fig=plt)
+    fig2 = plt.figure(figsize = (10,2))
+    plt.plot(dfcrowd['annotation'],label='Crowd annotation',color='red',linewidth=3)
+    plt.plot(dfcrowd['ours'],color='green',label='Group annotation',linewidth=3)
+    plt.title('Result of our manual annotation compared to the survey')
+    plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0);
+    #plt.plot(dfcrowd['annotation'],label='Crowd annotation')
+    plt.legend()
+    st.pyplot(fig=plt)
     return 
 
 
@@ -221,6 +218,8 @@ def auto_predic():
     st.write("""
     Task 4 stuff goes here
     """)
+
+    
     return
 
 def data_aug():
@@ -241,8 +240,7 @@ def data_aug():
     dataset also included tweets from this time period, we hoped to get quite accurate and interesting results.
     """)
 
-    st.write("So using those datasets, and our hatespeech model, we were able to create a dataset with all of Trump's tweets  ")
-    
+    st.write("So using those datasets, and our hatespeech model, we were able to create a dataset with all of Trump's tweets, labelled for being insulting and hatespeech.")
 
     with st.expander("Click here to see what the data frame looks like after labelling each tweet based on our model:"):
         trump_df = pd.read_csv("./streamlit/data/trump_df.csv")
