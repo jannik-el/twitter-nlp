@@ -97,8 +97,6 @@ def data_char():
     st.sidebar.write("---------------------")
     st.sidebar.success("Page showing on the right:")
 
-    st.write("some text comes here")
-
     corpus_data = pd.read_csv("./streamlit/data/corpus_data.csv")
     corpus_data = corpus_data[['Dataset', 'Corpus size', 'Vocabulary size', 'Type to Token ratio']]
     st.dataframe(corpus_data)
@@ -126,6 +124,7 @@ def data_char():
     col1, col2 = st.columns(2)
 
     with col1:
+        st.header("LOL")
         custom_wc(hs_wo_stopwords_dict_lf)
 
     with col2:
