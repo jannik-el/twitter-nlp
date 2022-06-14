@@ -195,14 +195,14 @@ def man_anot():
     st.write("")
 
     with st.expander("Group manual annotation"):
-        st.write("textext:")
+        st.write("For the manual annotation, a random sample of 100 tweets was selected. To annotate the data semi-automatically, a script was created and run locally. The group members went through the sample independently and without consulting the ground truth, and labelled them according to the same scheme.")
 
         #Plot (group annotation)
         fig = plt.figure(figsize = (10,2))
         dfcrowd = pd.read_csv("./streamlit/data/survey.csv")
         GT = pd.read_csv("./streamlit/data/GT.csv")
-        plt.plot(dfcrowd['ours'],label='Group annotation',linewidth=3.0)
-        plt.plot(GT['value'],label='Original label',linewidth=3.0)
+        plt.plot(dfcrowd['ours'],label='Group annotation',color='red',linewidth=3.0)
+        plt.plot(GT['value'],label='Original label',color='blue',linewidth=3.0)
         plt.title('Result of our manual annotation compared to the Ground Truth')
         plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0);
         st.pyplot(fig=plt)
