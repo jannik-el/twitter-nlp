@@ -63,7 +63,7 @@ def preprocessing():
 
         st.write("The hatespeech dataset uses the classifiers 1 and 0, hatespeech and not hatespeech, while the emoji dataset had more classifiers:")
 
-        with open("./data/tweeteval/datasets/emoji/mapping.txt") as mapping:
+        with open("/data/tweeteval/datasets/emoji/mapping.txt") as mapping:
             map_data = mapping.readlines()
             map_data = [i.strip("\n") for i in map_data]
             st.write(map_data)     
@@ -90,7 +90,7 @@ def data_char():
     st.write("some text comes here")
 
     corpus_data = pd.read_csv("./streamlit/data/corpus_data.csv")
-    corpus_data = df[['Dataset', 'Corpus size', 'Vocabulary size', 'Type to Token ratio']]
+    corpus_data = corpus_data[['Dataset', 'Corpus size', 'Vocabulary size', 'Type to Token ratio']]
     st.dataframe(corpus_data)
 
     hsw_stopwords = pd.read_csv("./streamlit/data/hsw_stopwords.csv")
