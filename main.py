@@ -257,15 +257,9 @@ def man_anot():
         #Kappa and agreement table
         d = {'Name': ['juraj','mirka','gust','jannik','franek'], 
         'Avg Agreement': [0.73,0.78,0.80,0.70,0.84],
-        'Kappa' : [0.4599,0.5600,0.60,0.40,0.68]}
+        'Kappa' : [0.4599,0.5600,0.6000,0.3999,0.6799]}
         kappa_df = pd.DataFrame(data=d)
         st.table(kappa_df)
-
-        0.45999999999999996
-mirka:     0.78      0.56
-gust:     0.8      0.6000000000000001
-jannik:     0.7      0.3999999999999999
-franek:     0.84      0.6799999999999999
 
     return 
 
@@ -325,8 +319,8 @@ def data_aug():
 
     col1, col2, col3 = st.columns(3)
     col1.metric("Hatespeech Prob.", str(hs_pred*100+"%"))
-    col2.metric("Not Hatespeech Prob.", not_hs_pred)
-    col3.metric("Insult Label", random_tweet["Labels"])
+    col2.metric("Not Hatespeech Prob.", str(not_hs_pred*100+"%"))
+    col3.metric("Insult Label", bool(random_tweet["Labels"]))
 
     st.write("----------")
 
