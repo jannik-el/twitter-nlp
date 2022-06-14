@@ -169,7 +169,7 @@ def main():
     if app_mode == "Start Page":
         start_page()
 
-    elif app_mode == "Algorithm Description":
+    elif app_mode == sidebar_options[1]:
         preprocessing()
 
     elif app_mode == sidebar_options[2]:
