@@ -266,7 +266,8 @@ def auto_predic():
     scores = pd.read_csv("./streamlit/data/hs_scores.csv")
     scores = scores[['F1 score', 'Accuracy Score', 'Recall Score', 'Precision Score']]
     st.table(scores)
-
+    
+    lst = scores.values.tolist()
     fig, axes = plt.subplots(figsize=(9, 4))
     x = [1,2,3,4]
     axes.plot(x,multi,label='MultinomialNB', marker='o')
@@ -333,7 +334,7 @@ def data_aug():
     test_input = st.text_input("Input anything here, and see what our model classifies it as:", "Hello there u cunt")
 
     hs_preda, not_hs_preda = classify_and_seperate(test_input)
-    col1a, col2a = st.columns(3)
+    col1a, col2a = st.columns(2)
     col1a.metric("Hatespeech Prob.", str(hs_preda*100))
     col2a.metric("Not Hatespeech Prob.", str(not_hs_preda*100))
 
