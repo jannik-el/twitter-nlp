@@ -86,7 +86,7 @@ def data_char():
     st.write("some text comes here")
 
     df = pd.read_csv("./streamlit/data/corpus_data.csv")
-    df = df[['Dataset', 'Corpus size', 'Vocabulary size', 'Type to token ratio']]
+    df = df[['Dataset', 'Corpus size', 'Vocabulary size', 'Type to Token ratio']]
     st.dataframe(df)
 
     return
