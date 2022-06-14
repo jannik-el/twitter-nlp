@@ -12,7 +12,7 @@ st.set_page_config(layout="wide")
 
 ##### HEADER #####
 
-st.title("Natural Languag teste Processing on Twitter")
+st.title("Natural Language Processing on Twitter")
 st.subheader("First Year Project, Project 3: NLP")
 st.markdown("""
 **IT-University of Copenhagen, Bsc. in Data Science** \\
