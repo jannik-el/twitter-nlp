@@ -246,6 +246,9 @@ def man_anot():
         To report on the inter-annotator we have decided to use the Cohen's kappa as our primary metric, as:
         - Each coder had their own preferences (individual annotator bias)
         - Categories were not equally likely
+        As there were more than two annotators, we are using the generalized version 
+        of the metric - <strong>multi-κ</strong> (Fleiss' kappa) ([Artstein & Poesio, 2008]
+        (https://dl.acm.org/doi/10.1162/coli.07-034-R2))
         """)
         
         # Pie plot 
@@ -389,7 +392,7 @@ def open_jar(file_address):
 
 def classify_and_seperate(sentence):
     """Return Hatespeech, Not Hatespeech value"""
-    hatespeech_array = classify_sentence([sentence])
+    hatespeech_array = classify_sentence(sentence)
     return round(hatespeech_array[0][1], 4), round(hatespeech_array[0][0], 4)
 
 ###### DOWNLOADING IMAGE DATA CODE ###############
