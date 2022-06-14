@@ -91,7 +91,7 @@ def preprocessing():
             token_stats["NLTKTweetModified"] = [197307]
             token_stats["NLTKTweet"] = [213182]
             token_stats["NLTKTreeBank"] = [218934]
-            st.table(token_stats)
+            st.table(token_stats.transpose())
         
         with col2:
             st.write("We also looked at how the tokenizers compare across the top 100 most frequent tokens:")
