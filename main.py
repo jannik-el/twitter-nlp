@@ -228,7 +228,7 @@ def data_aug():
 
     st.markdown("## Labeling Trumps twitter insults")
     st.markdown("""
-    We took Trumps insults (provided by the New York Times) and combined those with all his other tweets.  \\
+    We took Trumps insults (provided by the New York Times) and combined those with all his other tweets.
     >https://www.nytimes.com/interactive/2021/01/19/upshot/trump-complete-insult-list.html \\
     >https://www.thetrumparchive.com/faq (all Tweets from 2009 to 2020)
 
