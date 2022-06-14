@@ -508,8 +508,6 @@ def main():
 
     st.sidebar.write("---------------------")
 
-    mode_two = st.sidebar.radio("Lets try this:", sidebar_options)
-
     if mode_two == sidebar_options[0]:
         start_page()
 
