@@ -95,7 +95,6 @@ def data_char():
 
     hsw_stopwords = pd.read_csv("./streamlit/data/hsw_stopwords.csv")
     fig = plt.figure(figsize = (10, 5))
-    plt.
     hsw_stopwords.iloc[0:50].plot.bar(x='token',y='frequency', figsize=(17,5))
     plt.title("Most frequent words in hatespeech dataset (top 50) without stopwords")
     plt.xticks(rotation = 90)
