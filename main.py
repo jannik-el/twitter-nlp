@@ -183,6 +183,7 @@ def data_char():
     emoji_stopwords['log_rank'] = np.log(emoji_stopwords.frequency.rank(ascending=False))
     sns.regplot(x='log_rank', y='log_frq', data=emoji_stopwords, ax=axes[1,2], line_kws={"color": "red"}).set_title("Emoji Log-log plot for Zipf's law", size=18);
     st.pyplot(fig)
+    
     return
 
 
@@ -199,8 +200,7 @@ def man_anot():
         For the manual annotation, a random sample of 100 tweets was selected. 
         To annotate the data semi-automatically, a script was created and run locally. 
         The group members went through the sample independently and without consulting the ground truth,
-        and labelled them according to the same scheme.)
-        """
+        and labelled them according to the same scheme. """)
 
         #Plot (group annotation)
         fig = plt.figure(figsize = (10,2))
