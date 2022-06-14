@@ -204,6 +204,13 @@ def man_anot():
         The group members went through the sample independently and without consulting the ground truth,
         and labelled them according to the same scheme. """)
 
+        st.markdown("""
+        For disagreement in 19 cases (Figure \ref{fig_pie_annotation}) the reasons could be:
+        - the tweets were manually labelled before reading the definition of hate speech (some group members could already have prior knowledge)
+        - some tweets could be understood in varying ways depending on the context
+        - for some tweets, the intentions of the author were unclear (given tweet could be understood as a joke in some settings)
+        """)
+
         #Plot (group annotation)
         fig = plt.figure(figsize = (10,2))
         dfcrowd = pd.read_csv("./streamlit/data/survey.csv")
