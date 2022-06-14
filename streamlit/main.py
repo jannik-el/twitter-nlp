@@ -123,9 +123,13 @@ def data_char():
     hs_wo_stopwords_dict_lf = dict((k, v) for k, v in hs_wo_stopwords_dict.items() if v <= 3) #least frequent hate (value <= 3)
     emoji_wo_stopwords_dict_lf = dict((k,v) for k, v in emoji_wo_stopwords_dict.items() if v <= 3) #least frequent emoji (value <=3)
 
-    custom_wc(hs_wo_stopwords_dict_lf)
-    custom_wc(emoji_wo_stopwords_dict_lf)
-    
+    col1, col2 = st.columns(2)
+
+    with col1:
+        custom_wc(hs_wo_stopwords_dict_lf)
+
+    with col2:
+        custom_wc(emoji_wo_stopwords_dict_lf)
     return
 
 
