@@ -307,7 +307,7 @@ def auto_predic():
 
     y_train_emoji_counts = open_jar("./streamlit/ytrainemojicounts.pkl")
     plt.rcParams['font.size'] = 11.0
-    plt.pie(collections.Counter(list(y_train_emoji_counts[0])).values(), labels=list(emoji_classes[2]), autopct = lambda p:f'{p:.2f}%');
+    plt.pie(collections.Counter(list(y_train_emoji_counts)).values(), labels=list(emoji_classes[2]), autopct = lambda p:f'{p:.2f}%');
     st.pyplot()
 
     st.write("""
