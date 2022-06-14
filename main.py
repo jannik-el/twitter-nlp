@@ -205,7 +205,7 @@ def man_anot():
     plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0);
     #plt.plot(dfcrowd['annotation'],label='Crowd annotation')
     plt.legend()
-    st.pyplot(fig=plt)
+    st.pyplot(fig2=plt)
     return 
 
 
