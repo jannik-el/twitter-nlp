@@ -90,11 +90,10 @@ def preprocessing():
         token_stats["NLTKTreeBank"] = [218934]
         st.table(token_stats)
 
+        st.write("We also looked at how the tokenizers compare across the top 100 most frequent tokens:")
         col1, col2, col3 = st.columns(3)
         
-
         with col2:
-            st.write("We also looked at how the tokenizers compare across the top 100 most frequent tokens:")
             st.image("./streamlit/data/token_comparison.png")
         
 
