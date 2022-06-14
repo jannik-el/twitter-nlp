@@ -197,16 +197,20 @@ def man_anot():
    with st.expander("Group manual annotation"):
         st.write("textext:")
 
-
-    fig = plt.figure(figsize = (10,2))
-    dfcrowd = pd.read_csv("./streamlit/data/survey.csv")
-    GT = pd.read_csv("./streamlit/data/GT.csv")
-    plt.plot(dfcrowd['ours'],label='Group annotation',linewidth=3.0)
-    plt.plot(GT['value'],label='Original label',linewidth=3.0)
-    plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0);
-    st.pyplot(fig=plt)
+        #Plot (group annotation)
+        fig = plt.figure(figsize = (10,2))
+        dfcrowd = pd.read_csv("./streamlit/data/survey.csv")
+        GT = pd.read_csv("./streamlit/data/GT.csv")
+        plt.plot(dfcrowd['ours'],label='Group annotation',linewidth=3.0)
+        plt.plot(GT['value'],label='Original label',linewidth=3.0)
+        plt.title('Result of our manual annotation compared to the survey')
+        plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0);
+        st.pyplot(fig=plt)
     
-    with st.expander("Plot of "):
+    with st.expander("Plot of comparison survey data and our annotation"):
+        st.write("we conducted survey bla bla bla:")
+
+        #Plot (survey annotation)
         fig2 = plt.figure(figsize = (10,2))
         plt.plot(dfcrowd['annotation'],label='Crowd annotation',color='red',linewidth=3)
         plt.plot(dfcrowd['ours'],color='green',label='Group annotation',linewidth=3)
