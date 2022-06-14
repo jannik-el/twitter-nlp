@@ -243,15 +243,16 @@ def data_aug():
 
     st.write("So using those datasets, and our hatespeech model, we were able to create a dataset with all of Trump's tweets, labelled for being insulting and hatespeech.")
 
+    trump_df = pd.read_csv("./streamlit/data/trump_df.csv")
+    trump_df = trump_df[['Labels', 'Tweets', 'HS_Label']]
+    trump_df = trump_df.rename(columns={"Insult Labels": "Labels", "Tweets": "Tweets", "HS_Label":"HS_Label"})
+
     with st.expander("Click here to see what the data frame looks like after labelling each tweet based on our model:"):
-        trump_df = pd.read_csv("./streamlit/data/trump_df.csv")
-        trump_df = trump_df[['Labels', 'Tweets', 'HS_Label']]
-        trump_df = trump_df.rename(columns={"Insult Labels": "Labels", "Tweets": "Tweets", "HS_Label":"HS_Label"})
         st.table(trump_df.iloc[0:10])
 
     st.write("Below is a random tweet from our dataset, with it's insult label, and hatespeech probability according to our model:")
 
-    
+    random_tweet = trump_df.iloc[]
 
     
 
