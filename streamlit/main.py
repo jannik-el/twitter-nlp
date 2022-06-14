@@ -4,7 +4,7 @@ import time
 import matplotlib.image as img
 import matplotlib.pyplot as plt
 import numpy as np
-import re, nltk
+import re, nltk, csv
 from PIL import Image
 
 st.set_page_config(layout="wide")
@@ -62,7 +62,11 @@ def preprocessing():
         st.caption("https://github.com/cardiffnlp/tweeteval")
 
         st.write("The hatespeech dataset uses the classifiers 1 and 0, hatespeech and not hatespeech, while the emoji dataset had more classifiers:")
-        
+
+        with open("./data/tweeteval/datasets/emoji/mapping.txt") as mapping:
+            map_data = mapping.readlines()
+            map_data = [i.strip("\n") for i in map_data]
+            st.write(map_data)     
 
 
     with st.expander("Testing Tokenizers"):
