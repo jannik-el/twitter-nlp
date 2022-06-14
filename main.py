@@ -301,9 +301,13 @@ def auto_predic():
 
 
     y_train_counts = open_jar("./streamlit/ytraincounts.pkl")
-    print(y_train_counts)
     plt.rcParams['font.size'] = 11.0
     plt.pie(collections.Counter(list(y_train_counts)).values(), labels=['Not hate speech','Hate speech'],colors=['#eab676','#2596be'],explode=(0, 0.1), autopct = lambda p:f'{p:.2f}%')
+    st.pyplot()
+
+    y_train_counts = open_jar("./streamlit/ytrainemojicounts.pkl")
+    plt.rcParams['font.size'] = 11.0
+    plt.pie(collections.Counter(list(y_train_emoji[0])).values(), labels=list(emoji_classes[2]), autopct = lambda p:f'{p:.2f}%');
     st.pyplot()
 
     st.write("""
@@ -329,6 +333,7 @@ def data_aug():
 
     st.write("-------------")
 
+    st.write("Using this, we decided to look")
     st.markdown("## Labeling Trump's twitter insults")
     st.markdown("""
     We took Trumps insults (provided by the New York Times) and combined those with all his other tweets.
