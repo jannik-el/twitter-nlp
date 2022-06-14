@@ -96,13 +96,11 @@ def preprocessing():
 
         col1, col2, col3 = st.columns(3)
 
-        
         with col2:
             st.image("./streamlit/data/token_comparison.png", width = 500)
             st.write("TODO, change this image to svg cus its shite quality")
-        
+    return
     
-
 def data_char():
     st.sidebar.write("---------------------")
     st.sidebar.success("Page showing on the right:")
