@@ -63,7 +63,7 @@ def preprocessing():
 
         st.write("The hatespeech dataset uses the classifiers 1 and 0, hatespeech and not hatespeech, while the emoji dataset had more classifiers:")
 
-        with open('./twitter-n/data/tweeteval/datasets/emoji/mapping.txt', mode='r') as mapping:
+        with open('./data/tweeteval/datasets/emoji/mapping.txt', mode='r') as mapping:
             map_data = mapping.readlines()
             map_data = [i.strip("\n") for i in map_data]
             # st.write(map_data)     
