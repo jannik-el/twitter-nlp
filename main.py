@@ -237,7 +237,7 @@ def man_anot():
         st.write("""To report on the inter-annotator we have decided to use the Cohen's kappa
          as our primary metric, as:""")
         st.markdown("""- Each coder had their own preferences (individual annotator bias)
-        - Categories were not equally likely"""
+        - Categories were not equally likely""")
         # Pie plot 
 
 
