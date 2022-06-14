@@ -52,7 +52,7 @@ def preprocessing():
 
     st.write("To be able to create a model for the different tasks we had, we first had to do some prepocessing.")
     with st.expander("Tokenisation"):
-        st.header("We created our own regex tokenizer and looked at how it worked compared to other tokenizers:")
+        st.write("We created our own regex tokenizer and looked at how it worked compared to other tokenizers:")
         
         tokenizers = ["Regex", "NLTKTweetModified", "NLTKTweet", "NLTKTreeBank"]
 
