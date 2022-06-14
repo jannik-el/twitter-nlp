@@ -83,7 +83,12 @@ def preprocessing():
 
     with st.expander("Comparing Tokenizers on the hatespeech dataset"):
         st.write("First we looked at how many tokens are 'leftover', after tokenizing:")
-        
+        token_stats = pd.DataFrame()
+        token_stats["Regex"] = [185976]
+        token_stats["NLTKTweetModified"] = [197307]
+        token_stats["NLTKTweet"] = [213182]
+        token_stats["NLTKTreeBank"] = [218934]
+        st.table(token_stats)
         
 
 def data_char():
