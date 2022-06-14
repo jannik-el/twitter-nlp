@@ -214,7 +214,7 @@ def man_anot():
         plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0);
         st.pyplot(fig=plt)
     
-    with st.expander("Survey"):
+    with st.expander("Survey (external annotation"):
         st.write("""In addition to group members annotated the sample,
         survey was created. 11 participants in the age group 18-25,
         assigned if the tweets from the random sample are hate speech or not.""")
@@ -228,7 +228,7 @@ def man_anot():
         #plt.plot(dfcrowd['annotation'],label='Crowd annotation')
         st.pyplot(fig2=plt)
 
-    with st.expander("Agreement with ground truth"):
+    with st.expander("Agreement with the ground truth"):
         st.write("""We have looked at the agreeement with the ground truth provided
          along with the dataset. It was annotated by annotators (crowd)
           and 2 experts (native or near-native speakers of British English, 
@@ -237,16 +237,15 @@ def man_anot():
         col1, col2 = st.columns(2)
         with col1:
             fig = plt.figure(figsize = (5,5))
-            plt.pie([77,23],labels=['Agreed','Disagreed'],colors=['#eab676','#2596be'],explode=(0, 0.1),autopct='%1.1f%%');
-            plt.title('Agreement of survey results and ground truth labels')
-            st.pyplot(fig=plt)
-        
-        with col2: 
-            fig = plt.figure(figsize = (5,5))
             plt.pie([81,19],labels=['Agreed','Disagreed'],colors=['#2596be','#eab676'],explode=(0, 0.1),autopct='%1.1f%%');
             plt.title('Agreement of group annotation and ground truth labels')
             st.pyplot(fig=plt)
         
+        with col2: 
+            fig = plt.figure(figsize = (5,5))
+            plt.pie([77,23],labels=['Agreed','Disagreed'],colors=['#eab676','#2596be'],explode=(0, 0.1),autopct='%1.1f%%');
+            plt.title('Agreement of survey results and ground truth labels')
+            st.pyplot(fig=plt)
     
     with st.expander("Inter-annotator Agreement"):
         st.markdown("""
@@ -425,7 +424,7 @@ def open_jar(file_address):
 def classify_and_seperate(sentence):
     """Return Hatespeech, Not Hatespeech value"""
     hatespeech_array = classify_sentence(sentence)
-    return hatespeech_array[0][1], hatespeech_array[0][0]
+    return round(hatespeech_array[0][1], 4), round(hatespeech_array[0][0], 4)
 
 ###### DOWNLOADING IMAGE DATA CODE ###############
 
