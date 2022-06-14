@@ -10,7 +10,6 @@ from wordcloud import WordCloud
 import seaborn as sns
 import pandas as pd
 import pickle
-import cairosvg
 # from sklearn.feature_extraction.text import CountVectorizer
 # from sklearn.metrics import accuracy_score,confusion_matrix,roc_auc_score,classification_report
 import sys
@@ -197,11 +196,11 @@ def man_anot():
     
     dfcrowd = pd.read_csv("./streamlit/data/survey.csv")
     GT = pd.read_csv("./streamlit/data/GT.csv")
-    plt.plot(dfcrowd['ours'],label='Group annotation',linewidth=4.5)
-    plt.plot(sample100p,label='Original label',linewidth=4.5)
+    st.pyplot(dfcrowd['ours'],label='Group annotation',linewidth=4.5)
+    st.pyplot(GT['value'],label='Original label',linewidth=4.5)
 
     #plt.plot(dfcrowd['annotation'],label='Crowd annotation')
-    plt.legend()
+    st.legend()
     return 
 
 
