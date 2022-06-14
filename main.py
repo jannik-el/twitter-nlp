@@ -337,8 +337,8 @@ def data_aug():
 
     hs_preda, not_hs_preda = classify_and_seperate(test_input)
     col1a, col2a = st.columns(2)
-    col1a.metric("Hatespeech Prob.", f"{str(hs_preda*100))
-    col2a.metric("Not Hatespeech Prob.", str(not_hs_preda*100))
+    col1a.metric("Hatespeech Prob.", f"{str(hs_preda*100)}%")
+    col2a.metric("Not Hatespeech Prob.", f"{str(not_hs_preda*100)}%")
 
     
 
