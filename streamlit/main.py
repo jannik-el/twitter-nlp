@@ -64,7 +64,7 @@ def preprocessing():
         st.write("The hatespeech dataset uses the classifiers 1 and 0, hatespeech and not hatespeech, while the emoji dataset had more classifiers:")
 
         map_df = pd.DataFrame()
-        emoji_map = ['❤', '😍', '😂', '💕', '🔥', '😊', '😎', '✨', '💙', '😘', '📷', '🇺', '🇸', '☀', '💜', '😉', '💯', '😁', '🎄', '📸', '😜']
+        emoji_map = ['❤', '😍', '😂', '💕', '🔥', '😊', '😎', '✨', '💙', '😘', '📷', '🇺🇸', '☀', '💜', '😉', '💯', '😁', '🎄', '📸', '😜']
         no_map = [i for i in range(0, 20)]
         map_df["Emoji"] = emoji_map
         map_df["Mapping"] = no_map
@@ -110,9 +110,9 @@ def data_char():
     st.pyplot(fig=plt)
 
     # creating dicts, to make wordclouds
-    hs_wo_stopwords_dict = dict(zip(list(hs_wo_stopwords['token']), list(hs_wo_stopwords['frequency'])))
+    hs_wo_stopwords_dict = dict(zip(list(hsw_stopwords['token']), list(hsw_stopwords['frequency'])))
     emoji_wo_stopwords_dict = dict(zip(list(emoji_wo_stopwords['token']), list(emoji_wo_stopwords['frequency'])))
-    hs_wo_stopwords_dict_lf = dict((k, v) for k, v in hs_wo_stopwords_dict.items() if v <= 3) #least frequent hate (value <= 3)
+    hs_wo_stopwords_dict_lf = dict((k, v) for k, v in hsw_stopwords.items() if v <= 3) #least frequent hate (value <= 3)
     emoji_wo_stopwords_dict_lf = dict((k,v) for k, v in emoji_wo_stopwords_dict.items() if v <= 3) #least frequent emoji (value <=3)
 
     custom_wc(hs_wo_stopwords_dict_lf)
