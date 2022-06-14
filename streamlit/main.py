@@ -180,7 +180,7 @@ def data_aug():
 
     with st.expander("Click here to see what the data frame looks like after labelling each tweet based on our model:"):
         trump_df = pd.read_csv("./streamlit/data/trump_df.csv")
-        trump_df = trump_df.rename(columns={"Insult Labels": "Labels", "Tweets": "Tweets", HS})
+        trump_df = trump_df.rename(columns={"Insult Labels": "Labels", "Tweets": "Tweets", "HS_Label":"HS_Label"})
         trump_df = trump_df[['Labels', 'Tweets', 'HS_Label']]
         st.table(trump_df.iloc[0:10])
 
