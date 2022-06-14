@@ -50,23 +50,14 @@ def preprocessing():
     st.sidebar.write("---------------------")
     st.sidebar.success("Page showing on the right:")
 
-    st.write("This is where a breakdown of the algorithm, using an image from the dataset as an example, goes:")
-    with st.expander("Masking and Segmenting the image:"):
-        st.header("Loading image and putting mask on top")
-        # downloading the images from the repo
-        example_image = download_image(image_url, "example_image")
-        example_mask = download_image(mask_url, "example_mask")
+    st.write("To be able to create a model for the different tasks we had, we first had to do some prepocessing.")
+    with st.expander("Tokenisation"):
+        st.header("We created our own regex tokenizer and looked at how it worked compared to other tokenizers:")
+        
+        tokenizers = ["Regex", "NLTKTweetModified", "NLTKTweet", "NLTKTreeBank"]
 
-        algcol1, algcol2 = st.columns(2)
-        with algcol1:
-            st.write("The original Image")
-            st.image(example_image)
-        with algcol2:
-            st.write("The mask")
-            st.image(example_mask)
-        st.write("The combined images:")
-        test_mask = np.array(Image.open(example_mask))
-        plot_image(test_mask)
+        for i in tokenizers:
+            st.write(i, ":")
         
 
 def example_results_page():
@@ -99,43 +90,41 @@ def test_bulk_img():
     """)
     return
 
-############## FEATURE DETECTION CODE ###################
+############## NLP Code ###################
 
-def masking(ima,test_mask):
-    """
-    Masking and cropping input image with binary mask
-    """
+#### Tokenizers:
 
-    result = cv2.bitwise_and(ima,ima,mask=test_mask) #putting the mask on the image
+def func_nltktweetmodified(line):
+    filter_list = ['️','', '.', ',', '', '?', '!', '"', '~', "-"]
+    tweet_tokenizer = nltk.TweetTokenizer()
+    line = [x for x in tweet_tokenizer.tokenize(line) if x not in filter_list]
+    return line
 
-    #cropping
-    setm=set()
-    setn=set()
-    for x, i in enumerate(test_mask[:]):
-        if 255 in i:
-            setm.add(x)
-    for i in range(test_mask.shape[1]):
-        if 255 in test_mask[:,i]:
-            setn.add(i)
-    im2 = result[min(setm):max(setm),min(setn):max(setn),:]
-    return im2
-    
-def segmenting(im2):
-    """
-    Divide the pixels into segments (segment = piece of continuous color in the image)
-    """
-    segments_slic = slic(im2, n_segments=100, compactness=10, sigma=1, start_label=1)
-    return segments_slic
+def func_nltktweet(line):
+    tweet_tokenizer = nltk.TweetTokenizer()
+    return tweet_tokenizer.tokenize(line)
 
-    # fig, ax = plt.subplots(2, 1, figsize=(10, 10), sharex=True, sharey=True)
-    # ax[0].imshow(im2)
-    # ax[0].set_title("Original")
-    # ax[1].imshow(mark_boundaries(im2, segments_slic))
-    # ax[1].set_title('SLIC')
-    # for a in ax.ravel():
-    #     a.set_axis_off()
-    # plt.tight_layout()
-    # plt.show()
+def func_nltktreebank(line):
+    tree_tokenizer = nltk.TreebankWordTokenizer()
+    return tree_tokenizer.tokenize(line)
+
+def func_regex(line):
+    filter_list = ['️','', '.', ',', '', '?', '!', '"', '~', "-", "…", ":"]
+    token_list = []
+    final_list = []
+    word = str()
+
+    split_line = re.split(r'\s+|https.*|www.*|http.*|[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+', line)
+    for i in split_line:
+        for t in i :
+            if t not in filter_list:
+                word += t
+        if len(word) > 0:
+            final_list.append(word)
+        else:
+            pass
+        word=""
+    return final_list
 
 ###### DOWNLOADING IMAGE DATA CODE ###############
 
@@ -156,7 +145,6 @@ def plot_image(image):
     ima=np.array(Image.open(image))
     ax.imshow(ima)
     return st.pyplot(fig)
-
 
 ###### MAIN FUNCTION #################
 
