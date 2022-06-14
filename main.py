@@ -255,6 +255,10 @@ def man_anot():
 
 
         #Kappa and agreement table
+        d = {'Name': [1, 2], 'col2': [3, 4]}
+        kappa_df = pd.DataFrame(data=d)
+        st.table(kappa_df)
+
     return 
 
 
@@ -307,8 +311,7 @@ def data_aug():
     st.write("And the same tweet tokenized using our tokenizer:")
     st.code(func_regex(random_tweet["Tweets"]))
 
-    trump_predict = classify_sentence(random_tweet["Tweets"])
-    hs_pred, not_hs_pred = classify_and_seperate(trump_predict)
+    hs_pred, not_hs_pred = classify_and_seperate(str(random_tweet["Tweets"]))
 
     col1, col2, col3 = st.columns(3)
     col1.metric("Hatespeech Prob.", hs_pred)
