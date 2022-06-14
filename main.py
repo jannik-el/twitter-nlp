@@ -483,7 +483,11 @@ def main():
     st.sidebar.title("Checkout the following:")
     st.sidebar.markdown("""
     - Start Page
+        - Introduction to the project
     - Preprocessing
+        - The datasets we used
+        - Our tokenizers
+        - A comparison of these on the hatespeech dataset
     - Data Characterisation
     - Manual Annotation
     - Automatic Prediction
