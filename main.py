@@ -8,6 +8,7 @@ import re, nltk, csv
 from PIL import Image
 from wordcloud import WordCloud
 import seaborn as sns
+import numpy as np
 import pandas as pd
 import pickle
 # from sklearn.feature_extraction.text import CountVectorizer
