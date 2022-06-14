@@ -7,7 +7,7 @@ import numpy as np
 import re, nltk, csv
 from PIL import Image
 from wordcloud import WordCloud
-import seaborn as sns
+# import seaborn as sns
 import pandas as pd
 import pickle
 # from sklearn.feature_extraction.text import CountVectorizer
@@ -201,6 +201,14 @@ def man_anot():
 
     #plt.plot(dfcrowd['annotation'],label='Crowd annotation')
     st.legend()
+    fig = plt.figure(figsize = (5,10))
+    st.pyplot(dfcrowd['ours'],label='Group annotation',linewidth=4.5)
+    st.pyplot(GT['value'],label='Original label',linewidth=4.5)
+        plt.title("Most frequent words in emoji dataset (top 50) without stopwords")
+        plt.xticks(rotation = 90)
+        st.pyplot(fig=plt)
+        st.write("**Least frequent words in emoji dataset**")
+        custom_wc(emoji_wo_stopwords_dict_lf)
     return 
 
 
