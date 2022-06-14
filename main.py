@@ -368,11 +368,13 @@ def data_aug():
     hs_pred, not_hs_pred = classify_and_seperate(str(random_tweet["Tweets"]))
     hs_pred = str(float(hs_pred)*100)[0:6] 
     not_hs_pred = str(float(not_hs_pred)*100)[0:6]
+    trump_emoji = label_to_emoji(str(random_tweet["Tweets"]))
 
-    col1, col2, col3 = st.columns(3)
+    col1, col2, col3, col4 = st.columns(4)
     col1.metric("Hatespeech Prob.", f"{hs_pred}%")
     col2.metric("Not Hatespeech Prob.", f"{not_hs_pred}%")
     col3.metric("Insult Label", bool(random_tweet["Labels"]))
+    col4.metric("And for fun the emoji:", trump_emoji)
     st.write("----------")
 
     
