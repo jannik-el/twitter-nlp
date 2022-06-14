@@ -489,7 +489,12 @@ def main():
         - Our tokenizers
         - A comparison of these on the hatespeech dataset
     - Data Characterisation
+        - Corpora Statistics
+        - Most frequent tokens
     - Manual Annotation
+        - Group Manual Annotation results
+        - Survey Manual Annotation results
+        - Comparisons of these
     - Automatic Prediction
     - Data Augmentation
     """)
