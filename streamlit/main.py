@@ -143,6 +143,9 @@ def data_char():
         st.pyplot(fig=plt)
         st.write("**Least frequent words in emoji dataset**")
         custom_wc(emoji_wo_stopwords_dict_lf)
+    
+    im = Image.open("./streamlit/data/zipfslaw.svg")
+    st.image(im, caption='Zipfs law graphs', width=400)
 
     return
 
@@ -178,6 +181,8 @@ def auto_predic():
 def data_aug():
     st.sidebar.write("---------------------")
     st.sidebar.success("Page showing on the right:")
+
+    with st.expander("Click here to see what the data frame looks like after labelling each tweet based on our model:")
 
     trump_df = pd.read_csv("./streamlit/data/trump_df.csv")
     trump_df = trump_df[['Labels', 'Tweets', 'HS_Label']]
