@@ -113,8 +113,8 @@ def data_char():
     # creating dicts, to make wordclouds
     hs_wo_stopwords_dict = dict(zip(list(hsw_stopwords['token']), list(hsw_stopwords['frequency'])))
     emoji_wo_stopwords_dict = dict(zip(list(emoji_stopwords['token']), list(emoji_stopwords['frequency'])))
-    hs_wo_stopwords_dict_lf = dict((k, v) for k, v in hsw_stopwords.items() if v <= 3) #least frequent hate (value <= 3)
-    emoji_wo_stopwords_dict_lf = dict((k,v) for k, v in emoji_stopwords.items() if v <= 3) #least frequent emoji (value <=3)
+    hs_wo_stopwords_dict_lf = dict((k, v) for k, v in hs_wo_stopwords_dict.items() if v <= 3) #least frequent hate (value <= 3)
+    emoji_wo_stopwords_dict_lf = dict((k,v) for k, v in emoji_wo_stopwords_dict.items() if v <= 3) #least frequent emoji (value <=3)
 
     custom_wc(hs_wo_stopwords_dict_lf)
     
