@@ -161,19 +161,8 @@ def man_anot():
     plt.plot(dfcrowd['ours'],label='Group annotation',linewidth=4.5)
     plt.plot(GT['value'],label='Original label',linewidth=4.5)
 
-    #plt.plot(dfcrowd['annotation'],label='Crowd annotation')
+    plt.plot(dfcrowd['annotation'],label='Crowd annotation')
     plt.legend()
-    lst=[]
-    lst2=[]
-    difference=[]
-    for i in range(len(sample100p)):
-        if int(sample100p[i])==dfcrowd['ours'][i]:
-            lst.append(i)
-        if int(sample100p[i])==dfcrowd['annotation'][i]:
-            lst2.append(i)
-        if int(sample100p[i])!=dfcrowd['ours'][i]:
-            difference.append(i)
-    plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0);
     return 
 
 def auto_predic():
@@ -193,7 +182,7 @@ def data_aug():
 
     trump_df = pd.read_csv("./streamlit/data/trump_df.csv")
     trump_df = trump_df[['Labels', 'Tweets', 'HS_Label']]
-    st.table(trump_df)
+    st.table(trump_df.iloc[0:10])
 
     st.write("""
     Task 5 shit goes here
