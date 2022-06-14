@@ -480,7 +480,16 @@ def plot_image(image):
 
 def main():
 
-    st.sidebar.title("Explore the following:")
+    st.sidebar.title("Checkout the following:")
+    st.text("""
+    - Start Page
+    - Preprocessing
+    - Data Characterisation
+    - Manual Annotation
+    - Automatic Prediction
+    - Data Augmentation
+    """)
+
     st.sidebar.write("---------------------")
     app_mode = st.sidebar.selectbox("Please select from the following:", sidebar_options)
 
