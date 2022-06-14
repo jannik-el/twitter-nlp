@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import re, nltk, csv
 from PIL import Image
+from wordcloud import WordCloud
 
 st.set_page_config(layout="wide")
 
@@ -81,7 +82,8 @@ def preprocessing():
             st.code(str(tokenize_lines(i, line)))
 
     with st.expander("Comparing Tokenizers on the hatespeech dataset"):
-        st.write("Dont Break")
+        st.write("First we looked at how many tokens are 'leftover', after tokenizing:")
+        
         
 
 def data_char():
@@ -114,9 +116,29 @@ def data_char():
     hs_wo_stopwords_dict_lf = dict((k, v) for k, v in hs_wo_stopwords_dict.items() if v <= 3) #least frequent hate (value <= 3)
     emoji_wo_stopwords_dict_lf = dict((k,v) for k, v in emoji_wo_stopwords_dict.items() if v <= 3) #least frequent emoji (value <=3)
 
-    custom_wc(hs_wo_stopwords_dict_lf)
+    wordcloud = WordCloud(background_color = 'white',
+                        width = 1200,
+                        height = 1000)
+    wordcloud.generate_from_frequencies(hs_wo_stopwords_dict_lf)
+    plt.imshow(wordcloud, interpolation="bilinear")
+    plt.axis('off')
+    plt.show()
+    st.pyplot()
     
     return
+
+
+
+# def custom_wc(data):
+#     wordcloud = WordCloud(background_color = 'white',
+#                         width = 1200,
+#                         height = 1000)
+#     wordcloud.generate_from_frequencies(data)
+#     #plt.figure(figsize=(15,10))
+#     plt.imshow(wordcloud, interpolation="bilinear")
+#     plt.axis("off")
+#     plt.show()
+#     st.pyplot()
 
 
 def take_pic_page():
@@ -190,16 +212,6 @@ def func_regex(line):
         word=""
     return final_list
 
-def custom_wc(data):
-    wordcloud = WordCloud(background_color = 'white',
-                        width = 1200,
-                        height = 1000)
-    wordcloud.generate_from_frequencies(data)
-    #plt.figure(figsize=(15,10))
-    plt.imshow(wordcloud, interpolation="bilinear")
-    plt.axis("off")
-    plt.show()
-    st.pyplot()
 
 ###### DOWNLOADING IMAGE DATA CODE ###############
 
