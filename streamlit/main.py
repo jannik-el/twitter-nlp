@@ -99,7 +99,7 @@ def preprocessing():
         with col1:
             st.write("")
         with col2:
-            st.image("./streamlit/data/token_comparison.png", width = 500)
+            st.image("./streamlit/data/token_comparison.png", width = 400)
         with col3:
             st.write("")
     
