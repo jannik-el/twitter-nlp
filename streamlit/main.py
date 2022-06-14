@@ -61,6 +61,8 @@ def preprocessing():
         st.write("Both the hatespeech-, and the emoji-detection dataset came from the same source:")
         st.caption("https://github.com/cardiffnlp/tweeteval")
 
+        st.write("Here is a short cutout of both datasets:")
+
 
     with st.expander("Testing Tokenizers"):
         st.write("We created our own regex tokenizer and looked at how it worked compared to other tokenizers:")
@@ -83,6 +85,7 @@ def data_char():
     st.write("some text comes here")
 
     df = pd.read_csv("./streamlit/data/corpus_data.csv")
+    df.drop(['Unnamed 0'])
     st.dataframe(df)
 
     return
