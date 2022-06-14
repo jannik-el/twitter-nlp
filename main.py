@@ -346,8 +346,8 @@ def data_aug():
     not_hs_pred = float(not_hs_pred)*100
 
     col1, col2, col3 = st.columns(3)
-    col1.metric("Hatespeech Prob.", f"{str(int(hs_pred)*100)}%")
-    col2.metric("Not Hatespeech Prob.", f"{str(int(not_hs_pred)*100)}%")
+    col1.metric("Hatespeech Prob.", f"{hs_pred}%")
+    col2.metric("Not Hatespeech Prob.", f"{not_hs_pred}%")
     col3.metric("Insult Label", bool(random_tweet["Labels"]))
     st.write("----------")
 
