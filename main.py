@@ -333,8 +333,8 @@ def data_aug():
     hs_pred, not_hs_pred = classify_and_seperate(str(random_tweet["Tweets"]))
 
     col1, col2, col3 = st.columns(3)
-    col1.metric("Hatespeech Prob.", f"{str(hs_pred*100)}%")
-    col2.metric("Not Hatespeech Prob.", f"{str(not_hs_pred*100)}%")
+    col1.metric("Hatespeech Prob.", f"{str(int(hs_pred)*100)}%")
+    col2.metric("Not Hatespeech Prob.", f"{str(int(not_hs_pred)*100)}%")
     col3.metric("Insult Label", bool(random_tweet["Labels"]))
     st.write("----------")
 
@@ -342,8 +342,8 @@ def data_aug():
 
     hs_preda, not_hs_preda = classify_and_seperate(test_input)
     col1a, col2a = st.columns(2)
-    col1a.metric("Hatespeech Prob.", f"{str(hs_preda*100)}%")
-    col2a.metric("Not Hatespeech Prob.", f"{str(not_hs_preda*100)}%")
+    col1a.metric("Hatespeech Prob.", f"{str(int(hs_preda)*100)}%")
+    col2a.metric("Not Hatespeech Prob.", f"{str(int(not_hs_preda)*100)}%")
 
     
 
@@ -423,7 +423,7 @@ def open_jar(file_address):
 def classify_and_seperate(sentence):
     """Return Hatespeech, Not Hatespeech value"""
     hatespeech_array = classify_sentence(sentence)
-    return '{:.4f}'.format((hatespeech_array[0][1]))[:-1], '{:.4f}'.format(hatespeech_array[0][0])[:-1]
+    return '{:.4f}'.format((hatespeech_array[0][1])), '{:.4f}'.format(hatespeech_array[0][0])
 
 ###### DOWNLOADING IMAGE DATA CODE ###############
 
