@@ -7,6 +7,12 @@ import numpy as np
 import re, nltk, csv
 from PIL import Image
 from wordcloud import WordCloud
+import pandas as pd
+import pickle
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.metrics import accuracy_score,confusion_matrix,roc_auc_score,classification_report
+import sys
+import numpy as np
 
 st.set_page_config(layout="wide")
 
@@ -60,7 +66,7 @@ def preprocessing():
     st.write("To be able to create a model for the different tasks we had, we first had to do some prepocessing.")
 
     with st.expander("Our Datasets"):
-        st.write("Both the hatespeech-, and the emoji-detection dataset came from the same source:")
+        st.write("Both the hatespeech detection and the emoji predicion dataset came from the same source:")
         st.caption("https://github.com/cardiffnlp/tweeteval")
 
         st.write("The hatespeech dataset uses the classifiers 1 and 0, hatespeech and not hatespeech, while the emoji dataset had more classifiers:")
@@ -146,6 +152,10 @@ def man_anot():
     st.sidebar.success("Page showing on the right:")
 
     st.write("We also did some manual annotation of the hatespeech dataset:")
+
+    with st.expander("Our Datasets"):
+        st.write("Both the hatespeech detection and the emoji predicion dataset came from the same source:")
+        
     col1, col2 = st.columns(2)
     st.write("Place noice graphics and shit here, can do it with columns, ask jannik")
 
@@ -155,6 +165,8 @@ def auto_predic():
     st.sidebar.write("---------------------")
     st.sidebar.success("Page showing on the right:")
 
+    trump_df = pd.read_csv("./streamlit/data/trump_df.csv")
+
     st.write("""
     Task 4 stuff goes here
     """)
@@ -163,6 +175,8 @@ def auto_predic():
 def data_aug():
     st.sidebar.write("---------------------")
     st.sidebar.success("Page showing on the right:")
+
+
 
     st.write("""
     Task 5 shit goes here
