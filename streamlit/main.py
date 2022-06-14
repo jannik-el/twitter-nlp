@@ -4,6 +4,7 @@ import time
 import matplotlib.image as img
 import matplotlib.pyplot as plt
 import numpy as np
+import re, nltk
 
 st.set_page_config(layout="wide")
 
