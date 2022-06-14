@@ -9,6 +9,7 @@ from PIL import Image
 from wordcloud import WordCloud
 import pandas as pd
 import pickle
+import cairosvg
 # from sklearn.feature_extraction.text import CountVectorizer
 # from sklearn.metrics import accuracy_score,confusion_matrix,roc_auc_score,classification_report
 import sys
@@ -147,6 +148,9 @@ def data_char():
     im = Image.open("./streamlit/data/plotlol.png")
     st.image(im, caption='Zipfs law graphs', width=400)
 
+    svg_url = "./streamlit/data/zipfslaw.svg"
+    my_png = cairosvg.svg2png(url=svg_url, output_width=426, output_height=240)
+    st.image(my_png)
     return
 
 
@@ -159,7 +163,9 @@ def man_anot():
     #showing
     im = Image.open("./streamlit/data/ourannot.svg")
     st.image(im, caption='Comparison of our annotation and Ground Truth Values', width=400)
+    
     return 
+
 
 def auto_predic():
     st.sidebar.write("---------------------")
