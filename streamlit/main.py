@@ -68,7 +68,7 @@ def preprocessing():
         no_map = [i for i in range(0, 20)]
         map_df["Emoji"] = emoji_map
         map_df["Mapping"] = no_map
-        st.table(map_df)     
+        st.table(map_df.T)     
 
 
     with st.expander("Testing Tokenizers"):
@@ -102,18 +102,18 @@ def data_char():
     plt.xticks(rotation = 90)
     st.pyplot(fig=plt)
 
-    hsw_stopwords = pd.read_csv("./streamlit/data/emojiw_stopwords.csv")
+    emoji_stopwords = pd.read_csv("./streamlit/data/emojiw_stopwords.csv")
     fig = plt.figure(figsize = (10, 5))
-    hsw_stopwords.iloc[0:50].plot.bar(x='token',y='frequency', figsize=(17,5))
+    emoji_stopwords.iloc[0:50].plot.bar(x='token',y='frequency', figsize=(17,5))
     plt.title("Most frequent words in emoji dataset (top 50) without stopwords")
     plt.xticks(rotation = 90)
     st.pyplot(fig=plt)
 
     # creating dicts, to make wordclouds
     hs_wo_stopwords_dict = dict(zip(list(hsw_stopwords['token']), list(hsw_stopwords['frequency'])))
-    emoji_wo_stopwords_dict = dict(zip(list(emoji_wo_stopwords['token']), list(emoji_wo_stopwords['frequency'])))
+    emoji_wo_stopwords_dict = dict(zip(list(emoji_stopwords['token']), list(emoji_stopwords['frequency'])))
     hs_wo_stopwords_dict_lf = dict((k, v) for k, v in hsw_stopwords.items() if v <= 3) #least frequent hate (value <= 3)
-    emoji_wo_stopwords_dict_lf = dict((k,v) for k, v in emoji_wo_stopwords_dict.items() if v <= 3) #least frequent emoji (value <=3)
+    emoji_wo_stopwords_dict_lf = dict((k,v) for k, v in emoji_stopwords.items() if v <= 3) #least frequent emoji (value <=3)
 
     custom_wc(hs_wo_stopwords_dict_lf)
     
