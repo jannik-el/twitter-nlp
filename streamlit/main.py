@@ -51,17 +51,17 @@ def preprocessing():
     st.sidebar.write("---------------------")
     st.sidebar.success("Page showing on the right:")
 
-    st.write("To be able to create a model for the different tasks we had, we first had to do some prepocessing.")
+    st.text("To be able to create a model for the different tasks we had, we first had to do some prepocessing.")
     with st.expander("Tokenisation"):
-        st.write("We created our own regex tokenizer and looked at how it worked compared to other tokenizers:")
+        st.text("We created our own regex tokenizer and looked at how it worked compared to other tokenizers:")
 
         line = st.text_input('Try it out below:', "#Fabulous evening tonight, can't wait to be at home again!! :)")
         
         tokenizers = ["Regex", "NLTKTweetModified", "NLTKTweet", "NLTKTreeBank"]
 
         for i in tokenizers:
-            st.text(i, ":")
-            st.text(str(tokenize_lines(i, line)))
+            st.write(i, ":")
+            st.write(str(tokenize_lines(i, line)))
         
 
 def example_results_page():
