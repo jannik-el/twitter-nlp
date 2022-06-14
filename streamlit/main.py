@@ -23,7 +23,7 @@ sidebar_options = (
     "Automatic Prediction", 
     "Data Augmentation")
 
-melanoma_image = "https://upload.wikimedia.org/wikipedia/commons/6/6c/Melanoma.jpg"
+melanoma_image = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Twitter-logo.svg/768px-Twitter-logo.svg.png"
 
 ##### PAGE CODE ##########
 def start_page():
