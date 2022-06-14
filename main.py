@@ -230,9 +230,9 @@ def man_anot():
 
     with st.expander("Agreement with ground truth"):
         st.write("""We have looked at the agreeement with the ground truth provided
-         along with the dataset. The dataset was annotated by annotators (crowd)
+         along with the dataset. It was annotated by annotators (crowd)
           and 2 experts (native or near-native speakers of British English, 
-          having an extensive experience in annotating data for the task's subject). """)
+          having an extensive experience in annotating data for the task's subject).""")
 
         col1, col2 = st.columns(2)
         with col1:
@@ -246,6 +246,7 @@ def man_anot():
             plt.pie([81,19],labels=['Agreed','Disagreed'],colors=['#2596be','#eab676'],explode=(0, 0.1),autopct='%1.1f%%');
             plt.title('Agreement of group annotation and ground truth labels')
             st.pyplot(fig=plt)
+        
     
     with st.expander("Inter-annotator Agreement"):
         st.markdown("""
@@ -424,7 +425,7 @@ def open_jar(file_address):
 def classify_and_seperate(sentence):
     """Return Hatespeech, Not Hatespeech value"""
     hatespeech_array = classify_sentence(sentence)
-    return round(hatespeech_array[0][1], 2), round(hatespeech_array[0][0], 2)
+    return hatespeech_array[0][1], hatespeech_array[0][0]
 
 ###### DOWNLOADING IMAGE DATA CODE ###############
 
