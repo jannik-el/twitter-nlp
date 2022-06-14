@@ -229,7 +229,10 @@ def man_anot():
         st.pyplot(fig2=plt)
 
     with st.expander("Agreement with ground truth"):
-        st.write("""We have looked at the agreeement with the ground truth provided along with the dataset. The dataset was annotated by annotators (crowd) and 2 experts (native or near-native speakers of British English, having an extensive experience in annotating data for the task's subject). ")
+        st.write("""We have looked at the agreeement with the ground truth provided
+         along with the dataset. The dataset was annotated by annotators (crowd)
+          and 2 experts (native or near-native speakers of British English, 
+          having an extensive experience in annotating data for the task's subject). """)
 
         col1, col2 = st.columns(2)
         with col1:
@@ -282,7 +285,7 @@ def auto_predic():
     axes.set_xticklabels(["F1 Score", "Accuracy Score", "Recall Score", "Precision Score"]), 
     axes.set_title("Hatespeech Different Model Scores")
     axes.legend()
-    
+    st.pyplot(fig)
     
 
     st.write("""
