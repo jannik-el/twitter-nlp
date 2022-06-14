@@ -67,13 +67,13 @@ def preprocessing():
         emoji_map = ['❤', '😍', '😂', '💕', '🔥', '😊', '😎', '✨', '💙', '😘', '📷', '🇺🇸', '☀', '💜', '😉', '💯', '😁', '🎄', '📸', '😜']
         map_df["Emoji"] = emoji_map
         map_df = map_df.T
-        st.table(map_df) 
+        st.table(map_df)
 
 
     with st.expander("Testing Tokenizers"):
         st.write("We created our own regex tokenizer and looked at how it worked compared to other tokenizers:")
 
-        line = st.text_input('Try it out below:', "#Fabulous evening tonight, I'm so @home 😍")
+        line = st.text_input('Try it out below:', "Time for some BBQ and whiskey libations. Chomp, belch, chomp! (@ Lucille's Smokehouse Bar-B-Que)😍")
         tokenizers = ["Regex", "NLTKTweetModified", "NLTKTweet", "NLTKTreeBank"]
 
         for i in tokenizers:
@@ -195,10 +195,11 @@ def custom_wc(data):
                         width = 1200,
                         height = 1000)
     wordcloud.generate_from_frequencies(data)
-    fig = plt.figure(figsize=(15,10))
+    #plt.figure(figsize=(15,10))
     plt.imshow(wordcloud, interpolation="bilinear")
     plt.axis("off")
-    st.pyplot(fig)
+    plt.show()
+    st.pyplot()
 
 ###### DOWNLOADING IMAGE DATA CODE ###############
 
