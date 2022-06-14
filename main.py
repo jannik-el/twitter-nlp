@@ -212,8 +212,10 @@ def man_anot():
         plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0);
         st.pyplot(fig=plt)
     
-    with st.expander("Plot of comparison survey data and our annotation"):
-        st.write("we conducted survey bla bla bla:")
+    with st.expander("Survey"):
+        st.write("""In addition to group members annotated the sample,
+        survey was created. 11 participants in the age group 18-25,
+        assigned if the tweets from the random sample are hate speech or not.""")
 
         #Plot (survey annotation)
         fig2 = plt.figure(figsize = (10,2))
@@ -223,6 +225,14 @@ def man_anot():
         plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0);
         #plt.plot(dfcrowd['annotation'],label='Crowd annotation')
         st.pyplot(fig2=plt)
+
+    
+    with st.expander("Agreement"):
+        st.write(":")
+        # Pie plot 
+
+
+        #Kappa and agreement table
     return 
 
 
@@ -231,9 +241,8 @@ def auto_predic():
     st.sidebar.success("Page showing on the right:")
 
     scores = pd.read_csv("./streamlit/data/hs_scores.csv")
+    scores = scores[['F1 score', 'Accuracy Score', 'Recall Score', 'Precision Score']]
     st.table(scores)
-
-    
 
     st.write("""
     Task 4 stuff goes here
@@ -274,8 +283,9 @@ def data_aug():
     st.markdown(f">_"+random_tweet["Tweets"]+"_")
 
     st.write("And the same tweet tokenized using our tokenizer:")
-    # st.markdown(f">_"+func_regex(str(random_tweet["Tweets"]))+"_")
     st.code(func_regex(random_tweet["Tweets"]))
+
+    
 
 
 ############## NLP Code ###################
