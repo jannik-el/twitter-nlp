@@ -133,12 +133,9 @@ def man_anot():
     st.sidebar.write("---------------------")
     st.sidebar.success("Page showing on the right:")
 
-    st.write("We also did a manual annotati")
+    st.write("We also did some manual annotation of the hatespeech dataset:")
+    st.write("Place noice graphics and shit here, can do it with columns, ask jannik")
 
-    if take_picture:
-        st.image(take_picture)
-    
-    st.write("Currently it just shows the picture, but here we can build the algorithm in and immediately show the results which would be really cool")
     return
 
 def test_bulk_img():
@@ -205,7 +202,7 @@ def custom_wc(data):
                         width = 1200,
                         height = 1000)
     wordcloud.generate_from_frequencies(data)
-    plt.figure(figsize=(10,15))
+    plt.figure(figsize=(5,5))
     plt.imshow(wordcloud, interpolation="bilinear")
     plt.axis("off")
     plt.show()
