@@ -12,8 +12,8 @@ st.set_page_config(layout="wide")
 
 ##### HEADER #####
 
-st.title("Natural Language Processing")
-st.subheader("First Year Project, Twitter NLP")
+st.title("Natural Language Processing on Twitter")
+st.subheader("First Year Project, Project 3: NLP")
 st.caption("*IT-University of Copenhagen, Bsc. in Data Science*")
 st.caption("By Juraj Septak, Gusts Gustav, Franek Liszka, Mirka and Jannik Elsäßer *(Group E2)*")
 st.write("------------------------------------------")
