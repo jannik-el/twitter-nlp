@@ -242,12 +242,12 @@ def man_anot():
             st.pyplot(fig=plt)
     
     with st.expander("Inter-annotator Agreement"):
-        st.write("""To report on the inter-annotator we have decided to use the Cohen's kappa
-         as our primary metric, as:""")
         st.markdown("""
-        - Each coder had their own preferences (individual annotator bias) \\
+        To report on the inter-annotator we have decided to use the Cohen's kappa as our primary metric, as:
+        - Each coder had their own preferences (individual annotator bias)
         - Categories were not equally likely
         """)
+        
         # Pie plot 
 
 
@@ -305,7 +305,14 @@ def data_aug():
     st.code(func_regex(random_tweet["Tweets"]))
 
     trump_predict = classify_sentence(random_tweet["Tweets"])
-    st.write(trump_predict)
+    hs_pred, not_hs_pred = classify_and_seperate(trump_predict)
+
+    col1, col2, col3 = st.columns(3)
+    col1.metric("Hatespeech Prob.", hs_pred)
+    col2.metric("Not Hatespeech Prob.", no_hs_pred)
+    col3.metric("Insult Label", random_tweet["Labels"])
+
+    
 
 
 ############## NLP Code ###################
@@ -380,6 +387,10 @@ def open_jar(file_address):
         data = pickle.load(f)
     return data
 
+def classify_and_seperate(sentence):
+    """Return Hatespeech, Not Hatespeech value"""
+    hatespeech_array = classify_sentence([sentence])
+    return round(hatespeech_array[0][1], 4), round(hatespeech_array[0][0], 4)
 
 ###### DOWNLOADING IMAGE DATA CODE ###############
 
