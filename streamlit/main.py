@@ -155,7 +155,24 @@ def man_anot():
         
     col1, col2 = st.columns(2)
     st.write("Place noice graphics and shit here, can do it with columns, ask jannik")
+    #showing
+    plt.plot(dfcrowd['ours'],label='Group annotation',linewidth=4.5)
+    plt.plot(sample100p,label='Original label',linewidth=4.5)
 
+    #plt.plot(dfcrowd['annotation'],label='Crowd annotation')
+    plt.legend()
+    lst=[]
+    lst2=[]
+    difference=[]
+    for i in range(len(sample100p)):
+        if int(sample100p[i])==dfcrowd['ours'][i]:
+            lst.append(i)
+        if int(sample100p[i])==dfcrowd['annotation'][i]:
+            lst2.append(i)
+        if int(sample100p[i])!=dfcrowd['ours'][i]:
+            difference.append(i)
+    plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0);
+plt.savefig("test.svg", format="svg")
     return
 
 def auto_predic():
@@ -174,7 +191,7 @@ def data_aug():
     st.sidebar.success("Page showing on the right:")
 
     trump_df = pd.read_csv("./streamlit/data/trump_df.csv")
-    trump_df = trump_df[['Labels, Tweets, HS_Label']]
+    trump_df = trump_df[['Labels', 'Tweets', 'HS_Label']]
     st.table(trump_df)
 
     st.write("""
