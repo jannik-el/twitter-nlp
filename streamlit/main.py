@@ -7,6 +7,7 @@ import numpy as np
 import re, nltk, csv
 from PIL import Image
 from wordcloud import WordCloud
+import seaborn as sns
 import pandas as pd
 import pickle
 import cairosvg
@@ -144,12 +145,6 @@ def data_char():
         st.pyplot(fig=plt)
         st.write("**Least frequent words in emoji dataset**")
         custom_wc(emoji_wo_stopwords_dict_lf)
-    
-    im = Image.open("./streamlit/data/plotlol.png")
-    st.image(im, caption='Zipfs law graphs', width=400)
-
-    import warnings
-    warnings.filterwarnings('ignore')
 
     ############### HATESPEECH Plots
     hs_wo_stopwords['idx'] = hs_wo_stopwords.index + 1
@@ -205,8 +200,8 @@ def man_anot():
     plt.plot(dfcrowd['ours'],label='Group annotation',linewidth=4.5)
     plt.plot(sample100p,label='Original label',linewidth=4.5)
 
-#plt.plot(dfcrowd['annotation'],label='Crowd annotation')
-plt.legend()
+    #plt.plot(dfcrowd['annotation'],label='Crowd annotation')
+    plt.legend()
     return 
 
 
