@@ -123,30 +123,9 @@ def data_char():
     hs_wo_stopwords_dict_lf = dict((k, v) for k, v in hs_wo_stopwords_dict.items() if v <= 3) #least frequent hate (value <= 3)
     emoji_wo_stopwords_dict_lf = dict((k,v) for k, v in emoji_wo_stopwords_dict.items() if v <= 3) #least frequent emoji (value <=3)
 
-    plt.figure(figsize=(10,7.5))
-    wordcloud = WordCloud(background_color = 'white',
-                        width = 1200,
-                        height = 1000)
-    wordcloud.generate_from_frequencies(hs_wo_stopwords_dict_lf)
-    plt.imshow(wordcloud, interpolation="bilinear")
-    plt.axis('off')
-    plt.show()
-    st.pyplot(fig=plt)
+    custom_wc(hs_wo_stopwords_dict_lf)
     
     return
-
-
-
-# def custom_wc(data):
-#     wordcloud = WordCloud(background_color = 'white',
-#                         width = 1200,
-#                         height = 1000)
-#     wordcloud.generate_from_frequencies(data)
-#     #plt.figure(figsize=(15,10))
-#     plt.imshow(wordcloud, interpolation="bilinear")
-#     plt.axis("off")
-#     plt.show()
-#     st.pyplot()
 
 
 def take_pic_page():
@@ -219,6 +198,17 @@ def func_regex(line):
             pass
         word=""
     return final_list
+
+def custom_wc(data):
+    wordcloud = WordCloud(background_color = 'white',
+                        width = 1200,
+                        height = 1000)
+    wordcloud.generate_from_frequencies(data)
+    #plt.figure(figsize=(7.5,7.5))
+    plt.imshow(wordcloud, interpolation="bilinear")
+    plt.axis("off")
+    plt.show()
+    st.pyplot(fig=plt)
 
 
 ###### DOWNLOADING IMAGE DATA CODE ###############
