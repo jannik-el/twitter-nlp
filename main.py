@@ -317,6 +317,18 @@ def data_aug():
     st.sidebar.write("---------------------")
     st.sidebar.success("Page showing on the right:")
 
+    st.markdown("We then wanted to looked at what we could do with our model. Below is an interactive example:")
+    test_input = st.text_input("Input anything here, and see what our model classifies it as:", "Democrats Hillary Weak #MAGA")
+
+    hs_preda, not_hs_preda = classify_and_seperate(test_input)
+    hs_preda = str(float(hs_preda)*100)[0:6] 
+    not_hs_preda = str(float(not_hs_preda)*100)[0:6]
+    col1a, col2a = st.columns(2)
+    col1a.metric("Hatespeech Prob.", f"{hs_preda}%")
+    col2a.metric("Not Hatespeech Prob.", f"{not_hs_preda}%")
+
+    st.write("-------------")
+
     st.markdown("## Labeling Trump's twitter insults")
     st.markdown("""
     We took Trumps insults (provided by the New York Times) and combined those with all his other tweets.
@@ -360,14 +372,7 @@ def data_aug():
     col3.metric("Insult Label", bool(random_tweet["Labels"]))
     st.write("----------")
 
-    test_input = st.text_input("Input anything here, and see what our model classifies it as:", "Democrats Hillary Weak #MAGA")
-
-    hs_preda, not_hs_preda = classify_and_seperate(test_input)
-    hs_preda = str(float(hs_preda)*100)[0:6] 
-    not_hs_preda = str(float(not_hs_preda)*100)[0:6]
-    col1a, col2a = st.columns(2)
-    col1a.metric("Hatespeech Prob.", f"{hs_preda}%")
-    col2a.metric("Not Hatespeech Prob.", f"{not_hs_preda}%")
+    
 
 ############## NLP Code ###################
 
