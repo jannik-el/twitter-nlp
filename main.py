@@ -43,7 +43,6 @@ sidebar_options = (
 ##### PAGE CODE ##########
 
 def start_page():
-    st.sidebar.write("---------------------")
     st.sidebar.success("Start Page showing on the right:")
     
     col1, col2 = st.columns(2)
@@ -66,7 +65,6 @@ def start_page():
     return
 
 def preprocessing():
-    st.sidebar.write("---------------------")
     st.sidebar.success("Preprocessing showing on the right:")
 
     st.write("To be able to create a model for the different tasks we had, we first had to do some prepocessing.")
@@ -116,7 +114,6 @@ def preprocessing():
     return
     
 def data_char():
-    st.sidebar.write("---------------------")
     st.sidebar.success("Data Characterisation showing on the right:")
 
     with st.expander("Corpora statistics"):
@@ -194,7 +191,6 @@ def data_char():
 
 def man_anot():
     st.set_option('deprecation.showPyplotGlobalUse', False)
-    st.sidebar.write("---------------------")
     st.sidebar.success("Manual Annotation showing on the right:")
 
     st.write("")
@@ -279,7 +275,6 @@ def man_anot():
 
 
 def auto_predic():
-    st.sidebar.write("---------------------")
     st.sidebar.success("Automatic Prediction showing on the right:")
 
     scores = pd.read_csv("./streamlit/data/hs_scores.csv")
@@ -318,7 +313,6 @@ def auto_predic():
     return
 
 def data_aug():
-    st.sidebar.write("---------------------")
     st.sidebar.success("Data Augmentation showing on the right:")
 
     st.markdown("We then wanted to looked at what we could do with our model. Below is an interactive example:")
