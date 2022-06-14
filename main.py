@@ -506,9 +506,9 @@ def main():
     st.sidebar.write("---------------------")
     app_mode = st.sidebar.selectbox("Please select from the following:", sidebar_options)
 
-    mode_wto = st.sidebar.radio("Lets try this:", sidebar_options)
+    mode_two = st.sidebar.radio("Lets try this:", sidebar_options)
 
-    if app_mode == "Start Page":
+    if app_mode == "Start Page" or mode_two == "Start Page":
         start_page()
 
     elif app_mode == sidebar_options[1]:
