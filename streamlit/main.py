@@ -94,10 +94,14 @@ def preprocessing():
     
         st.write("We also looked at how the tokenizers compare across the top 100 most frequent tokens:")
 
-        with open("./streamlit/styles.css") as f:
-            st.markdown('<style>{}</style>'.format(f.read()), unsafe_allow_html=True)
+        col1, col2, col3 = st.columns(3)
 
-        st.image("./streamlit/data/token_comparison.png", width = 200)
+        with col1:
+            st.write("")
+        with col2:
+            st.image("./streamlit/data/token_comparison.png", width = 500)
+        with col3:
+            st.write("")
     
 
 def data_char():
