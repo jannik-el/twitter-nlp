@@ -102,8 +102,7 @@ def data_char():
     hsw_stopwords.iloc[0:50].plot.bar(x='token',y='frequency', figsize=(17,5))
     plt.title("Most frequent words in hatespeech dataset (top 50) without stopwords")
     plt.xticks(rotation = 90)
-    plt.show()
-    #st.pyplot(fig)
+    st.pyplot(fig=plt)
 
 
     return
