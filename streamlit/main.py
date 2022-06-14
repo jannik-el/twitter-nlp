@@ -67,7 +67,7 @@ def preprocessing():
         map_df = pd.DataFrame()
         with open('./streamlit/data/mapping-2.txt', mode='r') as mapping:
             map_data = mapping.readlines()
-            map_data = [i.split("\n") for i in map_data]
+            map_data = [i.split("\t") for i in map_data]
             mapping_pandas.append(map_data)
         map_df["Test"] = mapping_pandas
         st.table(map_df)     
