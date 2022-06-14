@@ -103,14 +103,14 @@ def data_char():
 
     hsw_stopwords = pd.read_csv("./streamlit/data/hsw_stopwords.csv")
     fig = plt.figure(figsize = (10, 5))
-    hsw_stopwords.iloc[0:50].plot.bar(x='token',y='frequency', figsize=(17,5))
+    hsw_stopwords.iloc[0:50].plot.barh(x='token',y='frequency', figsize=(17,5))
     plt.title("Most frequent words in hatespeech dataset (top 50) without stopwords")
     plt.xticks(rotation = 90)
     st.pyplot(fig=plt)
 
     emoji_stopwords = pd.read_csv("./streamlit/data/emojiw_stopwords.csv")
     fig = plt.figure(figsize = (10, 5))
-    emoji_stopwords.iloc[0:50].plot.bar(x='token',y='frequency', figsize=(17,5))
+    emoji_stopwords.iloc[0:50].plot.barh(x='token',y='frequency', figsize=(17,5))
     plt.title("Most frequent words in emoji dataset (top 50) without stopwords")
     plt.xticks(rotation = 90)
     st.pyplot(fig=plt)
