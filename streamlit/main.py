@@ -5,6 +5,7 @@ import matplotlib.image as img
 import matplotlib.pyplot as plt
 import numpy as np
 import re, nltk
+from PIL import Image
 
 st.set_page_config(layout="wide")
 
@@ -18,15 +19,15 @@ st.write("------------------------------------------")
 
 sidebar_options = (
     "Start Page", 
-    "Preprocessing", 
+    "Preprocessing",
     "Data Characterisation", 
     "Manual Annotation", 
     "Automatic Prediction", 
     "Data Augmentation")
 
 melanoma_image = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Twitter-logo.svg/768px-Twitter-logo.svg.png"
-
 ##### PAGE CODE ##########
+
 def start_page():
     st.sidebar.write("---------------------")
     st.sidebar.success("Start Page showing on the right:")
@@ -42,8 +43,11 @@ def start_page():
         These are all different tasks of our project.  
         """)
 
+
     with col2:
         st.image(melanoma_image, caption='Put Twitter Word Cloud image Here', width=400)
+        im = Image.open("/work/twitter-nlp/misc/Twitter.png")
+        im.show()
 
     return
 
@@ -56,7 +60,6 @@ def preprocessing():
         st.write("We created our own regex tokenizer and looked at how it worked compared to other tokenizers:")
 
         line = st.text_input('Try it out below:', "#Fabulous evening tonight, I'm so @home 😍")
-        
         tokenizers = ["Regex", "NLTKTweetModified", "NLTKTweet", "NLTKTreeBank"]
 
         for i in tokenizers:
