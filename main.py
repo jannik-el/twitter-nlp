@@ -423,7 +423,7 @@ def open_jar(file_address):
 def classify_and_seperate(sentence):
     """Return Hatespeech, Not Hatespeech value"""
     hatespeech_array = classify_sentence(sentence)
-    return '{:.4f}'.format(float(hatespeech_array[0][1])), '{:.4f}'.format(float(hatespeech_array[0][0]))
+    return '{:.4f}'.format((hatespeech_array[0][1]))[:-1], '{:.4f}'.format(hatespeech_array[0][0])[:-1]
 
 ###### DOWNLOADING IMAGE DATA CODE ###############
 
