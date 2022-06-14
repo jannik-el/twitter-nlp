@@ -152,9 +152,6 @@ def man_anot():
     st.sidebar.success("Page showing on the right:")
 
     st.write("We also did some manual annotation of the hatespeech dataset:")
-
-    with st.expander("Our Datasets"):
-        st.write("Both the hatespeech detection and the emoji predicion dataset came from the same source:")
         
     col1, col2 = st.columns(2)
     st.write("Place noice graphics and shit here, can do it with columns, ask jannik")
@@ -177,6 +174,7 @@ def data_aug():
     st.sidebar.success("Page showing on the right:")
 
     trump_df = pd.read_csv("./streamlit/data/trump_df.csv")
+    trump_df = trump_df[['Labels, Tweets, HS_Label']]
     st.table(trump_df)
 
     st.write("""
