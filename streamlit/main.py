@@ -107,9 +107,7 @@ def data_char():
     hs_wo_stopwords_dict_lf = dict((k, v) for k, v in hs_wo_stopwords_dict.items() if v <= 3) #least frequent hate (value <= 3)
     emoji_wo_stopwords_dict_lf = dict((k,v) for k, v in emoji_wo_stopwords_dict.items() if v <= 3) #least frequent emoji (value <=3)
 
-
     col1, col2 = st.columns(2)
-
     with col1:
         hsw_stopwords = pd.read_csv("./streamlit/data/hsw_stopwords.csv")
         fig = plt.figure(figsize = (5,10))
