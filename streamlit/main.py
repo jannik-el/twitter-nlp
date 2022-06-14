@@ -16,7 +16,7 @@ st.title("Natural Language Processing on Twitter")
 st.subheader("First Year Project, Project 3: NLP")
 st.markdown("""
 **IT-University of Copenhagen, Bsc. in Data Science** \\
-By Juraj Septak, Gusts Gustav, Franek Liszka, Mirka and Jannik Elsäßer _(Group E2)_
+By Juraj Septak, Gusts Gustav Grinbergs, Franek Liszka, Mirka Katuscakova and Jannik Elsäßer _(Group E2)_
 """)
 st.write("------------------------------------------")
 
