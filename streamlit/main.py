@@ -98,7 +98,8 @@ def preprocessing():
 
         
         with col2:
-            st.image("./streamlit/data/token_comparison.png", width = 600)
+            st.image("./streamlit/data/token_comparison.png", width = 500)
+            st.write("TODO, change this image to svg cus its shite quality")
         
     
 
