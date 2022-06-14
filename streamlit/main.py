@@ -124,11 +124,11 @@ def data_char():
     col1, col2 = st.columns(2)
 
     with col1:
-        st.write("Least frequent words in hatespeech dataset")
+        st.write("**Least frequent words in hatespeech dataset**")
         custom_wc(hs_wo_stopwords_dict_lf)
 
     with col2:
-        st.write("Least frequent words in emoji dataset")
+        st.write("**Least frequent words in emoji dataset**")
         custom_wc(emoji_wo_stopwords_dict_lf)
     return
 
