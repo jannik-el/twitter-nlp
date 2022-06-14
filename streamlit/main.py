@@ -64,11 +64,13 @@ def preprocessing():
         st.write("The hatespeech dataset uses the classifiers 1 and 0, hatespeech and not hatespeech, while the emoji dataset had more classifiers:")
 
         mapping_pandas = []
+        map_df = pd.DataFrame()
         with open('./streamlit/data/mapping-2.txt', mode='r') as mapping:
             map_data = mapping.readlines()
             map_data = [i.split("\n") for i in map_data]
-            mapping
-            # st.write(map_data)     
+            mapping_pandas.append(map_data)
+        map_df["Test"] = mapping_pandas
+        st.table(map_df)     
 
 
     with st.expander("Testing Tokenizers"):
