@@ -67,7 +67,7 @@ def start_page():
 
 def preprocessing():
     st.sidebar.write("---------------------")
-    st.sidebar.success("Page showing on the right:")
+    st.sidebar.success("Preprocessing showing on the right:")
 
     st.write("To be able to create a model for the different tasks we had, we first had to do some prepocessing.")
 
@@ -117,7 +117,7 @@ def preprocessing():
     
 def data_char():
     st.sidebar.write("---------------------")
-    st.sidebar.success("Page showing on the right:")
+    st.sidebar.success("Data Characterisation showing on the right:")
 
     with st.expander("Corpora statistics"):
         corpus_data = pd.read_csv("./streamlit/data/corpus_data.csv")
@@ -195,7 +195,7 @@ def data_char():
 def man_anot():
     st.set_option('deprecation.showPyplotGlobalUse', False)
     st.sidebar.write("---------------------")
-    st.sidebar.success("Page showing on the right:")
+    st.sidebar.success("Manual Annotation showing on the right:")
 
     st.write("")
 
@@ -280,7 +280,7 @@ def man_anot():
 
 def auto_predic():
     st.sidebar.write("---------------------")
-    st.sidebar.success("Page showing on the right:")
+    st.sidebar.success("Automatic Prediction showing on the right:")
 
     scores = pd.read_csv("./streamlit/data/hs_scores.csv")
     scores = scores[['F1 score', 'Accuracy Score', 'Recall Score', 'Precision Score']]
@@ -319,7 +319,7 @@ def auto_predic():
 
 def data_aug():
     st.sidebar.write("---------------------")
-    st.sidebar.success("Page showing on the right:")
+    st.sidebar.success("Data Augmentation showing on the right:")
 
     st.markdown("We then wanted to looked at what we could do with our model. Below is an interactive example:")
     test_input = st.text_input("Input anything here, and see what our model classifies it as:", "Democrats Hillary Weak #MAGA")
