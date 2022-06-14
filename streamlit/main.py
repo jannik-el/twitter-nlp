@@ -101,19 +101,27 @@ def data_char():
     corpus_data = corpus_data[['Dataset', 'Corpus size', 'Vocabulary size', 'Type to Token ratio']]
     st.dataframe(corpus_data)
 
-    hsw_stopwords = pd.read_csv("./streamlit/data/hsw_stopwords.csv")
-    fig = plt.figure(figsize = (5,10))
-    hsw_stopwords.iloc[0:50].plot.barh(x='token',y='frequency', figsize=(5,17))
-    plt.title("Most frequent words in hatespeech dataset (top 50) without stopwords")
-    plt.xticks(rotation = 90)
-    st.pyplot(fig=plt)
+    col1, col2 = st.columns(2)
 
-    emoji_stopwords = pd.read_csv("./streamlit/data/emojiw_stopwords.csv")
-    fig = plt.figure(figsize = (5,10))
-    emoji_stopwords.iloc[0:50].plot.barh(x='token',y='frequency', figsize=(5,17))
-    plt.title("Most frequent words in emoji dataset (top 50) without stopwords")
-    plt.xticks(rotation = 90)
-    st.pyplot(fig=plt)
+    with col1:
+        hsw_stopwords = pd.read_csv("./streamlit/data/hsw_stopwords.csv")
+        fig = plt.figure(figsize = (5,10))
+        hsw_stopwords.iloc[0:50].plot.barh(x='token',y='frequency', figsize=(5,13))
+        plt.title("Most frequent words in hatespeech dataset (top 50) without stopwords")
+        plt.xticks(rotation = 90)
+        st.pyplot(fig=plt)
+        st.write("**Least frequent words in hatespeech dataset**")
+        custom_wc(hs_wo_stopwords_dict_lf)
+        
+    with col2: 
+        emoji_stopwords = pd.read_csv("./streamlit/data/emojiw_stopwords.csv")
+        fig = plt.figure(figsize = (5,10))
+        emoji_stopwords.iloc[0:50].plot.barh(x='token',y='frequency', figsize=(5,13))
+        plt.title("Most frequent words in emoji dataset (top 50) without stopwords")
+        plt.xticks(rotation = 90)
+        st.pyplot(fig=plt)
+        st.write("**Least frequent words in emoji dataset**")
+        custom_wc(emoji_wo_stopwords_dict_lf)
 
     # creating dicts, to make wordclouds
     hs_wo_stopwords_dict = dict(zip(list(hsw_stopwords['token']), list(hsw_stopwords['frequency'])))
