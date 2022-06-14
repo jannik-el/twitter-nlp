@@ -481,7 +481,7 @@ def plot_image(image):
 def main():
 
     mode_two = st.sidebar.radio("Lets try this:", sidebar_options)
-    st.write("-----------")
+    st.sidebar.write("-----------")
 
     st.sidebar.title("Checkout the following:")
     st.sidebar.markdown("""
