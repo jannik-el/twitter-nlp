@@ -156,8 +156,10 @@ def man_anot():
     col1, col2 = st.columns(2)
     st.write("Place noice graphics and shit here, can do it with columns, ask jannik")
     #showing
+    dfcrowd= pd.read_csv("./streamlit/data/survey.csv")
+    GT= pd.read_csv("./streamlit/data/GT.csv")
     plt.plot(dfcrowd['ours'],label='Group annotation',linewidth=4.5)
-    plt.plot(sample100p,label='Original label',linewidth=4.5)
+    plt.plot(GT['value'],label='Original label',linewidth=4.5)
 
     #plt.plot(dfcrowd['annotation'],label='Crowd annotation')
     plt.legend()
@@ -172,8 +174,7 @@ def man_anot():
         if int(sample100p[i])!=dfcrowd['ours'][i]:
             difference.append(i)
     plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0);
-plt.savefig("test.svg", format="svg")
-    return
+    return 
 
 def auto_predic():
     st.sidebar.write("---------------------")
