@@ -42,11 +42,11 @@ def start_page():
         """)
 
     with col2:
-        st.image(melanoma_image, caption='Melanoma on a patients skin, https://en.wikipedia.org/wiki/Melanoma#', width=400)
+        st.image(melanoma_image, caption='Put Twitter Word Cloud image Here', width=400)
 
     return
 
-def alg_descrip_page():
+def preprocessing():
     st.sidebar.write("---------------------")
     st.sidebar.success("Page showing on the right:")
 
@@ -170,7 +170,7 @@ def main():
         start_page()
 
     elif app_mode == "Algorithm Description":
-        alg_descrip_page()
+        preprocessing()
 
     elif app_mode == sidebar_options[2]:
         example_results_page()
