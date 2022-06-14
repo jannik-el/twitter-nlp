@@ -63,7 +63,7 @@ def preprocessing():
 
         st.write("The hatespeech dataset uses the classifiers 1 and 0, hatespeech and not hatespeech, while the emoji dataset had more classifiers:")
 
-        with open("./data/tweeteval/datasets/emoji/mapping.txt") as mapping:
+        with open("./data/tweeteval/datasets/emoji/mapping.txt", mode='r') as mapping:
             map_data = mapping.readlines()
             map_data = [i.strip("\n") for i in map_data]
             st.write(map_data)     
@@ -94,7 +94,9 @@ def data_char():
     st.dataframe(corpus_data)
 
     hsw_stopwords = pd.read_csv("./streamlit/data/hsw_stopwords.csv")
-    st.dataframe(hsw_stopwords)
+    hs_wo_stopwords.iloc[0:50].plot.bar(x='token',y='frequency', figsize=(17,5))
+    plt.title("Most frequent words in hatespeech dataset (top 50) without stopwords")
+    plt.xticks(rotation = 90);
 
 
     return
