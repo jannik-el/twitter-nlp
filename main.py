@@ -480,6 +480,9 @@ def plot_image(image):
 
 def main():
 
+    mode_two = st.sidebar.radio("Lets try this:", sidebar_options)
+    st.write("-----------")
+
     st.sidebar.title("Checkout the following:")
     st.sidebar.markdown("""
     - Start Page
@@ -504,7 +507,6 @@ def main():
     """)
 
     st.sidebar.write("---------------------")
-    # app_mode = st.sidebar.selectbox("Please select from the following:", sidebar_options)
 
     mode_two = st.sidebar.radio("Lets try this:", sidebar_options)
 
