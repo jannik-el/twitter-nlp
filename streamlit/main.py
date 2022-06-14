@@ -160,9 +160,9 @@ def man_anot():
 
     st.write("We also did some manual annotation of the hatespeech dataset:")
     st.write("Place noice graphics and shit here, can do it with columns, ask jannik")
-    #showing
-    im = Image.open("./streamlit/data/ourannot.svg")
-    st.image(im, caption='Comparison of our annotation and Ground Truth Values', width=400)
+    ##showing
+    #im = Image.open("./streamlit/data/ourannot.svg")
+    #st.image(im, caption='Comparison of our annotation and Ground Truth Values', width=400)
     
     return 
 

@@ -5,4 +5,4 @@ pillow
 snscrape
 twitterscraper
 emoji
-CairoSVG
+cairosvg
