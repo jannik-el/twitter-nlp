@@ -204,12 +204,16 @@ def man_anot():
         The group members went through the sample independently and without consulting the ground truth,
         and labelled them according to the same scheme. """)
 
+        st.write("")
+
         st.markdown("""
-        For disagreement in 19 cases (Figure \ref{fig_pie_annotation}) the reasons could be:
+        For disagreement in 19 cases the reasons could be:
         - the tweets were manually labelled before reading the definition of hate speech (some group members could already have prior knowledge)
         - some tweets could be understood in varying ways depending on the context
         - for some tweets, the intentions of the author were unclear (given tweet could be understood as a joke in some settings)
         """)
+        
+        st.write("")
 
         #Plot (group annotation)
         fig = plt.figure(figsize = (10,2))
@@ -348,12 +352,11 @@ def data_aug():
     test_input = st.text_input("Input anything here, and see what our model classifies it as:", "Hello there u cunt")
 
     hs_preda, not_hs_preda = classify_and_seperate(test_input)
+    hs_preda = int(hs_preda)*100 
+    not_hs_preda = int(not_hs_preda)*100
     col1a, col2a = st.columns(2)
-    col1a.metric("Hatespeech Prob.", f"{str(int(hs_preda)*100)}%")
-    col2a.metric("Not Hatespeech Prob.", f"{str(int(not_hs_preda)*100)}%")
-
-    
-
+    col1a.metric("Hatespeech Prob.", f"{hs_preda}%")
+    col2a.metric("Not Hatespeech Prob.", f"{not_hs_preda)}%")
 
 ############## NLP Code ###################
 
