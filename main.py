@@ -304,7 +304,7 @@ def auto_predic():
     print(y_train_counts)
     plt.rcParams['font.size'] = 11.0
     plt.pie(collections.Counter(list(y_train_counts)).values(), labels=['Not hate speech','Hate speech'],colors=['#eab676','#2596be'],explode=(0, 0.1), autopct = lambda p:f'{p:.2f}%');
-    st.pyplot(fig)
+    st.pyplot()
 
     st.write("""
     Task 4 stuff goes here
