@@ -305,9 +305,9 @@ def auto_predic():
     plt.pie(collections.Counter(list(y_train_counts)).values(), labels=['Not hate speech','Hate speech'],colors=['#eab676','#2596be'],explode=(0, 0.1), autopct = lambda p:f'{p:.2f}%')
     st.pyplot()
 
-    y_train_counts = open_jar("./streamlit/ytrainemojicounts.pkl")
+    y_train_emoji_counts = open_jar("./streamlit/ytrainemojicounts.pkl")
     plt.rcParams['font.size'] = 11.0
-    plt.pie(collections.Counter(list(y_train_emoji[0])).values(), labels=list(emoji_classes[2]), autopct = lambda p:f'{p:.2f}%');
+    plt.pie(collections.Counter(list(y_train_emoji_counts[0])).values(), labels=list(emoji_classes[2]), autopct = lambda p:f'{p:.2f}%');
     st.pyplot()
 
     st.write("""
