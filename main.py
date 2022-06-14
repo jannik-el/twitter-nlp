@@ -192,12 +192,19 @@ def man_anot():
     st.write("We also did some manual annotation of the hatespeech dataset:")
     st.write("")
    
-    fig = plt.figure(figsize = (10,3))
+    fig = plt.figure(figsize = (10,2))
     dfcrowd = pd.read_csv("./streamlit/data/survey.csv")
     GT = pd.read_csv("./streamlit/data/GT.csv")
     plt.plot(dfcrowd['ours'],label='Group annotation',linewidth=3.0)
     plt.plot(GT['value'],label='Original label',linewidth=3.0)
-
+    plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0);
+    st.pyplot(fig=plt)
+    
+    fig = plt.figure(figsize = (10,2))
+    plt.plot(dfcrowd['annotation'],label='Crowd annotation',color='red',linewidth=3)
+    plt.plot(dfcrowd['ours'],color='green',label='Group annotation',linewidth=3)
+    plt.title('Result of our manual annotation compared to the survey')
+    plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0);
     #plt.plot(dfcrowd['annotation'],label='Crowd annotation')
     plt.legend()
     st.pyplot(fig=plt)
@@ -218,6 +225,20 @@ def auto_predic():
 def data_aug():
     st.sidebar.write("---------------------")
     st.sidebar.success("Page showing on the right:")
+
+    st.markdown("## Labeling Trumps twitter insults")
+    st.markdown("""
+    We took Trumps insults (provided by the New York Times) and combined those with all his other tweets.  <br>
+    >https://www.nytimes.com/interactive/2021/01/19/upshot/trump-complete-insult-list.html <br>
+    >https://www.thetrumparchive.com/faq (all Tweets from 2009 to 2020)
+
+    The idea behind this was also that Trump tweets would be very similiar to the data, which our model had been trained on. <br>
+    The most frequent unique keywords throughout the hatespeech dataset were: 
+    > _migrant, refugee, #buildthatwall, bitch, hoe, women_
+    These keywords are quite relevant when you look at Donald Trump's presidency, 
+    and since all the data was collected during the period of July to September 2018 and, Trump's insult tweet/_normal_ tweet 
+    dataset also included tweets from this time period, we hoped to get quite accurate and interesting results.
+    """)
 
     
 
