@@ -138,15 +138,22 @@ def man_anot():
 
     return
 
-def test_bulk_img():
+def auto_predic():
     st.sidebar.write("---------------------")
     st.sidebar.success("Page showing on the right:")
 
     st.write("""
-    The idea is that they can upload a folder with a bunch of images and test them on this page.
-    This might be a bit difficult to implement. 
+    Task 4 stuff goes here
     """)
     return
+
+def data_aug():
+    st.sidebar.write("---------------------")
+    st.sidebar.success("Page showing on the right:")
+
+    st.write("""
+    
+    """)
 
 ############## NLP Code ###################
 
@@ -206,7 +213,7 @@ def custom_wc(data):
     plt.imshow(wordcloud, interpolation="bilinear")
     plt.axis("off")
     plt.show()
-    st.pyplot(fig=plt)
+    st.pyplot(fig=plt, figsize=(5, 5))
 
 
 ###### DOWNLOADING IMAGE DATA CODE ###############
@@ -250,7 +257,7 @@ def main():
         man_anot()
 
     elif app_mode == sidebar_options[4]:
-        test_bulk_img()
+        auto_predic()
 
 if __name__ == "__main__":
     main()
