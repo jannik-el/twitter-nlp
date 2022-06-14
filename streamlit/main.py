@@ -89,6 +89,7 @@ def preprocessing():
         token_stats["NLTKTweet"] = [213182]
         token_stats["NLTKTreeBank"] = [218934]
         st.table(token_stats)
+        st.write("We also looked at how the tokenizers compare across the top 100 tweet")
         
 
 def data_char():
@@ -129,7 +130,7 @@ def data_char():
     plt.imshow(wordcloud, interpolation="bilinear")
     plt.axis('off')
     plt.show()
-    st.pyplot(fig)
+    st.pyplot()
     
     return
 
