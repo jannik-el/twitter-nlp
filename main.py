@@ -275,6 +275,7 @@ def man_anot():
 
 
 def auto_predic():
+    st.set_option('deprecation.showPyplotGlobalUse', False)
     st.sidebar.success("Automatic Prediction showing on the right:")
 
     scores = pd.read_csv("./streamlit/data/hs_scores.csv")
