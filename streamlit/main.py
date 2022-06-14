@@ -99,16 +99,16 @@ def test_bulk_img():
 
 def tokenize_lines(tokenizer, line):
     if tokenizer == "NLTKTweetModified":
-        func_nltktweetmodified(line)
+        return func_nltktweetmodified(line)
 
     elif tokenizer == "NLTKTweet":
-        func_nltktweet(line)
+        return func_nltktweet(line)
 
     elif tokenizer == "NLTKTreeBank":
-        func_nltktreebank(line)
+        return func_nltktreebank(line)
 
     elif tokenizer == "Regex":
-        func_regex(line)
+        return func_regex(line)
 
 def func_nltktweetmodified(line):
     filter_list = ['️','', '.', ',', '', '?', '!', '"', '~', "-"]
