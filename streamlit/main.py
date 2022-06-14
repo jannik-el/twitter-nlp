@@ -209,11 +209,11 @@ def custom_wc(data):
                         width = 1200,
                         height = 1000)
     wordcloud.generate_from_frequencies(data)
-    # plt.figure(figsize=(5,5))
+    plt.figure(figsize=(5,5))
     plt.imshow(wordcloud, interpolation="bilinear")
     plt.axis("off")
     plt.show()
-    st.pyplot(fig=plt, figsize=(2, 2))
+    st.pyplot(fig=plt)
 
 
 ###### DOWNLOADING IMAGE DATA CODE ###############
