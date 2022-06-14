@@ -4,7 +4,7 @@ import time
 import matplotlib.image as img
 import matplotlib.pyplot as plt
 import numpy as np
-import re, nltk, csv
+import re, nltk, csv, pickle
 from PIL import Image
 from wordcloud import WordCloud
 import seaborn as sns
@@ -225,7 +225,7 @@ def man_anot():
         plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0);
         #plt.plot(dfcrowd['annotation'],label='Crowd annotation')
         st.pyplot(fig2=plt)
-
+        _,ax1=plt.subplots(1,2,figsize=(15,7))
         ax1[0].pie([81,19],labels=['Agreed','Disagreed'],colors=['#2596be','#eab676'],explode=(0, 0.1),autopct='%1.1f%%');
         ax1[0].set_title('Agreement of group annotation and ground truth labels')
         ax1[1].pie([77,23],labels=['Agreed','Disagreed'],colors=['#eab676','#2596be'],explode=(0, 0.1),autopct='%1.1f%%');
