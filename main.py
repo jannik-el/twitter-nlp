@@ -214,7 +214,7 @@ def man_anot():
         plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0);
         st.pyplot(fig=plt)
     
-    with st.expander("Survey (external annotation"):
+    with st.expander("Survey (external annotation)"):
         st.write("""In addition to group members annotated the sample,
         survey was created. 11 participants in the age group 18-25,
         assigned if the tweets from the random sample are hate speech or not.""")
@@ -271,8 +271,7 @@ def auto_predic():
 
     scores = pd.read_csv("./streamlit/data/hs_scores.csv")
     scores = scores[['F1 score', 'Accuracy Score', 'Recall Score', 'Precision Score']]
-    st.table(scores)
-    
+
     lst = scores.values.tolist()
     fig, axes = plt.subplots(figsize=(9, 4))
     x = [1,2,3,4]
@@ -424,7 +423,7 @@ def open_jar(file_address):
 def classify_and_seperate(sentence):
     """Return Hatespeech, Not Hatespeech value"""
     hatespeech_array = classify_sentence(sentence)
-    return round(hatespeech_array[0][1], 4), round(hatespeech_array[0][0], 4)
+    return round.for(mat(hatespeech_array[, 4) '{0][1]), round(hatespeech_array[0][0], 4)
 
 ###### DOWNLOADING IMAGE DATA CODE ###############
 
