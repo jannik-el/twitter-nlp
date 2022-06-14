@@ -10,12 +10,19 @@ st.set_page_config(layout="wide")
 ##### HEADER #####
 
 st.title("Natural Language Processing")
-st.subheader("First Year Project")
+st.subheader("First Year Project, Twitter NLP")
 st.caption("*IT-University of Copenhagen, Bsc. in Data Science*")
 st.caption("By Juraj Septak, Gusts Gustav, Franek Liszka, Mirka and Jannik Elsäßer *(Group E2)*")
 st.write("------------------------------------------")
 
-sidebar_options = ("Start Page", "Algorithm Description", "Results of the example image dataset", "Take your own picture and test", "Test bulk images")
+sidebar_options = (
+    "Start Page", 
+    "Preprocessing", 
+    "Data Characterisation", 
+    "Manual Annotation", 
+    "Automatic Prediction", 
+    "Data Augmentation")
+
 melanoma_image = "https://upload.wikimedia.org/wikipedia/commons/6/6c/Melanoma.jpg"
 
 ##### PAGE CODE ##########
@@ -28,11 +35,10 @@ def start_page():
     with col1:
         st.write("""
         This interactive app is designed as a representation of our groups submission
-        for the First Year Project 2, using different NLP Machine Learning Models, to classify different types of data  
+        for the First Year Project 2, using different NLP Machine Learning Models, to classify different features.
+        These project is focused on data scraped of twitter  
         On the left hand side you can choose different options from the sidebar.
-        These include a complete breakdown of our algorithm, a example using images provided
-        in the image example dataset, and also an app with which you can take a 
-        picture yourself and immediately test it.  
+        These are all different tasks of our project.  
         """)
 
     with col2:
