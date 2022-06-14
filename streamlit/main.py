@@ -85,7 +85,7 @@ def data_char():
     st.write("some text comes here")
 
     df = pd.read_csv("./streamlit/data/corpus_data.csv")
-    df.drop(['Unnamed 0'])
+    print(df.columns)
     st.dataframe(df)
 
     return
