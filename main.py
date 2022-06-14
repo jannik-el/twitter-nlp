@@ -230,6 +230,9 @@ def auto_predic():
     st.sidebar.write("---------------------")
     st.sidebar.success("Page showing on the right:")
 
+    scores = pd.read_csv("./streamlit/data/hs_scores.csv")
+    
+
     
 
     st.write("""
