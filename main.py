@@ -77,7 +77,7 @@ def preprocessing():
         emoji_map = ['❤', '😍', '😂', '💕', '🔥', '😊', '😎', '✨', '💙', '😘', '📷', '🇺🇸', '☀', '💜', '😉', '💯', '😁', '🎄', '📸', '😜']
         map_df["Emoji"] = emoji_map
         map_df = map_df.T
-        st.table(map_df)
+        st.dataframe(map_df)
 
 
     with st.expander("Testing Tokenizers"):
@@ -190,10 +190,8 @@ def man_anot():
     st.sidebar.success("Page showing on the right:")
 
     st.write("We also did some manual annotation of the hatespeech dataset:")
-    st.write("Place noice graphics and shit here, can do it with columns, ask jannik")
-    ##showing
-    #im = Image.open("./streamlit/data/ourannot.svg")
-    #st.image(im, caption='Comparison of our annotation and Ground Truth Values', width=400)
+    st.write("")
+   
     fig = plt.figure(figsize = (10,3))
     dfcrowd = pd.read_csv("./streamlit/data/survey.csv")
     GT = pd.read_csv("./streamlit/data/GT.csv")
