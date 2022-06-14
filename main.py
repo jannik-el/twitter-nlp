@@ -496,7 +496,11 @@ def main():
         - Survey Manual Annotation results
         - Comparisons of these
     - Automatic Prediction
+        - Comparisons between different machine learning models used
     - Data Augmentation
+        - Interactive classification
+        - Labeling Trump's twitter insults
+        - Hatespeech and Offensive tweet classification comparison
     """)
 
     st.sidebar.write("---------------------")
