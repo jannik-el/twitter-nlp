@@ -228,11 +228,11 @@ def data_aug():
 
     st.markdown("## Labeling Trumps twitter insults")
     st.markdown("""
-    We took Trumps insults (provided by the New York Times) and combined those with all his other tweets.  <br>
-    >https://www.nytimes.com/interactive/2021/01/19/upshot/trump-complete-insult-list.html <br>
+    We took Trumps insults (provided by the New York Times) and combined those with all his other tweets.  \\
+    >https://www.nytimes.com/interactive/2021/01/19/upshot/trump-complete-insult-list.html \\
     >https://www.thetrumparchive.com/faq (all Tweets from 2009 to 2020)
 
-    The idea behind this was also that Trump tweets would be very similiar to the data, which our model had been trained on. <br>
+    The idea behind this was also that Trump tweets would be very similiar to the data, which our model had been trained on. \\
     The most frequent unique keywords throughout the hatespeech dataset were: 
     > _migrant, refugee, #buildthatwall, bitch, hoe, women_
     These keywords are quite relevant when you look at Donald Trump's presidency, 
