@@ -64,11 +64,7 @@ def preprocessing():
         st.write("The hatespeech dataset uses the classifiers 1 and 0, hatespeech and not hatespeech, while the emoji dataset had more classifiers:")
 
         mapping_pandas = []
-        map_df = pd.DataFrame()
-        with open('./streamlit/data/mapping-2.txt', mode='r') as mapping:
-            map_data = mapping.readlines()
-            map_data = [i.split("\t") for i in map_data]
-            mapping_pandas.append(map_data)
+        
         map_df["Test"] = mapping_pandas
         st.table(map_df)     
 
@@ -103,6 +99,14 @@ def data_char():
     plt.title("Most frequent words in hatespeech dataset (top 50) without stopwords")
     plt.xticks(rotation = 90)
     st.pyplot(fig=plt)
+
+    hsw_stopwords = pd.read_csv("./streamlit/data/emojiw_stopwords.csv")
+    fig = plt.figure(figsize = (10, 5))
+    hsw_stopwords.iloc[0:50].plot.bar(x='token',y='frequency', figsize=(17,5))
+    plt.title("Most frequent words in emoji dataset (top 50) without stopwords")
+    plt.xticks(rotation = 90)
+    st.pyplot(fig=plt)
+
 
 
     return
