@@ -209,7 +209,7 @@ def custom_wc(data):
                         width = 1200,
                         height = 1000)
     wordcloud.generate_from_frequencies(data)
-    plt.figure(figsize=(5,5))
+    # plt.figure(figsize=(5,5))
     plt.imshow(wordcloud, interpolation="bilinear")
     plt.axis("off")
     plt.show()
@@ -260,7 +260,7 @@ def main():
         auto_predic()
 
     elif app_mode == sidebar_options[5]:
-        aug_data()
+        data_aug()
 
 if __name__ == "__main__":
     main()
