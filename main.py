@@ -511,19 +511,19 @@ def main():
     if app_mode == "Start Page" or mode_two == "Start Page":
         start_page()
 
-    elif app_mode == sidebar_options[1]:
+    elif mode_two == sidebar_options[1]:
         preprocessing()
 
-    elif app_mode == sidebar_options[2]:
+    elif mode_two == sidebar_options[2]:
         data_char()
 
-    elif app_mode == sidebar_options[3]:
+    elif mode_two == sidebar_options[3]:
         man_anot()
 
-    elif app_mode == sidebar_options[4]:
+    elif mode_two == sidebar_options[4]:
         auto_predic()
 
-    elif app_mode == sidebar_options[5]:
+    elif mode_two == sidebar_options[5]:
         data_aug()
 
 if __name__ == "__main__":
