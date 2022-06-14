@@ -91,9 +91,10 @@ def preprocessing():
         st.table(token_stats)
 
         col1, col2, col3 = st.columns(3)
-        st.write("We also looked at how the tokenizers compare across the top 100 most frequent tokens:")
         
-        with col3:
+
+        with col2:
+            st.write("We also looked at how the tokenizers compare across the top 100 most frequent tokens:")
             st.image("./streamlit/data/token_comparison.png")
         
 
