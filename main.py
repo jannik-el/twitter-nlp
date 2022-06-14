@@ -266,7 +266,7 @@ def data_aug():
     random_tweet = trump_df.iloc[random.randrange(0, len(trump_df), 1)]
 
     # st.markdown(f">{}".format(random_tweet["Tweets"]))
-    st.markdown(f">"+random_tweet["Tweets"])
+    st.markdown(f">_"+random_tweet["Tweets"]+"_")
 
 
 ############## NLP Code ###################
