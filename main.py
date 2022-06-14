@@ -504,11 +504,11 @@ def main():
     """)
 
     st.sidebar.write("---------------------")
-    app_mode = st.sidebar.selectbox("Please select from the following:", sidebar_options)
+    # app_mode = st.sidebar.selectbox("Please select from the following:", sidebar_options)
 
     mode_two = st.sidebar.radio("Lets try this:", sidebar_options)
 
-    if app_mode == "Start Page" or mode_two == "Start Page":
+    if mode_two == sidebar_options[0]:
         start_page()
 
     elif mode_two == sidebar_options[1]:
