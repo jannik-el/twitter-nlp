@@ -15,6 +15,7 @@ import pickle
 # from sklearn.metrics import accuracy_score,confusion_matrix,roc_auc_score,classification_report
 import sys
 import numpy as np
+import random
 
 st.set_page_config(layout="wide")
 
@@ -252,8 +253,8 @@ def data_aug():
 
     st.write("Below is a random tweet from our dataset, with it's insult label, and hatespeech probability according to our model:")
 
-    random_tweet = trump_df.iloc[]
-
+    random_tweet = trump_df.iloc[random.randrange(0, len(trump_df), 1)]
+    st.code(random_tweet)
     
 
 ############## NLP Code ###################
