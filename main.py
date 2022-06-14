@@ -324,7 +324,7 @@ def data_aug():
 
     st.write("----------")
 
-    st.text_input("Input anything here, and see what our model classifies it as:", "Hello there u cunt")r
+    st.text_input("Input anything here, and see what our model classifies it as:", "Hello there u cunt")
 
     
 
