@@ -131,7 +131,7 @@ def data_char():
     plt.imshow(wordcloud, interpolation="bilinear")
     plt.axis('off')
     plt.show()
-    st.pyplot()
+    st.pyplot(fig=plt)
     
     return
 
