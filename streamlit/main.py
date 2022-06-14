@@ -9,7 +9,7 @@ from PIL import Image
 from wordcloud import WordCloud
 import pandas as pd
 import pickle
-from sklearn.feature_extraction.text import CountVectorizer
+# from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics import accuracy_score,confusion_matrix,roc_auc_score,classification_report
 import sys
 import numpy as np
