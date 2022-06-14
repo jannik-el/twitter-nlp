@@ -485,13 +485,13 @@ def main():
 
     st.sidebar.title("Checkout the following:")
     st.sidebar.markdown("""
-    - Start Page
+    - _Start Page_
         - Introduction to the project
-    - Preprocessing
+    - _Preprocessing_
         - The datasets we used
         - Our tokenizers
         - A comparison of these on the hatespeech dataset
-    - Data Characterisation
+    - _Data Characterisation_
         - Corpora Statistics
         - Most frequent tokens
     - _Manual Annotation_
