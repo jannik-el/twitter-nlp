@@ -155,8 +155,6 @@ def man_anot():
     st.sidebar.success("Page showing on the right:")
 
     st.write("We also did some manual annotation of the hatespeech dataset:")
-        
-    col1, col2 = st.columns(2)
     st.write("Place noice graphics and shit here, can do it with columns, ask jannik")
     #showing
     dfcrowd= pd.read_csv("./streamlit/data/survey.csv")
@@ -182,11 +180,10 @@ def data_aug():
     st.sidebar.write("---------------------")
     st.sidebar.success("Page showing on the right:")
 
-    with st.expander("Click here to see what the data frame looks like after labelling each tweet based on our model:")
-
-    trump_df = pd.read_csv("./streamlit/data/trump_df.csv")
-    trump_df = trump_df[['Labels', 'Tweets', 'HS_Label']]
-    st.table(trump_df.iloc[0:10])
+    with st.expander("Click here to see what the data frame looks like after labelling each tweet based on our model:"):
+        trump_df = pd.read_csv("./streamlit/data/trump_df.csv")
+        trump_df = trump_df[['Labels', 'Tweets', 'HS_Label']]
+        st.table(trump_df.iloc[0:10])
 
     st.write("""
     Task 5 shit goes here
