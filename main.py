@@ -247,9 +247,7 @@ def man_anot():
         - Each coder had their own preferences (individual annotator bias)
         - Categories were not equally likely
         As there were more than two annotators, we are using the generalized version 
-        of the metric - <strong>multi-κ</strong> (Fleiss' kappa) ([Artstein & Poesio, 2008]
-        (https://dl.acm.org/doi/10.1162/coli.07-034-R2))
-        """)
+        of the metric - multi-κ(Fleiss' kappa)""")
         
         #Kappa and agreement table
         d = {'Name': ['juraj','mirka','gust','jannik','franek'], 
@@ -257,6 +255,9 @@ def man_anot():
         'Kappa' : [0.4599,0.5600,0.6000,0.3999,0.6799]}
         kappa_df = pd.DataFrame(data=d)
         st.table(kappa_df)
+
+        st.write("""In addition, for each class we used a confusion matrix to calculate theerrors of omission} (fraction of values that belong to a class but were predicted to be in a different class), \emph{errors of commission} (fraction of values that were predicted to be in a class but do not belong to that class), \emph{producer accuracy} (the probability that a value in a given class was classified correctly), and \emph{user accuracy} (the probability that a value predicted to be in a certain class really is that class). 
+        """)
 
     return 
 
@@ -320,8 +321,9 @@ def data_aug():
     col3.metric("Insult Label", bool(random_tweet["Labels"]))
 
     st.write("----------")
-
-    st.text_input("Input anything here, and see what our model classifies it as:", "Hello there u cunt")
+    test_input = st.text_input("Input anything here, and see what our model classifies it as:", "Hello there u cunt")
+    
+    
 
     
 
