@@ -195,7 +195,12 @@ def man_anot():
     st.write("")
 
     with st.expander("Group manual annotation"):
-        st.write("For the manual annotation, a random sample of 100 tweets was selected. To annotate the data semi-automatically, a script was created and run locally. The group members went through the sample independently and without consulting the ground truth, and labelled them according to the same scheme.")
+        st.write("""
+        For the manual annotation, a random sample of 100 tweets was selected. 
+        To annotate the data semi-automatically, a script was created and run locally. 
+        The group members went through the sample independently and without consulting the ground truth,
+        and labelled them according to the same scheme.)
+        """
 
         #Plot (group annotation)
         fig = plt.figure(figsize = (10,2))
@@ -262,11 +267,11 @@ def data_aug():
         st.table(trump_df.iloc[0:10])
 
     st.write("Below is a random tweet from our dataset, with it's insult label, and hatespeech probability according to our model:")
-
     random_tweet = trump_df.iloc[random.randrange(0, len(trump_df), 1)]
-
-    # st.markdown(f">{}".format(random_tweet["Tweets"]))
     st.markdown(f">_"+random_tweet["Tweets"]+"_")
+
+    st.write("And the same tweet tokenized using our tokenizer:")
+    st.markdown(f">_"+func_regex(str(random_tweet["Tweets"]))+"_")
 
 
 ############## NLP Code ###################
