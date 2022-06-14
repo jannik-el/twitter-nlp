@@ -57,7 +57,8 @@ def preprocessing():
     st.write("To be able to create a model for the different tasks we had, we first had to do some prepocessing.")
 
     with st.expander("Our Datasets"):
-        st.write("Dont Break")
+        st.write("Both the hatespeech-, and the emoji-detection dataset came from the same source:")
+        st.caption("https://github.com/cardiffnlp/tweeteval")
 
 
     with st.expander("Testing Tokenizers"):
@@ -74,13 +75,17 @@ def preprocessing():
         st.write("Dont Break")
         
 
-def example_results_page():
+def data_char():
     st.sidebar.write("---------------------")
     st.sidebar.success("Page showing on the right:")
 
-    st.write("Not quite sure what we should put here, maybe results from our analysis, idk we'll figure it out.")
+    st.write("some text comes here")
+
+    with st.expander("")
 
     return
+
+
 
 def take_pic_page():
     st.sidebar.write("---------------------")
@@ -188,7 +193,7 @@ def main():
         preprocessing()
 
     elif app_mode == sidebar_options[2]:
-        example_results_page()
+        data_char()
 
     elif app_mode == sidebar_options[3]:
         take_pic_page()
