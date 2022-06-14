@@ -229,6 +229,7 @@ def man_anot():
         st.pyplot(fig2=plt)
 
     with st.expander("Agreement with ground truth"):
+        st.write("""We have looked at the agreeement with the ground truth provided along with the dataset. The dataset was annotated by annotators (crowd) and 2 experts (native or near-native speakers of British English, having an extensive experience in annotating data for the task's subject). ")
 
         col1, col2 = st.columns(2)
         with col1:
@@ -280,7 +281,9 @@ def auto_predic():
     axes.set_xticks([1,2,3,4])
     axes.set_xticklabels(["F1 Score", "Accuracy Score", "Recall Score", "Precision Score"]), 
     axes.set_title("Hatespeech Different Model Scores")
-    axes.legend();
+    axes.legend()
+    
+    
 
     st.write("""
     Task 4 stuff goes here
@@ -328,8 +331,8 @@ def data_aug():
     hs_pred, not_hs_pred = classify_and_seperate(str(random_tweet["Tweets"]))
 
     col1, col2, col3 = st.columns(3)
-    col1.metric("Hatespeech Prob.", str(hs_pred*100))
-    col2.metric("Not Hatespeech Prob.", str(not_hs_pred*100))
+    col1.metric("Hatespeech Prob.", f"{str(hs_pred*100)}%")
+    col2.metric("Not Hatespeech Prob.", f"{str(not_hs_pred*100)}%")
     col3.metric("Insult Label", bool(random_tweet["Labels"]))
     st.write("----------")
 
