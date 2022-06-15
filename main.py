@@ -335,7 +335,7 @@ def auto_predic():
     st.pyplot()
 
     hate_scores['Classifier'] = ['DTC', 'K-Nearest neighbors', 'SGDC', 'MultinomialNB', 'Random Forest']
-    hate_scores = hate_scores[["Classifier", "F1 Score", "Accuracy Score", "Recall Score", "Precision Score"]]
+    #hate_scores = hate_scores[["Classifier", "F1 Score", "Accuracy Score", "Recall Score", "Precision Score"]]
     st.table(hate_scores)
 
 
@@ -356,7 +356,7 @@ def auto_predic():
     st.pyplot()
 
     scores['Classifier'] = ['DTC', 'K-Nearest neighbors', 'SGDC', 'MultinomialNB']
-    scores = scores[["Classifier", "F1 Score", "Accuracy Score", "Recall Score", "Precision Score"]]
+    #scores = scores[["Classifier", "F1 Score", "Accuracy Score", "Recall Score", "Precision Score"]]
     st.table(scores)
     
 
@@ -452,6 +452,25 @@ def data_aug():
     col4.metric("And for fun the emoji prediction:", trump_emoji)
     
     st.markdown("### The results across the entire dataset:")
+
+    #### Trump DF results code ###
+
+    import matplotlib.pyplot as plt
+    
+    data = [len(combined_df[combined_df["Labels"] == 0])/len(combined_df),len(combined_df[combined_df["Labels"] == 1])/len(combined_df)]
+    data2 = [len(combined_df[combined_df["HS_Label"] == 0])/len(combined_df), len(combined_df[combined_df["HS_Label"] == 1])/len(combined_df)]
+    labels = ['Insult', 'Not Insult']
+    labels2 = ['Hatespeech', "Not Hatespeech"]
+    plt.rcParams['font.size'] = 16.0
+    fig, ax = plt.subplots(1,2, figsize=(16,7))
+    _,_,autotexts0=ax[0].pie(data, labels=labels,colors=['#00695c','#b71c1c'],explode=(0, 0.1), autopct='%1.1f%%', shadow=True)
+    _,_,autotexts1=ax[1].pie(data2, labels=labels2, autopct='%1.1f%%',colors=['#00695c','#b71c1c'],explode=(0, 0.1), shadow=True)
+    for autotext in autotexts0:
+        autotext.set_color('white')
+    for autotext in autotexts1:
+        autotext.set_color('white')
+    plt.tight_layout()
+    fig.suptitle("Insult label ratio to hatespeech label ratio comparison:")
 
     
 
