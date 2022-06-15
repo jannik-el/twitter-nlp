@@ -321,7 +321,7 @@ def auto_predic():
         fig1 = plt.figure(figsize = (2,2))
         y_train_counts = open_jar("./streamlit/ytraincounts.pkl")
         plt.rcParams['font.size'] = 10.0
-        plt.pie(collections.Counter(list(y_train_counts)).values(), labels=['Not hate speech','Hate speech'],colors=['#eab676','#2596be'],explode=(0, 0.1), autopct = lambda p:f'{p:.2f}%', textprops={'fontsize': 2})
+        plt.pie(collections.Counter(list(y_train_counts)).values(), labels=['Not hate speech','Hate speech'],colors=['#00695c','#b71c1c'],explode=(0, 0.1), autopct = lambda p:f'{p:.2f}%', textprops={'fontsize': 2})
         st.pyplot(fig1=plt)
     with col2:
         fig2 = plt.figure(figsize = (30,30))
@@ -458,7 +458,7 @@ def data_aug():
     len(combined_df[combined_df["Agreement"] == "False Negative"])/len(combined_df)
     ]
 
-    fig, ax = plt.subplots(figsize=(12,5))
+    fig, ax = plt.subplots(figsize=(,5))
     _,_,autotexts=ax.pie(agreement_ratio, 
     labels = [
         "Hatespeech and Insult", 
