@@ -462,7 +462,7 @@ def data_aug():
     labels = ['Insult', 'Not Insult']
     labels2 = ['Hatespeech', "Not Hatespeech"]
     plt.rcParams['font.size'] = 16.0
-    fig, ax = plt.subplots(1,2, figsize=(16,7))
+    fig, ax = plt.subplots(1,2, figsize=(12,5))
     _,_,autotexts0=ax[0].pie(data, labels=labels,colors=['#00695c','#b71c1c'],explode=(0, 0.1), autopct='%1.1f%%', shadow=True)
     _,_,autotexts1=ax[1].pie(data2, labels=labels2, autopct='%1.1f%%',colors=['#00695c','#b71c1c'],explode=(0, 0.1), shadow=True)
     for autotext in autotexts0:
