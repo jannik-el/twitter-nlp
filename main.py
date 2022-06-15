@@ -481,7 +481,7 @@ def classify_and_seperate(sentence, model):
 
 def classify_emoji_sentence(text, model):
     classifier = open_jar(f'./data/pickle/models/emoji_{model}.sav')
-    if model == "SGDC":
+    if model == "SGDC" or model == "MultinomialNB":
         cv = open_jar('./data/pickle/models/emoji/vectorizer_sss.pkl')
     else:
         cv = open_jar('./data/pickle/models/emoji/vectorizer_normal.pkl')
