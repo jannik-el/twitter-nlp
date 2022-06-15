@@ -20,7 +20,7 @@ import random
 import pickle
 import collections
 
-st.set_page_config(layout="wide")
+#st.set_page_config(layout="wide")
 
 ##### HEADER #####
 
@@ -329,7 +329,7 @@ def auto_predic():
         y_train_emoji_counts = open_jar("./streamlit/ytrainemojicounts.pkl")
         emoji_classes= pd.read_csv("./streamlit/data/mapping-2.txt", sep = "	", header=None)
         plt.rcParams['font.size'] = 11.0
-        plt.pie(collections.Counter(list(y_train_emoji_counts)).values(), labels=list(emoji_classes[2]), autopct = lambda p:f'{p:.2f}%', textprops={'fontsize': 12});
+        plt.pie(collections.Counter(list(y_train_emoji_counts)).values(), labels=list(emoji_classes[2]), autopct = lambda p:f'{p:.2f}%', textprops={'fontsize': 14});
         st.pyplot(fig2=plt)
 
     st.write("------------------------------------------------------------------")
