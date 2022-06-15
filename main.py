@@ -330,8 +330,14 @@ def auto_predic():
     hate_scores = hate_scores[["Classifier", "F1 score", "Accuracy Score", "Recall Score", "Precision Score"]]
     st.table(hate_scores)
 
-    im = Image.open("./streamlit/data/confusion_matrix_emoji.png")
-    st.image(im, width=700)
+    # im = Image.open("./streamlit/data/confusion_matrix_emoji.png")
+    # st.image(im, width=700)
+    _, ax = plt.subplots(figsize=(20,20))
+    classifier = open_jar("./streamlit/data/ML_Confusion_matrix/classifier_emoji.pkl")
+    X_test = open_jar("./streamlit/data/ML_Confusion_matrix/X_test_emoji.pkl")
+    y_test = open_jar("./streamlit/data/ML_Confusion_matrix/y_test_emoji.pkl")
+    plot_confusion_matrix(classifier, X_test, y_test, ax = ax)
+    st.pyplot()
 
     st.write("------------------------------------------------------------------")
 
