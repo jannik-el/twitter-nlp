@@ -321,11 +321,10 @@ def auto_predic():
     lst = scores.values.tolist()
     fig, axes = plt.subplots(figsize=(9, 4))
     x = [1,2,3,4]
-    axes.plot(x,lst[0],label='MultinomialNB', marker='o')
-    axes.plot(x,lst[1],label='SGD Classifier', marker='o')
-    axes.plot(x,lst[2],label='K-Nearest neighbors', marker='o')
-    axes.plot(x,lst[3],label='Decision Tree', marker='o')
-    axes.plot(x,lst[4],label='Random Forest', marker='o')
+    axes.plot(x,lst[0],label='DTC', marker='o')
+    axes.plot(x,lst[1],label='K-Nearest neighbors', marker='o')
+    axes.plot(x,lst[2],label='SGDC', marker='o')
+    axes.plot(x,lst[3],label='MultinomialNB', marker='o')
     axes.set_xticks([1,2,3,4])
     axes.legend()
     axes.set_xticklabels(["F1 Score", "Accuracy Score", "Recall Score", "Precision Score"]), 
@@ -572,6 +571,7 @@ def main():
         - Interactive classification
         - **Labeling Trump's twitter insults**
         - Hatespeech and Offensive tweet classification comparison
+
     """)
 
     
