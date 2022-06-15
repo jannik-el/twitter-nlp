@@ -43,7 +43,6 @@ sidebar_options = (
 ##### PAGE CODE ##########
 
 def start_page():
-    st.sidebar.success("Start Page showing on the right:")
     
     col1, col2 = st.columns(2)
 
@@ -65,7 +64,6 @@ def start_page():
     return
 
 def preprocessing():
-    st.sidebar.success("Preprocessing showing on the right:")
 
     st.write("To be able to create a model for the different tasks we had, we first had to do some prepocessing.")
 
@@ -114,7 +112,6 @@ def preprocessing():
     return
     
 def data_char():
-    st.sidebar.success("Data Characterisation showing on the right:")
 
     with st.expander("Corpora statistics"):
         corpus_data = pd.read_csv("./streamlit/data/corpus_data.csv")
@@ -191,7 +188,6 @@ def data_char():
 
 def man_anot():
     st.set_option('deprecation.showPyplotGlobalUse', False)
-    st.sidebar.success("Manual Annotation showing on the right:")
 
     st.write("")
 
@@ -276,7 +272,6 @@ def man_anot():
 
 def auto_predic():
     st.set_option('deprecation.showPyplotGlobalUse', False)
-    st.sidebar.success("Automatic Prediction showing on the right:")
 
     scores = pd.read_csv("./streamlit/data/hs_scores.csv")
     scores = scores[['F1 score', 'Accuracy Score', 'Recall Score', 'Precision Score']]
@@ -498,6 +493,7 @@ def plot_image(image):
 def main():
 
     mode_two = st.sidebar.radio("Choose a page here:", sidebar_options)
+    st.sidebar.success(f"{mode_two} showing on the right:")
     st.sidebar.write("-----------")
 
     st.sidebar.title("Checkout the following:")
@@ -523,7 +519,6 @@ def main():
         - Hatespeech and Offensive tweet classification comparison
     """)
 
-    st.sidebar.success(f"{mode_two} showing on the right:")
     
     st.sidebar.write("---------------------")
 
