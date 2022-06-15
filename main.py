@@ -611,6 +611,16 @@ def open_jar(file_address):
         data = pickle.load(f)
     return data
 
+def label_predictions(data):
+    results = []
+    for i in data:
+        for j in i:
+            if j[1] > j[0]:
+                results.append(1)
+            else:
+                results.append(0)
+    return results
+
 ###### DOWNLOADING IMAGE DATA CODE ###############
 
 image_url = "https://github.com/jannik-el/melanoma-detection-app/blob/main/data/example-images/ISIC_0001769.jpg?raw=true"
