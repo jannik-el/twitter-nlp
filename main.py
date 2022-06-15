@@ -532,8 +532,7 @@ def data_aug():
         return results
 
     OffenseDF["Agreement"] = agreement_func()
-    OffenseDF
-
+    
     agreement_ratio = [
     len(OffenseDF[OffenseDF["Agreement"] == "Agree Offense"])/len(OffenseDF),
     len(OffenseDF[OffenseDF["Agreement"] == "Agree Not Offense"])/len(OffenseDF), 
