@@ -251,6 +251,7 @@ def man_anot():
             plt.pie([77,23],labels=['Agreed','Disagreed'],colors=['#eab676','#2596be'],explode=(0, 0.1),autopct='%1.1f%%');
             plt.title('Agreement of survey results and ground truth labels')
             st.pyplot(fig=plt)
+    with st.expander("Tweets we havent"):
     
     with st.expander("Inter-annotator agreement"):
         st.markdown("""
@@ -287,7 +288,7 @@ def auto_predic():
     axes.set_xticks([1,2,3,4])
     axes.set_xticklabels(["F1 Score", "Accuracy Score", "Recall Score", "Precision Score"]), 
     axes.set_title("Hatespeech Different Model Scores")
-    axes.legend()
+    # axes.legend()
     st.pyplot(fig)
 
 
@@ -329,20 +330,19 @@ def data_aug():
     st.write("Using this, we decided to looked at two datasets, that we thought could prove interesting results:")
     st.write("-------------")
     st.markdown("## 1. Labeling Trump's twitter insults")
-    st.markdown("""
-    We took Trumps insults (provided by the New York Times) and combined those with all his other tweets.
-    >https://www.nytimes.com/interactive/2021/01/19/upshot/trump-complete-insult-list.html \\
-    >https://www.thetrumparchive.com/faq (all Tweets from 2009 to 2020)
+    with st.expander("A little background on why we chose this dataset:"):
+        st.markdown("""
+        We took Trumps insults (provided by the New York Times) and combined those with all his other tweets.
+        >https://www.nytimes.com/interactive/2021/01/19/upshot/trump-complete-insult-list.html \\
+        >https://www.thetrumparchive.com/faq (all Tweets from 2009 to 2020)
 
-    The idea behind this was also that Trump tweets would be very similiar to the data, which our model had been trained on. \\
-    The most frequent unique keywords throughout the hatespeech dataset were: 
-    > _migrant, refugee, #buildthatwall, bitch, hoe, women_
-    These keywords are quite relevant when you look at Donald Trump's presidency, and since all the data was collected during the \\
-    period of July to September 2018 and, Trump's insult tweet/_normal_ tweet dataset also included tweets from this time period, \\
-    we hoped to get quite accurate and interesting results.
-    """)
-
-    st.write("----------")
+        The idea behind this was also that Trump tweets would be very similiar to the data, which our model had been trained on. \\
+        The most frequent unique keywords throughout the hatespeech dataset were: 
+        > _migrant, refugee, #buildthatwall, bitch, hoe, women_
+        These keywords are quite relevant when you look at Donald Trump's presidency, and since all the data was collected during the \\
+        period of July to September 2018 and, Trump's insult tweet/_normal_ tweet dataset also included tweets from this time period, \\
+        we hoped to get quite accurate and interesting results.
+        """)
 
     st.write("So using those datasets, and our hatespeech model, we were able to create a dataset with all of Trump's tweets, labelled for being insulting and hatespeech.")
 
