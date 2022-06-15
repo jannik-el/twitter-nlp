@@ -31,7 +31,7 @@ st.markdown("""
 By Juraj Septak, Gusts Gustavs Grīnbergs, Franek Liszka, Mirka Katuscakova and Jannik Elsäßer _(Group E2)_
 """)
 st.write("------------------------------------------")
-itu_logo = Image.open("./misc/Logo_IT_University_of_Copenhagen.jpg")
+itu_logo = Image.open("./misc/wordart.png")
 st.sidebar.image(itu_logo)
 
 
