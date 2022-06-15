@@ -351,8 +351,8 @@ def auto_predic():
     axes.set_title("Emoji Different Model Scores")
     st.pyplot()
 
-    e['Classifier'] = ['DTC', 'K-Nearest neighbors', 'SGDC', 'MultinomialNB']
-    st.table(hate_scores)
+    scores['Classifier'] = ['DTC', 'K-Nearest neighbors', 'SGDC', 'MultinomialNB']
+    st.table(scores)
     
 
     col1, col2 = st.columns(2)
