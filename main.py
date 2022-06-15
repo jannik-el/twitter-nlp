@@ -459,7 +459,7 @@ def data_aug():
     ]
 
     plt.rcParams['font.size'] = 8.0
-    fig2, ax = plt.subplots(figsize=(8,4))
+    fig2, ax = plt.subplots(figsize=(4,4))
     _,_,autotexts=ax.pie(agreement_ratio, 
     labels = [
         "Hatespeech and Insult", 
