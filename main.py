@@ -251,7 +251,7 @@ def man_anot():
             plt.pie([77,23],labels=['Agreed','Disagreed'],colors=['#eab676','#2596be'],explode=(0, 0.1),autopct='%1.1f%%');
             plt.title('Agreement of survey results and ground truth labels')
             st.pyplot(fig=plt)
-    with st.expander("Tweets we havent"):
+    with st.expander("Tweets we have not agreed on"):
     
     with st.expander("Inter-annotator agreement"):
         st.markdown("""
