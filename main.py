@@ -44,7 +44,7 @@ sidebar_options = (
 
 def start_page():
 
-    hide_dataframe_row_index = """
+    hide_table_row_index = """
             <style>
             tbody th {display:none}
             .blank {display:none}
@@ -288,8 +288,13 @@ def auto_predic():
     
     st.markdown("Below is an interactive example of how our models work:")
     test_input = st.text_input("Input anything here, and see what our model classifies it as:", "Democrats Hillary Weak #MAGA")
+
+    hatespeech_models = ["list"]
+    emoji_models = ["list"]
+
     col1f, col2f = st.columns(2)
-    col1f.radio("Choose a Hatespeech Model")
+    col1f.radio("Choose a Hatespeech Model", hatespeech_models)
+    col2f.radio("Choose an emoji model", emoji_models)
 
 
     hs_preda, not_hs_preda = classify_and_seperate(test_input)
@@ -325,7 +330,7 @@ def auto_predic():
 
     col1, col2 = st.columns(2)
     with col1:
-        fig, axes = plt.subplots(figsize=(9, 4))
+        fig1 = plt.figure(figsize = (10,2))
         y_train_counts = open_jar("./streamlit/ytraincounts.pkl")
         plt.rcParams['font.size'] = 11.0
         plt.pie(collections.Counter(list(y_train_counts)).values(), labels=['Not hate speech','Hate speech'],colors=['#eab676','#2596be'],explode=(0, 0.1), autopct = lambda p:f'{p:.2f}%')
