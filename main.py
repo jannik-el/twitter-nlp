@@ -458,8 +458,8 @@ def data_aug():
     len(combined_df[combined_df["Agreement"] == "False Negative"])/len(combined_df)
     ]
 
-    plt.rcParams['font.size'] = 6.0
-    fig2, ax = plt.subplots(figsize=(4,4))
+    plt.rcParams['font.size'] = 3.0
+    fig2, ax = plt.subplots(figsize=(2,2))
     _,_,autotexts=ax.pie(agreement_ratio, 
     labels = [
         "Hatespeech and Insult", 
