@@ -481,7 +481,10 @@ def classify_and_seperate(sentence, model):
 
 def classify_emoji_sentence(text, model):
     classifier = open_jar(f'./data/pickle/models/emoji_{model}.sav')
-    cv = open_jar('./data/pickle/models/emoji/vectorizer_sss.pkl')
+    if model == "SGDC":
+        cv = open_jar('./data/pickle/models/emoji/vectorizer_sss.pkl')
+    else:
+        cv = open_jar('./data/pickle/models/emoji/vectorizer_normal.pkl')
     data = classifier.predict_proba(cv.transform([text]).toarray())
     return [round(i, 10) for i in data[0]]
 
