@@ -473,6 +473,7 @@ def data_aug():
 
     for autotext in autotexts:
         autotext.set_color('white')
+    plt.rcParams['font.size'] = 8.0
     fig.suptitle("Trumps twitter insults, labeled by the New York Times and our Hatespeech Model:")
     plt.tight_layout()
     st.pyplot()
