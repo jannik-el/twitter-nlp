@@ -330,7 +330,7 @@ def auto_predic():
     hate_scores = hate_scores[["Classifier", "F1 score", "Accuracy Score", "Recall Score", "Precision Score"]]
     st.table(hate_scores)
 
-    im = Image.open("./streamlit/data/confusion_matrix_emoji.svg")
+    im = Image.open("./streamlit/data/confusion_matrix_emoji.png")
     st.image(im, width=700)
 
     st.write("------------------------------------------------------------------")
