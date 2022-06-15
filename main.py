@@ -32,6 +32,8 @@ By Juraj Septak, Gusts Gustavs Grīnbergs, Franek Liszka, Mirka Katuscakova and 
 """)
 st.write("------------------------------------------")
 
+st.sidebar.image
+
 sidebar_options = (
     "Start Page", 
     "Preprocessing",
@@ -332,6 +334,7 @@ def auto_predic():
     st.pyplot()
 
     hate_scores['Classifier'] = ['DTC', 'K-Nearest neighbors', 'SGDC', 'MultinomialNB', 'Random Forest']
+    hate_scores = hate_scores["Classifier", "F1 Score", "Accuracy Score", "Recall Score", "Precision Score"]
     st.table(hate_scores)
 
 
@@ -352,6 +355,7 @@ def auto_predic():
     st.pyplot()
 
     scores['Classifier'] = ['DTC', 'K-Nearest neighbors', 'SGDC', 'MultinomialNB']
+    scores = scores["Classifier", "F1 Score", "Accuracy Score", "Recall Score", "Precision Score"]
     st.table(scores)
     
 
