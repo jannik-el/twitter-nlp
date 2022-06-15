@@ -342,8 +342,7 @@ def auto_predic():
 
 def data_aug():
 
-    st.write("Using this, we decided to looked at two datasets, that we thought could prove interesting results:")
-    st.write("-------------")
+    st.write("Using our models, we decided to looked at two datasets that we thought could prove interesting results:")
     st.markdown("## 1. Labeling Trump's twitter insults")
     with st.expander("A little background on why we chose this dataset:"):
         st.markdown("""
