@@ -355,7 +355,7 @@ def auto_predic():
 
     st.write("------------------------------------------------------------------")
 
-    col1, col2, col3 = st.columns(2)
+    col1, col2 = st.columns(2)
     with col1:
         im = Image.open("./streamlit/data/confusion_matrix_hate.png")
         st.image(im, width=750)
