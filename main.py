@@ -315,7 +315,7 @@ def auto_predic():
     st.write("------------------------------------------------------------------")
     
 
-    scores = pd.read_csv("./streamlit/data/hs_scores.csv")
+    scores = pd.read_csv("./streamlit/data/emoji_scores.csv")
     scores = scores[['F1 score', 'Accuracy Score', 'Recall Score', 'Precision Score']]
     
     lst = scores.values.tolist()
