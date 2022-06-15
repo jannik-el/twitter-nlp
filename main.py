@@ -474,7 +474,7 @@ def data_aug():
 
     for autotext in autotexts:
         autotext.set_color('white')
-    fig2.suptitle("Trumps twitter insults, labeled by the New York Times and our Hatespeech Model:")
+    # fig2.suptitle("Trumps twitter insults, labeled by the New York Times and our Hatespeech Model:")
     plt.tight_layout()
     st.pyplot(fig2, clear_figure=True)
 
