@@ -480,7 +480,7 @@ def classify_and_seperate(sentence, model):
     return '{:.4f}'.format((hatespeech_array[0][1])), '{:.4f}'.format(hatespeech_array[0][0])
 
 def classify_emoji_sentence(text, model):
-    classifier = open_jar('./data/pickle/models/emoji_{model}.sav')
+    classifier = open_jar(f'./data/pickle/models/emoji_{model}.sav')
     cv = open_jar('./data/pickle/models/emoji/vectorizer_sss.pkl')
     data = classifier.predict_proba(cv.transform([text]).toarray())
     return [round(i, 10) for i in data[0]]
