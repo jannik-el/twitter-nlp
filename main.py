@@ -298,11 +298,11 @@ def auto_predic():
     emoji_models = ["KNN","SGDC", "DTC", "MultinomialNB2", "RF"]
 
     col1f, col2f = st.columns(2)
-    col1f.radio("Choose a Hatespeech Model (SGDC is best)", models)
-    col2f.radio("Choose an emoji model (KNN is best)", emoji_models)
+    hs_mod = col1f.radio("Choose a Hatespeech Model (SGDC is best)", models)
+    emo_mod = col2f.radio("Choose an emoji model (KNN is best)", emoji_models)
 
 
-    hs_preda, not_hs_preda = classify_and_seperate(test_input)
+    hs_preda, not_hs_preda = classify_and_seperate(test_input, hs_mod)
     hs_preda = str(float(hs_preda)*100)[0:6] 
     not_hs_preda = str(float(not_hs_preda)*100)[0:6]
     emoji_pred = label_to_emoji(test_input)
@@ -312,7 +312,7 @@ def auto_predic():
     col2a.metric("Not Hatespeech Prob.", f"{not_hs_preda}%")
     col3a.metric("Most likely emoji predicted", emoji_pred)
     
-    st.write("---------------------------------")
+    st.write("------------------------------------------------------------------")
     
 
     scores = pd.read_csv("./streamlit/data/hs_scores.csv")
@@ -464,8 +464,8 @@ def custom_wc(data):
 
 ### Classifying based on model:
 
-def classify_sentence(text):
-    classifier = open_jar('./data/pickle/models/hatespeech_model_MultinomialNB2.sav')
+def classify_sentence(text, model):
+    classifier = open_jar(f'./data/pickle/models/hatespeech_model_{model}.sav')
     cv = open_jar('./data/pickle/models/hate/vectorizer.pkl')
     return classifier.predict_proba(cv.transform([text]).toarray())
 
@@ -474,9 +474,9 @@ def open_jar(file_address):
         data = pickle.load(f)
     return data
 
-def classify_and_seperate(sentence):
+def classify_and_seperate(sentence, model):
     """Return Hatespeech, Not Hatespeech value"""
-    hatespeech_array = classify_sentence(sentence)
+    hatespeech_array = classify_sentence(sentence, model)
     return '{:.4f}'.format((hatespeech_array[0][1])), '{:.4f}'.format(hatespeech_array[0][0])
 
 def classify_emoji_sentence(text):
