@@ -74,7 +74,7 @@ def start_page():
     with col2:
     
         im = Image.open("./misc/wordart.png")
-        st.image(im, width=650)
+        st.image(im, width=550)
 
     return
 
