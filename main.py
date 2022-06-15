@@ -29,7 +29,7 @@ st.title("Natural Language Processing on Twitter")
 st.subheader("First Year Project, Project 3: NLP")
 st.markdown("""
 **IT-University of Copenhagen, BSc. in Data Science** \\
-By Juraj Septak, Gusts Gustavs Grīnbergs, Franek Liszka, Mirka Katuscakova and Jannik Elsäßer _(Group E2)_
+By Juraj Septak🇸🇰, Gusts Gustavs Grīnbergs🇱🇻, Franek Liszka🇵🇱, Mirka Katuscakova🇸🇰 and Jannik Elsäßer🇮🇪🇩🇪 _(Group E2)_
 """)
 st.write("------------------------------------------")
 itu_logo = Image.open("./misc/Logo_IT_University_of_Copenhagen.jpg")
@@ -353,7 +353,7 @@ def auto_predic():
     st.table(scores)
 
     st.write("------------------------------------------------------------------")
-    
+
     st.markdown("Below is an interactive example of how our models work:")
     test_input = st.text_input("Input anything here, and see what our model classifies it as:", "Democrats Hillary Weak #MAGA")
 
@@ -366,8 +366,8 @@ def auto_predic():
 
 
     hs_preda, not_hs_preda = classify_and_seperate(test_input, hs_mod)
-    hs_preda = str(float(hs_preda)*100)[0:6] 
-    not_hs_preda = str(float(not_hs_preda)*100)[0:6]
+    hs_preda = str(float(hs_preda)*100)[0:5] 
+    not_hs_preda = str(float(not_hs_preda)*100)[0:5]
     emoji_pred = label_to_emoji(test_input, emo_mod)
 
     col1a, col2a, col3a = st.columns(3)
