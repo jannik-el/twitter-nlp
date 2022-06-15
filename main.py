@@ -305,7 +305,7 @@ def auto_predic():
     hs_preda, not_hs_preda = classify_and_seperate(test_input, hs_mod)
     hs_preda = str(float(hs_preda)*100)[0:6] 
     not_hs_preda = str(float(not_hs_preda)*100)[0:6]
-    emoji_pred = label_to_emoji(test_input)
+    emoji_pred = label_to_emoji(test_input, emo_mod)
 
     col1a, col2a, col3a = st.columns(3)
     col1a.metric("Hatespeech Prob.", f"{hs_preda}%")
@@ -479,14 +479,14 @@ def classify_and_seperate(sentence, model):
     hatespeech_array = classify_sentence(sentence, model)
     return '{:.4f}'.format((hatespeech_array[0][1])), '{:.4f}'.format(hatespeech_array[0][0])
 
-def classify_emoji_sentence(text):
-    classifier = open_jar('./data/pickle/models/emoji_GaussianNB.sav')
+def classify_emoji_sentence(text, model):
+    classifier = open_jar('./data/pickle/models/emoji_{model}.sav')
     cv = open_jar('./data/pickle/models/emoji/vectorizer_sss.pkl')
     data = classifier.predict_proba(cv.transform([text]).toarray())
     return [round(i, 10) for i in data[0]]
 
-def label_to_emoji(text):
-    data = classify_emoji_sentence(text)
+def label_to_emoji(text, model):
+    data = classify_emoji_sentence(text, model)
     data = [float(i) for i in data]
     emoji_map = ['❤', '😍', '😂', '💕', '🔥', '😊', '😎', '✨', '💙', '😘', '📷', '🇺🇸', '☀', '💜', '😉', '💯', '😁', '🎄', '📸', '😜']
     counter=0
