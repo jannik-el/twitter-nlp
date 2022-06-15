@@ -292,7 +292,7 @@ def auto_predic():
     st.markdown("Below is an interactive example of how our models work:")
     test_input = st.text_input("Input anything here, and see what our model classifies it as:", "Democrats Hillary Weak #MAGA")
 
-    hatespeech_models = ["list"]
+    hatespeech_models = [""]
     emoji_models = ["list"]
 
     col1f, col2f = st.columns(2)
@@ -333,14 +333,13 @@ def auto_predic():
 
     col1, col2 = st.columns(2)
     with col1:
-        fig1 = plt.figure(figsize = (6,6))
+        fig1 = plt.figure(figsize = (3,3))
         y_train_counts = open_jar("./streamlit/ytraincounts.pkl")
         plt.rcParams['font.size'] = 11.0
         plt.pie(collections.Counter(list(y_train_counts)).values(), labels=['Not hate speech','Hate speech'],colors=['#eab676','#2596be'],explode=(0, 0.1), autopct = lambda p:f'{p:.2f}%')
         st.pyplot(fig1=plt)
     with col2:
-        fig2 = plt.figure(figsize = (10,10))
-        fig, axes = plt.subplots(figsize=(9, 4))
+        fig2 = plt.figure(figsize = (15,15))
         y_train_emoji_counts = open_jar("./streamlit/ytrainemojicounts.pkl")
         emoji_classes= pd.read_csv("./streamlit/data/mapping-2.txt", sep = "	", header=None)
         plt.rcParams['font.size'] = 11.0
