@@ -44,10 +44,10 @@ sidebar_options = (
 
 hide_table_row_index = """
         <style>
-        tbody th {display:none}
+        tbody th {display:none;}
         .blank {display:none;}
-        .row_heading.level0 {display:none}
-        .blank {display:none}
+        .row_heading.level0 {display:none;}
+        .blank {display:none;}
         </style>
         """
 # Inject CSS with Markdown
@@ -409,7 +409,7 @@ def data_aug():
 
     st.markdown("""
     Here you can see what label our Model is giving the tweet, and what label was given by the New York Times: \\
-    _Hatespeech ML Model is SGDC, and Emoji Prediction ML Model is KNN_
+    _(Hatespeech ML Model is SGDC, and Emoji Prediction ML Model is KNN)_
     """)
 
     hs_pred, not_hs_pred = classify_and_seperate(str(random_tweet["Tweets"]))
