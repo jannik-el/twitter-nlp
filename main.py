@@ -252,7 +252,7 @@ def man_anot():
             plt.title('Agreement of survey results and ground truth labels')
             st.pyplot(fig=plt)
     #with st.expander("Tweets we have not agreed on"):
-    
+        
     with st.expander("Inter-annotator agreement"):
         st.markdown("""
         To report on the inter-annotator we have decided to use the Cohen's kappa as our primary metric, as:
@@ -286,9 +286,9 @@ def auto_predic():
     axes.plot(x,lst[3],label='Decision Tree', marker='o')
     axes.plot(x,lst[4],label='Random Forest', marker='o')
     axes.set_xticks([1,2,3,4])
+    axes.legend()
     axes.set_xticklabels(["F1 Score", "Accuracy Score", "Recall Score", "Precision Score"]), 
     axes.set_title("Hatespeech Different Model Scores")
-    # axes.legend()
     st.pyplot(fig)
 
 
