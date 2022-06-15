@@ -262,8 +262,8 @@ def man_anot():
             st.pyplot(fig=plt)
     with st.expander("Tweets we have not agreed on"):
         tweets=pd.read_csv("./streamlit/data/tweets.csv")
-        #for i in range(100):
-        #    #st.write('     '+GT['value'][i]+'        '+tweets['tweets'][i] )
+        for i in range(100):
+            st.write('     ',GT['value'][i],'        ',tweets['tweets'][i] )
         
     with st.expander("Inter-annotator agreement"):
         st.markdown("""
@@ -288,7 +288,8 @@ def auto_predic():
     
     st.markdown("Below is an interactive example of how our models work:")
     test_input = st.text_input("Input anything here, and see what our model classifies it as:", "Democrats Hillary Weak #MAGA")
-    
+    col1f, col2f = st.columns(2)
+    col1f.radio
 
 
     hs_preda, not_hs_preda = classify_and_seperate(test_input)
@@ -324,6 +325,7 @@ def auto_predic():
 
     col1, col2 = st.columns(2)
     with col1:
+        
         y_train_counts = open_jar("./streamlit/ytraincounts.pkl")
         plt.rcParams['font.size'] = 11.0
         plt.pie(collections.Counter(list(y_train_counts)).values(), labels=['Not hate speech','Hate speech'],colors=['#eab676','#2596be'],explode=(0, 0.1), autopct = lambda p:f'{p:.2f}%')
