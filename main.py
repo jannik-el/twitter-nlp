@@ -336,7 +336,7 @@ def auto_predic():
 
     hate_scores['Classifier'] = ['DTC', 'K-Nearest neighbors', 'SGDC', 'MultinomialNB', 'Random Forest']
     st.table(hate_scores)
-    hate_scores = hate_scores["Classifier", "F1 Score", "Accuracy Score", "Recall Score", "Precision Score"]
+    hate_scores = hate_scores["Classifier", "F1 score", "Accuracy Score", "Recall Score", "Precision Score"]
     st.table(hate_scores)
 
 
@@ -357,7 +357,7 @@ def auto_predic():
     st.pyplot()
 
     scores['Classifier'] = ['DTC', 'K-Nearest neighbors', 'SGDC', 'MultinomialNB']
-    #scores = scores[["Classifier", "F1 Score", "Accuracy Score", "Recall Score", "Precision Score"]]
+    scores = scores[["Classifier", "F1 score", "Accuracy Score", "Recall Score", "Precision Score"]]
     st.table(scores)
     
 
@@ -379,28 +379,6 @@ def auto_predic():
     st.write("""
     Task 4 stuff goes here
     """)
-    
-#     [('DTC',
-#   (0.132996632996633,
-#    0.20795490362374788,
-#    0.132996632996633,
-#    0.4980992584291152)),
-#  ('KNN',
-#   (0.29865319865319867,
-#    0.3640764086347502,
-#    0.29865319865319867,
-#    0.5248333482219302)),
-#  ('SGDC',
-#   (0.04579124579124579,
-#    0.08274947250311648,
-#    0.04579124579124579,
-#    0.5227260393927061)),
-#  ('MultinomialNB',
-#   (0.09393939393939393,
-#    0.15021756688423357,
-#    0.09393939393939393,
-#    0.5175689086358813))]
-
     
     return
 
@@ -461,7 +439,7 @@ def data_aug():
     data2 = [len(combined_df[combined_df["HS_Label"] == 0])/len(combined_df), len(combined_df[combined_df["HS_Label"] == 1])/len(combined_df)]
     labels = ['Insult', 'Not Insult']
     labels2 = ['Hatespeech', "Not Hatespeech"]
-    plt.rcParams['font.size'] = 16.0
+    plt.rcParams['font.size'] = 8.0
     fig, ax = plt.subplots(1,2, figsize=(12,5))
     _,_,autotexts0=ax[0].pie(data, labels=labels,colors=['#00695c','#b71c1c'],explode=(0, 0.1), autopct='%1.1f%%', shadow=True)
     _,_,autotexts1=ax[1].pie(data2, labels=labels2, autopct='%1.1f%%',colors=['#00695c','#b71c1c'],explode=(0, 0.1), shadow=True)
