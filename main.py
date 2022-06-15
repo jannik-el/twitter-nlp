@@ -315,7 +315,6 @@ def auto_predic():
     return
 
 def data_aug():
-    st.sidebar.success("Data Augmentation showing on the right:")
 
     st.markdown("We then wanted to looked at what we could do with our model. Below is an interactive example:")
     test_input = st.text_input("Input anything here, and see what our model classifies it as:", "Democrats Hillary Weak #MAGA")
@@ -543,6 +542,9 @@ def main():
 
     elif mode_two == sidebar_options[5]:
         data_aug()
+        st.sidebar.success("Data Augmentation showing on the right:")
+
+
 
 if __name__ == "__main__":
     main()
