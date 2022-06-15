@@ -266,7 +266,7 @@ def man_anot():
     with st.expander("Tweets we have not agreed on"):
         tweets=pd.read_csv("./streamlit/data/tweets.csv")
         dfpd=pd.read_csv("./streamlit/data/dfpd.csv")
-        del dfpd['column_name']
+        del dfpd['unnamed:0']
         st.table(dfpd)
         
     with st.expander("Inter-annotator agreement"):
