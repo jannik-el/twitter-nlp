@@ -253,6 +253,8 @@ def man_anot():
             st.pyplot(fig=plt)
     with st.expander("Tweets we have not agreed on"):
         tweets=pd.read_csv("./streamlit/data/tweets.csv")
+        for i in range(100):
+            print('     '+GT['value'][i]+'        '+tweets['tweets'][i] )
         
     with st.expander("Inter-annotator agreement"):
         st.markdown("""
