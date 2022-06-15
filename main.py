@@ -46,7 +46,7 @@ def start_page():
 
     hide_dataframe_row_index = """
             <style>
-            .row_heading.level0 {display:none}
+            tbody th {display:none}
             .blank {display:none}
             </style>
             """
@@ -288,6 +288,8 @@ def auto_predic():
     
     st.markdown("Below is an interactive example of how our models work:")
     test_input = st.text_input("Input anything here, and see what our model classifies it as:", "Democrats Hillary Weak #MAGA")
+    
+
 
     hs_preda, not_hs_preda = classify_and_seperate(test_input)
     hs_preda = str(float(hs_preda)*100)[0:6] 
