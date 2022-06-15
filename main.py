@@ -295,7 +295,7 @@ def auto_predic():
 
     col1, col2 = st.columns(2)
     with col1:
-        fig1 = plt.figure(figsize = (2,2))
+        fig1 = plt.figure(figsize = (3,3))
         y_train_counts = open_jar("./streamlit/ytraincounts.pkl")
         plt.rcParams['font.size'] = 16.0
         plt.pie(collections.Counter(list(y_train_counts)).values(), labels=['Not hate speech','Hate speech'],colors=['#00695c','#b71c1c'],explode=(0, 0.1), autopct = lambda p:f'{p:.2f}%', textprops={'fontsize': 2})
@@ -357,12 +357,10 @@ def auto_predic():
 
     col1, col2 = st.columns(2)
     with col1:
-        st.markdown("Confusion matrix - Hatespeech")
         im = Image.open("./streamlit/data/confusion_matrix_hate.png")
         st.image(im, width=750)
 
     with col2:
-        st.write("Confusion matrix - Emoji")
         im = Image.open("./streamlit/data/confusion_matrix_emoji.png")
         st.image(im, width=750)
 
