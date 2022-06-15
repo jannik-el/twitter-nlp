@@ -42,16 +42,18 @@ sidebar_options = (
 
 ##### PAGE CODE ##########
 
+hide_table_row_index = """
+        <style>
+        tbody th {display:none;}
+        .blank {display:none;}
+        </style>
+        """
+# Inject CSS with Markdown
+st.markdown(hide_table_row_index, unsafe_allow_html=True)
+
 def start_page():
 
-    hide_table_row_index = """
-            <style>
-            tbody th {display:none;}
-            .blank {display:none;}
-            </style>
-            """
-    # Inject CSS with Markdown
-    st.markdown(hide_table_row_index, unsafe_allow_html=True)
+
     
     col1, col2 = st.columns(2)
 
