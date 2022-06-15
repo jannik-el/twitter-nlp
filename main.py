@@ -19,6 +19,7 @@ import numpy as np
 import random
 import pickle
 import collections
+import utils as utl
 
 st.set_page_config(layout="wide")
 
@@ -62,10 +63,10 @@ def start_page():
     col1, col2 = st.columns(2)
 
     with col1:
-        st.write("""**This interactive app is designed as a representation of our groups submission
-        for the First Year Project 2, using different NLP Machine Learning Models to classify hatespeech, and emojis.
+        st.write("""**This interactive app is designed as a representation of our group submission
+        for the First Year Project course, using different NLP Machine Learning Models to classify hatespeech, and emojis.
         The hatespeech model is our binary classification task, and the emoji detection is our multi classification task.
-        Both datasets consist of data scraped off twitter, and therefore our project is also later in the data augmentation task, focussed on twitter datasets.
+        Both datasets consist of data scraped off twitter, and therefore our project is also later in the data augmentation task, focused on twitter datasets.
         On the left hand side you can choose different options from the sidebar.
         These are all different tasks of our project.**""")
         
