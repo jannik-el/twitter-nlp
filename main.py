@@ -46,8 +46,8 @@ def start_page():
 
     hide_table_row_index = """
             <style>
-            tbody th {display:none}
-            .blank {display:none}
+            tbody th {display:none;}
+            .blank {display:none;}
             </style>
             """
     # Inject CSS with Markdown
@@ -262,6 +262,7 @@ def man_anot():
             st.pyplot(fig=plt)
     with st.expander("Tweets we have not agreed on"):
         tweets=pd.read_csv("./streamlit/data/tweets.csv")
+        st.write('Ground Truth    Tweet')
         for i in range(100):
             st.write('     ',GT['value'][i],'        ',tweets['tweets'][i] )
         
@@ -336,6 +337,7 @@ def auto_predic():
         plt.pie(collections.Counter(list(y_train_counts)).values(), labels=['Not hate speech','Hate speech'],colors=['#eab676','#2596be'],explode=(0, 0.1), autopct = lambda p:f'{p:.2f}%')
         st.pyplot()
     with col2:
+        fig1 = plt.figure(figsize = (10,2))
         fig, axes = plt.subplots(figsize=(9, 4))
         y_train_emoji_counts = open_jar("./streamlit/ytrainemojicounts.pkl")
         emoji_classes= pd.read_csv("./streamlit/data/mapping-2.txt", sep = "	", header=None)
