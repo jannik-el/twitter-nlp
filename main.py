@@ -266,7 +266,6 @@ def man_anot():
     with st.expander("Tweets we have not agreed on"):
         tweets=pd.read_csv("./streamlit/data/tweets.csv")
         dfpd=pd.read_csv("./streamlit/data/dfpd.csv")
-        del dfpd['unnamed:0']
         st.table(dfpd)
         
     with st.expander("Inter-annotator agreement"):
@@ -330,7 +329,7 @@ def auto_predic():
     axes.set_title("Hatespeech Different Model Scores")
     st.pyplot()
 
-    hate_scores = pd.read_csv("./streamlit/data/emoji_scores.csv")
+    hate_scores = pd.read_csv("./streamlit/data/hate_scores.csv")
     hate_scores = hate_scores[['F1 score', 'Accuracy Score', 'Recall Score', 'Precision Score']]
     
     lst = hate_scores.values.tolist()
