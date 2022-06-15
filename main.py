@@ -480,6 +480,26 @@ def data_aug():
 
     st.write("---------------")
 
+    st.markdown("## 2. Testing our Hatespeech model on the Offensive tweets dataset:")
+
+    offense_predict = open_jar("./data/pickle/classification_pickles/OffensePrediction.pkl")
+    OffenseDF["HS_Label"] = label_predictions(offense_predict)
+
+    data = [len(OffenseDF[OffenseDF["Offense_Labels"] == 0])/len(OffenseDF),len(OffenseDF[OffenseDF["Offense_Labels"] == 1])/len(OffenseDF)]
+    data2 = [len(OffenseDF[OffenseDF["HS_Label"] == 0])/len(OffenseDF), len(OffenseDF[OffenseDF["HS_Label"] == 1])/len(OffenseDF)]
+    labels = ['Offensive', 'Not Offensive']
+    labels2 = ['Hatespeech', "Not Hatespeech"]
+
+    fig, ax = plt.subplots(1,2, figsize=(16,7))
+    _,_,autotexts0=ax[0].pie(data, labels=labels, colors=['#00695c','#b71c1c'],explode=(0, 0.1), autopct='%1.1f%%', shadow=True)
+    _,_,autotexts1=ax[1].pie(data2, labels=labels2, autopct='%1.1f%%',colors=['#00695c','#b71c1c'],explode=(0, 0.1), shadow=True)
+    for autotext in autotexts0:
+        autotext.set_color('white')
+    for autotext in autotexts1:
+        autotext.set_color('white')
+    plt.tight_layout()
+    fig.suptitle("Insult label ratio to hatespeech label ratio comparison:"); 
+
     
 
 ############## NLP Code ###################
@@ -579,6 +599,17 @@ def label_to_emoji(text, model="KNN"):
             prev = j
             counter=i
     return emoji_map[counter]
+
+def open_jar(file_address):
+    """
+    Takes:
+        - file_address: location of pickle to open
+    Returns:
+        - data: unpickled data loaded into ram
+    """
+    with open(file_address, 'rb') as f:
+        data = pickle.load(f)
+    return data
 
 ###### DOWNLOADING IMAGE DATA CODE ###############
 
