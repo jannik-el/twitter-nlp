@@ -458,7 +458,7 @@ def data_aug():
     len(combined_df[combined_df["Agreement"] == "False Negative"])/len(combined_df)
     ]
 
-    plt.rcParams['font.size'] = 3.0
+    plt.rcParams['font.size'] = 8.0
     fig2, ax = plt.subplots(figsize=(6,6))
     _,_,autotexts=ax.pie(agreement_ratio, 
     labels = [
@@ -476,7 +476,7 @@ def data_aug():
         autotext.set_color('white')
     # fig.suptitle("Trumps twitter insults, labeled by the New York Times and our Hatespeech Model:")
     plt.tight_layout()
-    st.pyplot(fig2)
+    st.pyplot(fig2, clear_figure=True)
 
     
 

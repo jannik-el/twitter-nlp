@@ -117,7 +117,7 @@ def wordcloud(data, stopwords):
     """
     my_mask = np.array(Image.open('/work/twitter-nlp/misc/Twitter.png'))
     wordcloud = WordCloud(width = 10000, height = 10000, random_state=1, background_color='white',
-                        collocations=False, mask=my_mask, contour_width=3, contour_color='#1DA1F2', stopwords=stopwords, min_word_length = 4).generate(data.lower())
+                        collocations=False, mask=my_mask, contour_width=3, contour_color='#1DA1F2', stopwords=stopwords, min_word_length = 4).generate(data)
     plt.figure(figsize=(20, 20))
     plt.axis("off")
     plt.tight_layout(pad=0)
