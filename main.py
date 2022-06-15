@@ -26,9 +26,7 @@ st.set_page_config(
     backgroundColor="#FFFFFF",
     secondaryBackgroundColor="#F0F2F6",
     textColor="#1DA1F2",
-    font="monospace",
-    layout="wide")
-
+    font="monospace")
 ##### HEADER #####
 
 st.title("Natural Language Processing on Twitter")
@@ -457,6 +455,8 @@ def data_aug():
 
     st.markdown("### Looking more closely however:")
 
+    combined_df = pd.read_csv()
+
     agreement_ratio = [
     len(combined_df[combined_df["Agreement"] == "Agree Hatespeech"])/len(combined_df),
     len(combined_df[combined_df["Agreement"] == "Agree Not Hatespeech"])/len(combined_df), 
@@ -464,27 +464,23 @@ def data_aug():
     len(combined_df[combined_df["Agreement"] == "False Negative"])/len(combined_df)
     ]
 
-fig, ax = plt.subplots(figsize=(16,7))
-_,_,autotexts=ax.pie(agreement_ratio, 
-labels = [
-    "Hatespeech and Insult", 
-    "Neither Hatespeech nor Insult", 
-    "Not Insult but Hatespeech", 
-    "Insult but not Hatespeech"
-    ],
-    colors=['#ad9176', '#795548', '#00695c','#b71c1c'],
-    explode=(0.05,0.05,0.05,0.05), 
-    autopct='%1.1f%%'
-    )
+    fig, ax = plt.subplots(figsize=(16,7))
+    _,_,autotexts=ax.pie(agreement_ratio, 
+    labels = [
+        "Hatespeech and Insult", 
+        "Neither Hatespeech nor Insult", 
+        "Not Insult but Hatespeech", 
+        "Insult but not Hatespeech"
+        ],
+        colors=['#ad9176', '#795548', '#00695c','#b71c1c'],
+        explode=(0.05,0.05,0.05,0.05), 
+        autopct='%1.1f%%'
+        )
 
-for autotext in autotexts:
-    autotext.set_color('white')
-fig.suptitle("Trumps twitter insults, labeled by the New York Times and our Hatespeech Model:")
-plt.tight_layout()
-
-    
-
-    
+    for autotext in autotexts:
+        autotext.set_color('white')
+    fig.suptitle("Trumps twitter insults, labeled by the New York Times and our Hatespeech Model:")
+    plt.tight_layout()
 
     
 
