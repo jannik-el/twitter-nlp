@@ -436,7 +436,7 @@ def data_aug():
     labels = ['Insult', 'Not Insult']
     labels2 = ['Hatespeech', "Not Hatespeech"]
     plt.rcParams['font.size'] = 8.0
-    fig, ax = plt.subplots(1,2, figsize=(12,5))
+    fig1, ax = plt.subplots(1,2, figsize=(12,5))
     _,_,autotexts0=ax[0].pie(data, labels=labels,colors=['#00695c','#b71c1c'],explode=(0, 0.1), autopct='%1.1f%%', shadow=True)
     _,_,autotexts1=ax[1].pie(data2, labels=labels2, autopct='%1.1f%%',colors=['#00695c','#b71c1c'],explode=(0, 0.1), shadow=True)
     for autotext in autotexts0:
@@ -444,8 +444,8 @@ def data_aug():
     for autotext in autotexts1:
         autotext.set_color('white')
     plt.tight_layout()
-    fig.suptitle("Insult label ratio to hatespeech label ratio comparison:")
-    st.pyplot()
+    fig1.suptitle("Insult label ratio to hatespeech label ratio comparison:")
+    st.pyplot(fig1)
 
     st.markdown("### Looking more closely however:")
 
@@ -459,7 +459,7 @@ def data_aug():
     ]
 
     plt.rcParams['font.size'] = 8.0
-    fig, ax = plt.subplots(figsize=(8,4))
+    fig2, ax = plt.subplots(figsize=(8,4))
     _,_,autotexts=ax.pie(agreement_ratio, 
     labels = [
         "Hatespeech and Insult", 
@@ -476,7 +476,7 @@ def data_aug():
         autotext.set_color('white')
     # fig.suptitle("Trumps twitter insults, labeled by the New York Times and our Hatespeech Model:")
     plt.tight_layout()
-    st.pyplot()
+    st.pyplot(fig2)
 
     
 
