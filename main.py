@@ -352,7 +352,7 @@ def auto_predic():
     axes.plot(x,lst[3],label='MultinomialNB', marker='o')
     axes.set_xticks([1,2,3,4])
     axes.legend()
-    axes.set_xticklabels(["F1 Score", "Accuracy Score", "Recall Score", "Precision Score"]), 
+    axes.set_xticklabels(["F1 score", "Accuracy Score", "Recall Score", "Precision Score"]), 
     axes.set_title("Emoji Different Model Scores")
     st.pyplot()
 
