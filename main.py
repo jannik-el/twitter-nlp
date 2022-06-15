@@ -330,7 +330,7 @@ def data_aug():
     col2a.metric("Not Hatespeech Prob.", f"{not_hs_preda}%")
     col3a.metric("Most likely emoji predicted", emoji_pred)
 
-    st.write("Using this, we decided to looked at two datasets, that we thought could prove interesting results:"
+    st.write("Using this, we decided to looked at two datasets, that we thought could prove interesting results:")
     st.write("-------------")
     st.markdown("## 1. Labeling Trump's twitter insults")
     st.markdown("""
