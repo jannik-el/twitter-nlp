@@ -251,7 +251,8 @@ def man_anot():
             plt.pie([77,23],labels=['Agreed','Disagreed'],colors=['#eab676','#2596be'],explode=(0, 0.1),autopct='%1.1f%%');
             plt.title('Agreement of survey results and ground truth labels')
             st.pyplot(fig=plt)
-    #with st.expander("Tweets we have not agreed on"):
+    with st.expander("Tweets we have not agreed on"):
+        tweets=pd.read_csv("./streamlit/data/tweets.csv")
         
     with st.expander("Inter-annotator agreement"):
         st.markdown("""
@@ -289,7 +290,7 @@ def auto_predic():
     axes.legend()
     axes.set_xticklabels(["F1 Score", "Accuracy Score", "Recall Score", "Precision Score"]), 
     axes.set_title("Hatespeech Different Model Scores")
-    st.pyplot(fig)
+    st.pyplot()
 
 
     col1, col2 = st.columns(2)
@@ -314,7 +315,7 @@ def auto_predic():
 
 def data_aug():
 
-    st.markdown("We then wanted to looked at what we could do with our model. Below is an interactive example:")
+    st.markdown("Below is an interactive example of how our models work:")
     test_input = st.text_input("Input anything here, and see what our model classifies it as:", "Democrats Hillary Weak #MAGA")
 
     hs_preda, not_hs_preda = classify_and_seperate(test_input)
@@ -357,8 +358,6 @@ def data_aug():
     random_tweet = trump_df.iloc[random.randrange(0, len(trump_df), 1)]
     st.markdown(f">_"+random_tweet["Tweets"]+"_")
 
-    st.write("And the same tweet tokenized using our tokenizer:")
-    st.code(func_regex(random_tweet["Tweets"]))
     st.write("Here you can see what label our Model is giving the tweet, and what label was given by the New York Times:")
 
     hs_pred, not_hs_pred = classify_and_seperate(str(random_tweet["Tweets"]))
