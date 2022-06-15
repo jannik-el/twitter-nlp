@@ -500,7 +500,7 @@ def classify_and_seperate(sentence, model):
     hatespeech_array = classify_sentence(sentence, model)
     return '{:.4f}'.format((hatespeech_array[0][1])), '{:.4f}'.format(hatespeech_array[0][0])
 
-def classify_emoji_sentence(text, model):
+def classify_emoji_sentence(text, model="SGDC"):
     classifier = open_jar(f'./data/pickle/models/emoji_{model}.sav')
     if model == "SGDC" or model == "MultinomialNB":
         cv = open_jar('./data/pickle/models/emoji/vectorizer_sss.pkl')
@@ -509,7 +509,7 @@ def classify_emoji_sentence(text, model):
     data = classifier.predict_proba(cv.transform([text]).toarray())
     return [round(i, 10) for i in data[0]]
 
-def label_to_emoji(text, model):
+def label_to_emoji(text, model="KNN"):
     data = classify_emoji_sentence(text, model)
     data = [float(i) for i in data]
     emoji_map = ['❤', '😍', '😂', '💕', '🔥', '😊', '😎', '✨', '💙', '😘', '📷', '🇺🇸', '☀', '💜', '😉', '💯', '😁', '🎄', '📸', '😜']
