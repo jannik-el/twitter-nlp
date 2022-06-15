@@ -335,6 +335,7 @@ def auto_predic():
     st.pyplot()
 
     hate_scores['Classifier'] = ['DTC', 'K-Nearest neighbors', 'SGDC', 'MultinomialNB', 'Random Forest']
+    st.table(hate_scores)
     hate_scores = hate_scores["Classifier", "F1 Score", "Accuracy Score", "Recall Score", "Precision Score"]
     st.table(hate_scores)
 
@@ -456,7 +457,6 @@ def data_aug():
     #### Trump DF results code ###
 
     combined_df = trump_df
-
     data = [len(combined_df[combined_df["Labels"] == 0])/len(combined_df),len(combined_df[combined_df["Labels"] == 1])/len(combined_df)]
     data2 = [len(combined_df[combined_df["HS_Label"] == 0])/len(combined_df), len(combined_df[combined_df["HS_Label"] == 1])/len(combined_df)]
     labels = ['Insult', 'Not Insult']
@@ -471,6 +471,7 @@ def data_aug():
         autotext.set_color('white')
     plt.tight_layout()
     fig.suptitle("Insult label ratio to hatespeech label ratio comparison:")
+    st.plot
 
     
 
