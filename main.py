@@ -523,6 +523,8 @@ def main():
         - Hatespeech and Offensive tweet classification comparison
     """)
 
+    st.sidebar.success(f"{mode_two} showing on the right:")
+    
     st.sidebar.write("---------------------")
 
     if mode_two == sidebar_options[0]:
@@ -542,7 +544,6 @@ def main():
 
     elif mode_two == sidebar_options[5]:
         data_aug()
-        st.sidebar.success("Data Augmentation showing on the right:")
 
 
 
