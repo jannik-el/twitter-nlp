@@ -335,7 +335,7 @@ def auto_predic():
     st.pyplot()
 
     hate_scores['Classifier'] = ['DTC', 'K-Nearest neighbors', 'SGDC', 'MultinomialNB', 'Random Forest']
-    #hate_scores = hate_scores[["Classifier", "F1 Score", "Accuracy Score", "Recall Score", "Precision Score"]]
+    hate_scores = hate_scores["Classifier", "F1 Score", "Accuracy Score", "Recall Score", "Precision Score"]
     st.table(hate_scores)
 
 
@@ -424,11 +424,11 @@ def data_aug():
     st.write("So using those datasets, and our hatespeech model, we were able to create a dataset with all of Trump's tweets, labelled for being insulting and hatespeech.")
 
     trump_df = pd.read_csv("./streamlit/data/trump_df.csv")
-    trump_df = trump_df[['Labels', 'Tweets', 'HS_Label']]
-    trump_df = trump_df.rename(columns={"Insult Labels": "Labels", "Tweets": "Tweets", "HS_Label":"HS_Label"})
+    trump_df2 = trump_df[['Labels', 'Tweets', 'HS_Label']]
+    trump_df2 = trump_df2.rename(columns={"Insult Labels": "Labels", "Tweets": "Tweets", "HS_Label":"HS_Label"})
 
     with st.expander("Click here to see what the data frame looks like after labelling each tweet based on our model:"):
-        st.table(trump_df.iloc[0:10])
+        st.table(trump_df2.iloc[0:10])
 
     st.write("Below is a random tweet from our dataset, with it's insult label, and hatespeech probability according to our model:")
     random_tweet = trump_df.iloc[random.randrange(0, len(trump_df), 1)]
@@ -455,8 +455,8 @@ def data_aug():
 
     #### Trump DF results code ###
 
-    import matplotlib.pyplot as plt
-    
+    combined_df = trump_df
+
     data = [len(combined_df[combined_df["Labels"] == 0])/len(combined_df),len(combined_df[combined_df["Labels"] == 1])/len(combined_df)]
     data2 = [len(combined_df[combined_df["HS_Label"] == 0])/len(combined_df), len(combined_df[combined_df["HS_Label"] == 1])/len(combined_df)]
     labels = ['Insult', 'Not Insult']
