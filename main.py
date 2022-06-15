@@ -324,7 +324,7 @@ def auto_predic():
         plt.pie(collections.Counter(list(y_train_counts)).values(), labels=['Not hate speech','Hate speech'],colors=['#eab676','#2596be'],explode=(0, 0.1), autopct = lambda p:f'{p:.2f}%', textprops={'fontsize': 4})
         st.pyplot(fig1=plt)
     with col2:
-        fig2 = plt.figure(figsize = (20,20))
+        fig2 = plt.figure(figsize = (23,23))
         y_train_emoji_counts = open_jar("./streamlit/ytrainemojicounts.pkl")
         emoji_classes= pd.read_csv("./streamlit/data/mapping-2.txt", sep = "	", header=None)
         plt.rcParams['font.size'] = 11.0
