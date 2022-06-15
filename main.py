@@ -43,6 +43,15 @@ sidebar_options = (
 ##### PAGE CODE ##########
 
 def start_page():
+
+    hide_dataframe_row_index = """
+            <style>
+            .row_heading.level0 {display:none}
+            .blank {display:none}
+            </style>
+            """
+    # Inject CSS with Markdown
+    st.markdown(hide_dataframe_row_index, unsafe_allow_html=True)
     
     col1, col2 = st.columns(2)
 
@@ -253,8 +262,8 @@ def man_anot():
             st.pyplot(fig=plt)
     with st.expander("Tweets we have not agreed on"):
         tweets=pd.read_csv("./streamlit/data/tweets.csv")
-        for i in range(100):
-            st.write('     '+GT['value'][i]+'        '+tweets['tweets'][i] )
+        #for i in range(100):
+        #    #st.write('     '+GT['value'][i]+'        '+tweets['tweets'][i] )
         
     with st.expander("Inter-annotator agreement"):
         st.markdown("""
@@ -276,6 +285,22 @@ def man_anot():
 
 def auto_predic():
     st.set_option('deprecation.showPyplotGlobalUse', False)
+    
+    st.markdown("Below is an interactive example of how our models work:")
+    test_input = st.text_input("Input anything here, and see what our model classifies it as:", "Democrats Hillary Weak #MAGA")
+
+    hs_preda, not_hs_preda = classify_and_seperate(test_input)
+    hs_preda = str(float(hs_preda)*100)[0:6] 
+    not_hs_preda = str(float(not_hs_preda)*100)[0:6]
+    emoji_pred = label_to_emoji(test_input)
+
+    col1a, col2a, col3a = st.columns(3)
+    col1a.metric("Hatespeech Prob.", f"{hs_preda}%")
+    col2a.metric("Not Hatespeech Prob.", f"{not_hs_preda}%")
+    col3a.metric("Most likely emoji predicted", emoji_pred)
+    
+    st.write("--------------")
+    
 
     scores = pd.read_csv("./streamlit/data/hs_scores.csv")
     scores = scores[['F1 score', 'Accuracy Score', 'Recall Score', 'Precision Score']]
@@ -316,19 +341,6 @@ def auto_predic():
     return
 
 def data_aug():
-
-    st.markdown("Below is an interactive example of how our models work:")
-    test_input = st.text_input("Input anything here, and see what our model classifies it as:", "Democrats Hillary Weak #MAGA")
-
-    hs_preda, not_hs_preda = classify_and_seperate(test_input)
-    hs_preda = str(float(hs_preda)*100)[0:6] 
-    not_hs_preda = str(float(not_hs_preda)*100)[0:6]
-    emoji_pred = label_to_emoji(test_input)
-
-    col1a, col2a, col3a = st.columns(3)
-    col1a.metric("Hatespeech Prob.", f"{hs_preda}%")
-    col2a.metric("Not Hatespeech Prob.", f"{not_hs_preda}%")
-    col3a.metric("Most likely emoji predicted", emoji_pred)
 
     st.write("Using this, we decided to looked at two datasets, that we thought could prove interesting results:")
     st.write("-------------")
