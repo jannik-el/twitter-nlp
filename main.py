@@ -494,7 +494,6 @@ def main():
 
     mode_two = st.sidebar.radio("Choose a page here:", sidebar_options)
     st.sidebar.success(f"{mode_two} showing on the right:")
-    st.sidebar.write("-----------")
 
     st.sidebar.title("Checkout the following:")
     st.sidebar.markdown("""
@@ -520,8 +519,6 @@ def main():
     """)
 
     
-    st.sidebar.write("---------------------")
-
     if mode_two == sidebar_options[0]:
         start_page()
 
