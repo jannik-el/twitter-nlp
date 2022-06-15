@@ -488,8 +488,8 @@ def data_aug():
             data = [i.strip("\n") for i in data]
         return data
 
-    train_text = load_file("/work/twitter-nlp/data/tweeteval/datasets/offensive/train_text.txt")
-    train_labels = load_file("/work/twitter-nlp/data/tweeteval/datasets/offensive/train_labels.txt")
+    train_text = load_file("./data/tweeteval/datasets/offensive/train_text.txt")
+    train_labels = load_file("./data/tweeteval/datasets/offensive/train_labels.txt")
     train_labels = [int(i) for i in train_labels]
 
     OffenseDF = pd.DataFrame()
