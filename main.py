@@ -28,7 +28,7 @@ st.title("Natural Language Processing on Twitter")
 st.subheader("First Year Project, Project 3: NLP")
 st.markdown("""
 **IT-University of Copenhagen, Bsc. in Data Science** \\
-By Juraj Septak, Gusts Gustav Grīnbergs, Franek Liszka, Mirka Katuscakova and Jannik Elsäßer _(Group E2)_
+By Juraj Septak, Gusts Gustavs Grīnbergs, Franek Liszka, Mirka Katuscakova and Jannik Elsäßer _(Group E2)_
 """)
 st.write("------------------------------------------")
 
@@ -73,7 +73,7 @@ def preprocessing():
         st.write("Both the hatespeech detection and the emoji predicion dataset came from the same source:")
         st.caption("https://github.com/cardiffnlp/tweeteval")
 
-        st.write("The hatespeech dataset uses the classifiers 1 and 0, hatespeech and not hatespeech, while the emoji dataset had more classifiers:")
+        st.write("The hatespeech dataset uses the classifiers 1 and 0, hatespeech and not hatespeech respectively, while the emoji dataset had more classifiers:")
 
         map_df = pd.DataFrame()
         emoji_map = ['❤', '😍', '😂', '💕', '🔥', '😊', '😎', '✨', '💙', '😘', '📷', '🇺🇸', '☀', '💜', '😉', '💯', '😁', '🎄', '📸', '😜']
