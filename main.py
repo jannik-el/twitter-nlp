@@ -44,8 +44,10 @@ sidebar_options = (
 
 hide_table_row_index = """
         <style>
-        tbody th {display:none;}
+        tbody th {display:none}
         .blank {display:none;}
+        .row_heading.level0 {display:none}
+        .blank {display:none}
         </style>
         """
 # Inject CSS with Markdown
@@ -295,7 +297,7 @@ def auto_predic():
     models = ["SGDC", "DTC", "KNN", "MultinomialNB2", "RF"]
 
     col1f, col2f = st.columns(2)
-    col1f.radio("Choose a Hatespeech Model", models)
+    col1f.radio("Choose a Hatespeech Model (SGDC is best)", models)
     col2f.radio("Choose an emoji model", models)
 
 
@@ -334,14 +336,14 @@ def auto_predic():
     with col1:
         fig1 = plt.figure(figsize = (3,3))
         y_train_counts = open_jar("./streamlit/ytraincounts.pkl")
-        plt.rcParams['font.size'] = 0.0
+        plt.rcParams['font.size'] = 20.0
         plt.pie(collections.Counter(list(y_train_counts)).values(), labels=['Not hate speech','Hate speech'],colors=['#eab676','#2596be'],explode=(0, 0.1), autopct = lambda p:f'{p:.2f}%')
         st.pyplot(fig1=plt)
     with col2:
         fig2 = plt.figure(figsize = (15,15))
         y_train_emoji_counts = open_jar("./streamlit/ytrainemojicounts.pkl")
         emoji_classes= pd.read_csv("./streamlit/data/mapping-2.txt", sep = "	", header=None)
-        plt.rcParams['font.size'] = 15.0
+        plt.rcParams['font.size'] = 11.0
         plt.pie(collections.Counter(list(y_train_emoji_counts)).values(), labels=list(emoji_classes[2]), autopct = lambda p:f'{p:.2f}%');
         st.pyplot(fig2=plt)
 
