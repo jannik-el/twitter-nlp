@@ -20,6 +20,7 @@ import random
 import pickle
 import collections
 import utils as utl
+from sklearn.metrics import confusion_matrix
 
 st.set_page_config(layout="wide")
 
