@@ -20,13 +20,8 @@ import random
 import pickle
 import collections
 
-st.set_page_config(
-    layout="wide",
-    primaryColor="#1DA1F2",
-    backgroundColor="#FFFFFF",
-    secondaryBackgroundColor="#F0F2F6",
-    textColor="#1DA1F2",
-    font="monospace")
+st.set_page_config(layout="wide",primaryColor="#1DA1F2",backgroundColor="#FFFFFF",secondaryBackgroundColor="#F0F2F6",textColor="#1DA1F2",font="monospace")
+
 ##### HEADER #####
 
 st.title("Natural Language Processing on Twitter")
@@ -39,7 +34,6 @@ st.write("------------------------------------------")
 itu_logo = Image.open("./misc/Logo_IT_University_of_Copenhagen.jpg")
 st.sidebar.image(itu_logo)
 
-# st.sidebar.image("")
 
 sidebar_options = (
     "Start Page", 
@@ -481,6 +475,7 @@ def data_aug():
         autotext.set_color('white')
     fig.suptitle("Trumps twitter insults, labeled by the New York Times and our Hatespeech Model:")
     plt.tight_layout()
+    st.pyplot()
 
     
 
