@@ -405,6 +405,7 @@ def data_aug():
     st.write("Below is a random tweet from our dataset, with it's insult label, and hatespeech probability according to our model:")
     random_tweet = trump_df.iloc[random.randrange(0, len(trump_df), 1)]
     st.markdown(f">_"+random_tweet["Tweets"]+"_")
+    st.markdown("_(You can press 'r' to refresh and see a new tweet)_")
 
     st.markdown("""
     Here you can see what label our Model is giving the tweet, and what label was given by the New York Times: \\
