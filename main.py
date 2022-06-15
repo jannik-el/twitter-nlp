@@ -74,7 +74,7 @@ def start_page():
 
     with col2:
         im = Image.open("./misc/wordart.png")
-        st.image(im, caption='Put Twitter Word Cloud image Here', width=400)
+        st.image(im, width=400)
 
     return
 
