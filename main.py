@@ -331,9 +331,6 @@ def auto_predic():
     hate_scores = hate_scores[["Classifier", "F1 score", "Accuracy Score", "Recall Score", "Precision Score"]]
     st.table(hate_scores)
 
-    im = Image.open("./streamlit/data/confusion_matrix_hate.png")
-    st.image(im, width=700)
-
     st.write("------------------------------------------------------------------")
 
     scores = pd.read_csv("./streamlit/data/emoji_scores.csv")
@@ -355,6 +352,17 @@ def auto_predic():
     scores['Classifier'] = ['DTC', 'K-Nearest neighbors', 'SGDC', 'MultinomialNB']
     scores = scores[["Classifier", "F1 score", "Accuracy Score", "Recall Score", "Precision Score"]]
     st.table(scores)
+
+    st.write("------------------------------------------------------------------")
+
+    col1, col2 = st.columns(2)
+    with col1:
+        im = Image.open("./streamlit/data/confusion_matrix_hate.png")
+        st.image(im, width=700)
+
+    with col2:
+        im = Image.open("./streamlit/data/confusion_matrix_emoji.png")
+        st.image(im, width=700)
 
     st.write("------------------------------------------------------------------")
 
