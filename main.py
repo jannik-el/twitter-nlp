@@ -320,7 +320,7 @@ def auto_predic():
     with col1:
         fig1 = plt.figure(figsize = (2,2))
         y_train_counts = open_jar("./streamlit/ytraincounts.pkl")
-        plt.rcParams['font.size'] = 10.0
+        plt.rcParams['font.size'] = 16.0
         plt.pie(collections.Counter(list(y_train_counts)).values(), labels=['Not hate speech','Hate speech'],colors=['#00695c','#b71c1c'],explode=(0, 0.1), autopct = lambda p:f'{p:.2f}%', textprops={'fontsize': 2})
         st.pyplot(fig1=plt)
     with col2:
@@ -458,6 +458,7 @@ def data_aug():
     len(combined_df[combined_df["Agreement"] == "False Negative"])/len(combined_df)
     ]
 
+    plt.rcParams['font.size'] = 8.0
     fig, ax = plt.subplots(figsize=(8,4))
     _,_,autotexts=ax.pie(agreement_ratio, 
     labels = [
@@ -473,7 +474,6 @@ def data_aug():
 
     for autotext in autotexts:
         autotext.set_color('white')
-    plt.rcParams['font.size'] = 8.0
     fig.suptitle("Trumps twitter insults, labeled by the New York Times and our Hatespeech Model:")
     plt.tight_layout()
     st.pyplot()
