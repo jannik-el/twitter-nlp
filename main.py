@@ -455,7 +455,7 @@ def data_aug():
 
     st.markdown("### Looking more closely however:")
 
-    combined_df = pd.read_csv()
+    combined_df = pd.read_csv("./streamlit/data/trump_agreement.csv")
 
     agreement_ratio = [
     len(combined_df[combined_df["Agreement"] == "Agree Hatespeech"])/len(combined_df),
