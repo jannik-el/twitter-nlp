@@ -298,14 +298,14 @@ def auto_predic():
         fig1 = plt.figure(figsize = (3,3))
         y_train_counts = open_jar("./streamlit/ytraincounts.pkl")
         plt.rcParams['font.size'] = 16.0
-        plt.pie(collections.Counter(list(y_train_counts)).values(), labels=['Not hate speech','Hate speech'],colors=['#00695c','#b71c1c'],explode=(0, 0.1), autopct = lambda p:f'{p:.2f}%', textprops={'fontsize': 10})
+        plt.pie(collections.Counter(list(y_train_counts)).values(), labels=['Not hate speech','Hate speech'],colors=['#00695c','#b71c1c'],explode=(0, 0.1), autopct = lambda p:f'{p:.2f}%', textprops={'fontsize': 7})
         st.pyplot(fig1=plt)
     with col2:
         fig2 = plt.figure(figsize = (35,35))
         y_train_emoji_counts = open_jar("./streamlit/ytrainemojicounts.pkl")
         emoji_classes= pd.read_csv("./streamlit/data/mapping-2.txt", sep = "	", header=None)
         plt.rcParams['font.size'] = 11.0
-        plt.pie(collections.Counter(list(y_train_emoji_counts)).values(), labels=list(emoji_classes[2]), autopct = lambda p:f'{p:.2f}%', textprops={'fontsize': 22});
+        plt.pie(collections.Counter(list(y_train_emoji_counts)).values(), labels=list(emoji_classes[2]), autopct = lambda p:f'{p:.2f}%', textprops={'fontsize': 30});
         st.pyplot(fig2=plt)
 
     st.write("------------------------------------------------------------------")
