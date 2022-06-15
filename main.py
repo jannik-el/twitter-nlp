@@ -295,7 +295,7 @@ def auto_predic():
     test_input = st.text_input("Input anything here, and see what our model classifies it as:", "Democrats Hillary Weak #MAGA")
 
     models = ["SGDC", "DTC", "KNN", "MultinomialNB2", "RF"]
-    emoji_models = ["KNN","SGDC", "DTC", "MultinomialNB", "RF"]
+    emoji_models = ["KNN","SGDC", "DTC", "MultinomialNB", "model"]
 
     col1f, col2f = st.columns(2)
     hs_mod = col1f.radio("Choose a Hatespeech Model (SGDC is best)", models)
@@ -351,6 +351,27 @@ def auto_predic():
     st.write("""
     Task 4 stuff goes here
     """)
+    
+#     [('DTC',
+#   (0.132996632996633,
+#    0.20795490362374788,
+#    0.132996632996633,
+#    0.4980992584291152)),
+#  ('KNN',
+#   (0.29865319865319867,
+#    0.3640764086347502,
+#    0.29865319865319867,
+#    0.5248333482219302)),
+#  ('SGDC',
+#   (0.04579124579124579,
+#    0.08274947250311648,
+#    0.04579124579124579,
+#    0.5227260393927061)),
+#  ('MultinomialNB',
+#   (0.09393939393939393,
+#    0.15021756688423357,
+#    0.09393939393939393,
+#    0.5175689086358813))]
 
     
     return
