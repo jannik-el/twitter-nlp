@@ -571,8 +571,8 @@ def main():
         - Interactive classification
         - **Labeling Trump's twitter insults**
         - Hatespeech and Offensive tweet classification comparison
-
     """)
+    st.write("-----------------")
 
     
     if mode_two == sidebar_options[0]:
