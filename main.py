@@ -29,7 +29,7 @@ st.title("Natural Language Processing on Twitter")
 st.subheader("First Year Project, Project 3: NLP")
 st.markdown("""
 **IT-University of Copenhagen, BSc. in Data Science** \\
-By Juraj Septak🇸🇰, Gusts Gustavs Grīnbergs🇱🇻, Franek Liszka🇵🇱, Mirka Katuscakova🇸🇰 and Jannik Elsäßer🇮🇪🇩🇪 _(Group E2)_
+By Juraj Septak 🇸🇰, Gusts Gustavs Grīnbergs 🇱🇻, Franek Liszka 🇵🇱, Mirka Katuscakova 🇸🇰 and Jannik Elsäßer 🇮🇪 🇩🇪 _(Group E2)_
 """)
 st.write("------------------------------------------")
 itu_logo = Image.open("./misc/Logo_IT_University_of_Copenhagen.jpg")
