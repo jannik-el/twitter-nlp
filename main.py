@@ -495,7 +495,7 @@ def open_jar(file_address):
         data = pickle.load(f)
     return data
 
-def classify_and_seperate(sentence, model):
+def classify_and_seperate(sentence, model="SGDC"):
     """Return Hatespeech, Not Hatespeech value"""
     hatespeech_array = classify_sentence(sentence, model)
     return '{:.4f}'.format((hatespeech_array[0][1])), '{:.4f}'.format(hatespeech_array[0][0])
