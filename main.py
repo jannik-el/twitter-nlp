@@ -458,7 +458,7 @@ def data_aug():
     len(combined_df[combined_df["Agreement"] == "False Negative"])/len(combined_df)
     ]
 
-    plt.rcParams['font.size'] = 8.0
+    plt.rcParams['font.size'] = 2.0
     fig2, ax = plt.subplots(figsize=(4,4))
     _,_,autotexts=ax.pie(agreement_ratio, 
     labels = [
