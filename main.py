@@ -316,10 +316,9 @@ def auto_predic():
     col3a.metric("Most likely emoji predicted", emoji_pred)
     
     st.write("------------------------------------------------------------------")
-    
 
     hate_scores = pd.read_csv("./streamlit/data/hate_scores.csv")
-    hate_scores = hate_scores['F1 score', 'Accuracy Score', 'Recall Score', 'Precision Score']
+    hate_scores = hate_scores[['F1 score', 'Accuracy Score', 'Recall Score', 'Precision Score']]
     
     lst = hate_scores.values.tolist()
     fig, axes = plt.subplots(figsize=(10, 4))
@@ -341,7 +340,7 @@ def auto_predic():
 
 
     scores = pd.read_csv("./streamlit/data/emoji_scores.csv")
-    scores = scores['F1 score', 'Accuracy Score', 'Recall Score', 'Precision Score']
+    scores = scores[['F1 score', 'Accuracy Score', 'Recall Score', 'Precision Score']]
     
     lst = scores.values.tolist()
     fig, axes = plt.subplots(figsize=(10, 4))
@@ -451,7 +450,8 @@ def data_aug():
     col2.metric("Not Hatespeech Prob.", f"{not_hs_pred}%")
     col3.metric("Insult Label", bool(random_tweet["Labels"]))
     col4.metric("And for fun the emoji prediction:", trump_emoji)
-    st.write("----------")
+    
+    st.markdown("### The results across the entire dataset:")
 
     
 
