@@ -431,53 +431,57 @@ def data_aug():
 
     #### Trump DF results code ###
 
-    combined_df = trump_df
-    data = [len(combined_df[combined_df["Labels"] == 0])/len(combined_df),len(combined_df[combined_df["Labels"] == 1])/len(combined_df)]
-    data2 = [len(combined_df[combined_df["HS_Label"] == 0])/len(combined_df), len(combined_df[combined_df["HS_Label"] == 1])/len(combined_df)]
-    labels = ['Insult', 'Not Insult']
-    labels2 = ['Hatespeech', "Not Hatespeech"]
-    plt.rcParams['font.size'] = 8.0
-    fig1, ax = plt.subplots(1,2, figsize=(12,5))
-    _,_,autotexts0=ax[0].pie(data, labels=labels,colors=['#00695c','#b71c1c'],explode=(0, 0.1), autopct='%1.1f%%', shadow=True)
-    _,_,autotexts1=ax[1].pie(data2, labels=labels2, autopct='%1.1f%%',colors=['#00695c','#b71c1c'],explode=(0, 0.1), shadow=True)
-    for autotext in autotexts0:
-        autotext.set_color('white')
-    for autotext in autotexts1:
-        autotext.set_color('white')
-    plt.tight_layout()
-    fig1.suptitle("Insult label ratio to hatespeech label ratio comparison:")
-    st.pyplot(fig1)
+    with st.expander("Click here to see the results:"):
+
+        combined_df = trump_df
+        data = [len(combined_df[combined_df["Labels"] == 0])/len(combined_df),len(combined_df[combined_df["Labels"] == 1])/len(combined_df)]
+        data2 = [len(combined_df[combined_df["HS_Label"] == 0])/len(combined_df), len(combined_df[combined_df["HS_Label"] == 1])/len(combined_df)]
+        labels = ['Insult', 'Not Insult']
+        labels2 = ['Hatespeech', "Not Hatespeech"]
+        plt.rcParams['font.size'] = 8.0
+        fig1, ax = plt.subplots(1,2, figsize=(12,5))
+        _,_,autotexts0=ax[0].pie(data, labels=labels,colors=['#00695c','#b71c1c'],explode=(0, 0.1), autopct='%1.1f%%', shadow=True)
+        _,_,autotexts1=ax[1].pie(data2, labels=labels2, autopct='%1.1f%%',colors=['#00695c','#b71c1c'],explode=(0, 0.1), shadow=True)
+        for autotext in autotexts0:
+            autotext.set_color('white')
+        for autotext in autotexts1:
+            autotext.set_color('white')
+        plt.tight_layout()
+        fig1.suptitle("Insult label ratio to hatespeech label ratio comparison:")
+        st.pyplot(fig1)
 
     st.markdown("### Looking more closely however:")
 
-    combined_df = pd.read_csv("./streamlit/data/trump_agreement.csv")
+    with st.expander("Click here to see the results:"):
 
-    agreement_ratio = [
-    len(combined_df[combined_df["Agreement"] == "Agree Hatespeech"])/len(combined_df),
-    len(combined_df[combined_df["Agreement"] == "Agree Not Hatespeech"])/len(combined_df), 
-    len(combined_df[combined_df["Agreement"] == "False Positive"])/len(combined_df), 
-    len(combined_df[combined_df["Agreement"] == "False Negative"])/len(combined_df)
-    ]
+        combined_df = pd.read_csv("./streamlit/data/trump_agreement.csv")
 
-    plt.rcParams['font.size'] = 8.0
-    fig2, ax = plt.subplots(figsize=(6,6))
-    _,_,autotexts=ax.pie(agreement_ratio, 
-    labels = [
-        "Hatespeech and Insult", 
-        "Neither Hatespeech nor Insult", 
-        "Not Insult but Hatespeech", 
-        "Insult but not Hatespeech"
-        ],
-        colors=['#ad9176', '#795548', '#00695c','#b71c1c'],
-        explode=(0.05,0.05,0.05,0.05), 
-        autopct='%1.1f%%'
-        )
+        agreement_ratio = [
+        len(combined_df[combined_df["Agreement"] == "Agree Hatespeech"])/len(combined_df),
+        len(combined_df[combined_df["Agreement"] == "Agree Not Hatespeech"])/len(combined_df), 
+        len(combined_df[combined_df["Agreement"] == "False Positive"])/len(combined_df), 
+        len(combined_df[combined_df["Agreement"] == "False Negative"])/len(combined_df)
+        ]
 
-    for autotext in autotexts:
-        autotext.set_color('white')
-    # fig2.suptitle("Trumps twitter insults, labeled by the New York Times and our Hatespeech Model:")
-    plt.tight_layout()
-    st.pyplot(fig2, clear_figure=True)
+        plt.rcParams['font.size'] = 8.0
+        fig2, ax = plt.subplots(figsize=(6,6))
+        _,_,autotexts=ax.pie(agreement_ratio, 
+        labels = [
+            "Hatespeech and Insult", 
+            "Neither Hatespeech nor Insult", 
+            "Not Insult but Hatespeech", 
+            "Insult but not Hatespeech"
+            ],
+            colors=['#ad9176', '#795548', '#00695c','#b71c1c'],
+            explode=(0.05,0.05,0.05,0.05), 
+            autopct='%1.1f%%'
+            )
+
+        for autotext in autotexts:
+            autotext.set_color('white')
+        # fig2.suptitle("Trumps twitter insults, labeled by the New York Times and our Hatespeech Model:")
+        plt.tight_layout()
+        st.pyplot(fig2, clear_figure=True)
 
     st.write("---------------")
 
