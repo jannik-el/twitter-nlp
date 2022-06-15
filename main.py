@@ -330,7 +330,7 @@ def auto_predic():
     axes.plot(x,lst[4],label='Random Forest', marker='o')
     axes.set_xticks([1,2,3,4])
     axes.legend()
-    axes.set_xticklabels(["F1 Score", "Accuracy Score", "Recall Score", "Precision Score"]), 
+    axes.set_xticklabels(["F1 score", "Accuracy Score", "Recall Score", "Precision Score"]), 
     axes.set_title("Hatespeech Different Model Scores")
     st.pyplot()
 
@@ -449,7 +449,7 @@ def data_aug():
         autotext.set_color('white')
     plt.tight_layout()
     fig.suptitle("Insult label ratio to hatespeech label ratio comparison:")
-    st.pyplot()
+    st.pyplot(fig)
 
     
 
