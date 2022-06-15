@@ -337,6 +337,9 @@ def auto_predic():
     hate_scores['Classifier'] = ['DTC', 'K-Nearest neighbors', 'SGDC', 'MultinomialNB', 'Random Forest']
     hate_scores = hate_scores[["Classifier", "F1 score", "Accuracy Score", "Recall Score", "Precision Score"]]
     st.table(hate_scores)
+
+    st.write("------------------------------------------------------------------")
+
     scores = pd.read_csv("./streamlit/data/emoji_scores.csv")
     scores = scores[['F1 score', 'Accuracy Score', 'Recall Score', 'Precision Score']]
     
@@ -357,7 +360,7 @@ def auto_predic():
     scores = scores[["Classifier", "F1 score", "Accuracy Score", "Recall Score", "Precision Score"]]
     st.table(scores)
     
-
+    st.write("------------------------------------------------------------------")
     col1, col2 = st.columns(2)
     with col1:
         fig1 = plt.figure(figsize = (3,3))
@@ -447,6 +450,10 @@ def data_aug():
     plt.tight_layout()
     fig.suptitle("Insult label ratio to hatespeech label ratio comparison:")
     st.pyplot()
+
+    st.markdown("### Looking more closely however, we can say that:")
+
+    
 
     
 
