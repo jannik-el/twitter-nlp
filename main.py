@@ -32,7 +32,7 @@ By Juraj Septak, Gusts Gustavs Grīnbergs, Franek Liszka, Mirka Katuscakova and 
 """)
 st.write("------------------------------------------")
 
-st.sidebar.image
+# st.sidebar.image("")
 
 sidebar_options = (
     "Start Page", 
