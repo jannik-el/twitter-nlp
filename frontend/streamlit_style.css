@@ -1,0 +1,10 @@
+tbody th {
+    display:none;
+}
+.blank {
+    display:none;
+}
+
+.row_heading.level0 {
+    display:none;
+}

@@ -1,0 +1,10 @@
+nltk
+pickle5
+wordcloud
+pillow
+snscrape
+twitterscraper
+emoji
+seaborn
+sklearn
+utils
