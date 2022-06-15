@@ -336,7 +336,7 @@ def auto_predic():
 
     hate_scores['Classifier'] = ['DTC', 'K-Nearest neighbors', 'SGDC', 'MultinomialNB', 'Random Forest']
     st.table(hate_scores)
-    hate_scores = hate_scores["Classifier", "F1 score", "Accuracy Score", "Recall Score", "Precision Score"]
+    hate_scores = hate_scores[["Classifier", "F1 score", "Accuracy Score", "Recall Score", "Precision Score"]]
     st.table(hate_scores)
 
 
