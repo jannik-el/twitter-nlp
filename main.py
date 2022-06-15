@@ -20,7 +20,7 @@ import random
 import pickle
 import collections
 
-st.set_page_config(layout="wide",primaryColor="#1DA1F2",backgroundColor="#FFFFFF",secondaryBackgroundColor="#F0F2F6",textColor="#1DA1F2",font="monospace")
+st.set_page_config(layout="wide")
 
 ##### HEADER #####
 
