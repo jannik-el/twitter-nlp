@@ -482,7 +482,22 @@ def data_aug():
 
     st.markdown("## 2. Testing our Hatespeech model on the Offensive tweets dataset:")
 
+    def load_file(file):
+    with open(file, mode='r') as f:
+        data = f.readlines()
+        data = [i.strip("\n") for i in data]
+    return data
+
+    train_text = load_file("/work/twitter-nlp/data/tweeteval/datasets/offensive/train_text.txt")
+    train_labels = load_file("/work/twitter-nlp/data/tweeteval/datasets/offensive/train_labels.txt")
+    train_labels = [int(i) for i in train_labels]
+
+    OffenseDF = pd.DataFrame()
+    OffenseDF["Offense_Labels"] = train_labels
+    OffenseDF["Tweets"] = train_text
+
     offense_predict = open_jar("./data/pickle/classification_pickles/OffensePrediction.pkl")
+
     OffenseDF["HS_Label"] = label_predictions(offense_predict)
 
     data = [len(OffenseDF[OffenseDF["Offense_Labels"] == 0])/len(OffenseDF),len(OffenseDF[OffenseDF["Offense_Labels"] == 1])/len(OffenseDF)]
