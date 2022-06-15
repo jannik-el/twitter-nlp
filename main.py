@@ -513,7 +513,10 @@ def data_aug():
     for autotext in autotexts1:
         autotext.set_color('white')
     plt.tight_layout()
-    fig.suptitle("Insult label ratio to hatespeech label ratio comparison:"); 
+    fig.suptitle("Insult label ratio to hatespeech label ratio comparison:")
+    st.pyplot(fig)
+
+    return 
 
     
 
