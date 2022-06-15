@@ -47,7 +47,6 @@ hide_table_row_index = """
         tbody th {display:none;}
         .blank {display:none;}
         .row_heading.level0 {display:none;}
-        .blank {display:none;}
         </style>
         """
 # Inject CSS with Markdown
@@ -266,9 +265,8 @@ def man_anot():
             st.pyplot(fig=plt)
     with st.expander("Tweets we have not agreed on"):
         tweets=pd.read_csv("./streamlit/data/tweets.csv")
-        st.write('Ground Truth    Tweet')
-        for i in [3, 4, 6, 9, 14, 16, 19, 22, 32, 33, 40, 44, 58, 62, 63, 68, 79, 83, 92]:
-            st.write("         ",GT['value'][i],"        ",tweets['tweets'][i] )
+        dfpd=pd.read_csv("./streamlit/data/dfpd.csv")
+        st.table(dfpd)
         
     with st.expander("Inter-annotator agreement"):
         st.markdown("""
