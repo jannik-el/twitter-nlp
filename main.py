@@ -319,7 +319,7 @@ def auto_predic():
     
 
     hate_scores = pd.read_csv("./streamlit/data/hate_scores.csv")
-    hate_scores = hate_scores[['F1 score', 'Accuracy Score', 'Recall Score', 'Precision Score']]
+    hate_scores = hate_scores['F1 score', 'Accuracy Score', 'Recall Score', 'Precision Score']
     
     lst = hate_scores.values.tolist()
     fig, axes = plt.subplots(figsize=(10, 4))
@@ -336,12 +336,12 @@ def auto_predic():
     st.pyplot()
 
     hate_scores['Classifier'] = ['DTC', 'K-Nearest neighbors', 'SGDC', 'MultinomialNB', 'Random Forest']
-    hate_scores = hate_scores["Classifier", "F1 Score", "Accuracy Score", "Recall Score", "Precision Score"]
+    hate_scores = hate_scores[["Classifier", "F1 Score", "Accuracy Score", "Recall Score", "Precision Score"]]
     st.table(hate_scores)
 
 
     scores = pd.read_csv("./streamlit/data/emoji_scores.csv")
-    scores = scores[['F1 score', 'Accuracy Score', 'Recall Score', 'Precision Score']]
+    scores = scores['F1 score', 'Accuracy Score', 'Recall Score', 'Precision Score']
     
     lst = scores.values.tolist()
     fig, axes = plt.subplots(figsize=(10, 4))
@@ -357,7 +357,7 @@ def auto_predic():
     st.pyplot()
 
     scores['Classifier'] = ['DTC', 'K-Nearest neighbors', 'SGDC', 'MultinomialNB']
-    scores = scores["Classifier", "F1 Score", "Accuracy Score", "Recall Score", "Precision Score"]
+    scores = scores[["Classifier", "F1 Score", "Accuracy Score", "Recall Score", "Precision Score"]]
     st.table(scores)
     
 
