@@ -336,7 +336,7 @@ def auto_predic():
     st.pyplot()
 
     hate_scores['Classifier'] = ['DTC', 'K-Nearest neighbors', 'SGDC', 'MultinomialNB', 'Random Forest']
-    hate_scores = hate_scores[["Classifier", "F1 Score", "Accuracy Score", "Recall Score", "Precision Score"]]
+    hate_scores = hate_scores["Classifier", "F1 Score", "Accuracy Score", "Recall Score", "Precision Score"]
     st.table(hate_scores)
 
 
@@ -356,7 +356,7 @@ def auto_predic():
     axes.set_title("Emoji Different Model Scores")
     st.pyplot()
 
-    scores['Classifier'] = [['DTC', 'K-Nearest neighbors', 'SGDC', 'MultinomialNB']]
+    scores['Classifier'] = ['DTC', 'K-Nearest neighbors', 'SGDC', 'MultinomialNB']
     scores = scores["Classifier", "F1 Score", "Accuracy Score", "Recall Score", "Precision Score"]
     st.table(scores)
     
