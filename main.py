@@ -471,7 +471,7 @@ def data_aug():
         autotext.set_color('white')
     plt.tight_layout()
     fig.suptitle("Insult label ratio to hatespeech label ratio comparison:")
-    st.plot
+    st.pyplot()
 
     
 
