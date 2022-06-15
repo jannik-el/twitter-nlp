@@ -62,10 +62,6 @@ def start_page():
     col1, col2 = st.columns(2)
 
     with col1:
-        im = Image.open("./misc/wordart.png")
-        st.image(im, width=400)
-        
-    with col2:
         st.write("""
         This interactive app is designed as a representation of our groups submission
         for the First Year Project 2, using different NLP Machine Learning Models to classify hatespeech, and emojis.
@@ -74,6 +70,11 @@ def start_page():
         On the left hand side you can choose different options from the sidebar.
         These are all different tasks of our project.  
         """)
+        
+    with col2:
+    
+        im = Image.open("./misc/wordart.png")
+        st.image(im, width=400)
 
     return
 
