@@ -421,7 +421,7 @@ def data_aug():
     col1.metric("Hatespeech Prob.", f"{hs_pred}%")
     col2.metric("Not Hatespeech Prob.", f"{not_hs_pred}%")
     col3.metric("Insult Label", bool(random_tweet["Labels"]))
-    col4.metric("And for fun the emoji:", trump_emoji)
+    col4.metric("And for fun the emoji prediction:", trump_emoji)
     st.write("----------")
 
     
