@@ -331,7 +331,7 @@ def auto_predic():
     st.table(hate_scores)
 
     im = Image.open("./streamlit/data/confusion_matrix_emoji.svg")
-    st.image(im, width=550)
+    st.image(im, width=700)
 
     st.write("------------------------------------------------------------------")
 
