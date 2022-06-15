@@ -291,29 +291,6 @@ def man_anot():
 
 def auto_predic():
     st.set_option('deprecation.showPyplotGlobalUse', False)
-    
-    st.markdown("Below is an interactive example of how our models work:")
-    test_input = st.text_input("Input anything here, and see what our model classifies it as:", "Democrats Hillary Weak #MAGA")
-
-    models = ["SGDC", "DTC", "KNN", "MultinomialNB2", "RF"]
-    emoji_models = ["KNN","SGDC", "DTC", "MultinomialNB"]
-
-    col1f, col2f = st.columns(2)
-    hs_mod = col1f.radio("Choose a Hatespeech Model (SGDC is best)", models)
-    emo_mod = col2f.radio("Choose an emoji model (KNN is best)", emoji_models)
-
-
-    hs_preda, not_hs_preda = classify_and_seperate(test_input, hs_mod)
-    hs_preda = str(float(hs_preda)*100)[0:6] 
-    not_hs_preda = str(float(not_hs_preda)*100)[0:6]
-    emoji_pred = label_to_emoji(test_input, emo_mod)
-
-    col1a, col2a, col3a = st.columns(3)
-    col1a.metric("Hatespeech Prob.", f"{hs_preda}%")
-    col2a.metric("Not Hatespeech Prob.", f"{not_hs_preda}%")
-    col3a.metric("Most likely emoji predicted", emoji_pred)
-    
-    st.write("------------------------------------------------------------------")
 
     col1, col2 = st.columns(2)
     with col1:
@@ -374,6 +351,31 @@ def auto_predic():
     scores['Classifier'] = ['DTC', 'K-Nearest neighbors', 'SGDC', 'MultinomialNB']
     scores = scores[["Classifier", "F1 score", "Accuracy Score", "Recall Score", "Precision Score"]]
     st.table(scores)
+
+    st.write("------------------------------------------------------------------")
+    
+    st.markdown("Below is an interactive example of how our models work:")
+    test_input = st.text_input("Input anything here, and see what our model classifies it as:", "Democrats Hillary Weak #MAGA")
+
+    models = ["SGDC", "DTC", "KNN", "MultinomialNB2", "RF"]
+    emoji_models = ["KNN","SGDC", "DTC", "MultinomialNB"]
+
+    col1f, col2f = st.columns(2)
+    hs_mod = col1f.radio("Choose a Hatespeech Model (SGDC is best)", models)
+    emo_mod = col2f.radio("Choose an emoji model (KNN is best)", emoji_models)
+
+
+    hs_preda, not_hs_preda = classify_and_seperate(test_input, hs_mod)
+    hs_preda = str(float(hs_preda)*100)[0:6] 
+    not_hs_preda = str(float(not_hs_preda)*100)[0:6]
+    emoji_pred = label_to_emoji(test_input, emo_mod)
+
+    col1a, col2a, col3a = st.columns(3)
+    col1a.metric("Hatespeech Prob.", f"{hs_preda}%")
+    col2a.metric("Not Hatespeech Prob.", f"{not_hs_preda}%")
+    col3a.metric("Most likely emoji predicted", emoji_pred)
+    
+    
     
     return
 
