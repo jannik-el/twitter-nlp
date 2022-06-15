@@ -331,13 +331,13 @@ def auto_predic():
 
     col1, col2 = st.columns(2)
     with col1:
-        fig1 = plt.figure(figsize = (10,2))
+        fig1 = plt.figure(figsize = (6,6))
         y_train_counts = open_jar("./streamlit/ytraincounts.pkl")
         plt.rcParams['font.size'] = 11.0
         plt.pie(collections.Counter(list(y_train_counts)).values(), labels=['Not hate speech','Hate speech'],colors=['#eab676','#2596be'],explode=(0, 0.1), autopct = lambda p:f'{p:.2f}%')
         st.pyplot(fig1=plt)
     with col2:
-        fig2 = plt.figure(figsize = (20,2))
+        fig2 = plt.figure(figsize = (10,10))
         fig, axes = plt.subplots(figsize=(9, 4))
         y_train_emoji_counts = open_jar("./streamlit/ytrainemojicounts.pkl")
         emoji_classes= pd.read_csv("./streamlit/data/mapping-2.txt", sep = "	", header=None)
