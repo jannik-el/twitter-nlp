@@ -408,6 +408,7 @@ def data_aug():
     st.markdown(f">_"+random_tweet["Tweets"]+"_")
 
     st.write("Here you can see what label our Model is giving the tweet, and what label was given by the New York Times:")
+    st.subheader("Hatespeech ML Model is SGDC, and Emoji Prediction ML Model is KNN")
 
     hs_pred, not_hs_pred = classify_and_seperate(str(random_tweet["Tweets"]))
     hs_pred = str(float(hs_pred)*100)[0:6] 
