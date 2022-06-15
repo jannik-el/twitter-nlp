@@ -267,7 +267,7 @@ def man_anot():
     with st.expander("Tweets we have not agreed on"):
         tweets=pd.read_csv("./streamlit/data/tweets.csv")
         st.write('Ground Truth    Tweet')
-        for i in range(100):
+        for i in [3, 4, 6, 9, 14, 16, 19, 22, 32, 33, 40, 44, 58, 62, 63, 68, 79, 83, 92]:
             st.write("         ",GT['value'][i],"        ",tweets['tweets'][i] )
         
     with st.expander("Inter-annotator agreement"):
@@ -295,10 +295,11 @@ def auto_predic():
     test_input = st.text_input("Input anything here, and see what our model classifies it as:", "Democrats Hillary Weak #MAGA")
 
     models = ["SGDC", "DTC", "KNN", "MultinomialNB2", "RF"]
+    emoji_models = ["SGDC", "DTC",  "MultinomialNB2", "RF"]
 
     col1f, col2f = st.columns(2)
     col1f.radio("Choose a Hatespeech Model (SGDC is best)", models)
-    col2f.radio("Choose an emoji model", models)
+    col2f.radio("Choose an emoji model (", models)
 
 
     hs_preda, not_hs_preda = classify_and_seperate(test_input)
