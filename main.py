@@ -487,71 +487,73 @@ def data_aug():
 
     st.markdown("## 2. Testing our Hatespeech model on the Offensive tweets dataset:")
 
-    def load_file(file):
-        with open(file, mode='r') as f:
-            data = f.readlines()
-            data = [i.strip("\n") for i in data]
-        return data
+    with st.expander("Click here to see the results:"):
 
-    train_text = load_file("./streamlit/data/offensive/train_text-2.txt")
-    train_labels = load_file("./streamlit/data/offensive/train_labels-2.txt")
-    train_labels = [int(i) for i in train_labels]
+        def load_file(file):
+            with open(file, mode='r') as f:
+                data = f.readlines()
+                data = [i.strip("\n") for i in data]
+            return data
 
-    OffenseDF = pd.DataFrame()
-    OffenseDF["Offense_Labels"] = train_labels
-    OffenseDF["Tweets"] = train_text
+        train_text = load_file("./streamlit/data/offensive/train_text-2.txt")
+        train_labels = load_file("./streamlit/data/offensive/train_labels-2.txt")
+        train_labels = [int(i) for i in train_labels]
 
-    offense_predict = open_jar("./data/pickle/classification_pickles/OffensePrediction.pkl")
+        OffenseDF = pd.DataFrame()
+        OffenseDF["Offense_Labels"] = train_labels
+        OffenseDF["Tweets"] = train_text
 
-    OffenseDF["HS_Label"] = label_predictions(offense_predict)
+        offense_predict = open_jar("./data/pickle/classification_pickles/OffensePrediction.pkl")
 
-    data = [len(OffenseDF[OffenseDF["Offense_Labels"] == 0])/len(OffenseDF),len(OffenseDF[OffenseDF["Offense_Labels"] == 1])/len(OffenseDF)]
-    data2 = [len(OffenseDF[OffenseDF["HS_Label"] == 0])/len(OffenseDF), len(OffenseDF[OffenseDF["HS_Label"] == 1])/len(OffenseDF)]
-    labels = ['Offensive', 'Not Offensive']
-    labels2 = ['Hatespeech', "Not Hatespeech"]
+        OffenseDF["HS_Label"] = label_predictions(offense_predict)
 
-    fig, ax = plt.subplots(1,2, figsize=(16,7))
-    _,_,autotexts0=ax[0].pie(data, labels=labels, colors=['#00695c','#b71c1c'],explode=(0, 0.1), autopct='%1.1f%%', shadow=True)
-    _,_,autotexts1=ax[1].pie(data2, labels=labels2, autopct='%1.1f%%',colors=['#00695c','#b71c1c'],explode=(0, 0.1), shadow=True)
-    for autotext in autotexts0:
-        autotext.set_color('white')
-    for autotext in autotexts1:
-        autotext.set_color('white')
-    plt.tight_layout()
-    fig.suptitle("Insult label ratio to hatespeech label ratio comparison:")
-    st.pyplot(fig)
+        data = [len(OffenseDF[OffenseDF["Offense_Labels"] == 0])/len(OffenseDF),len(OffenseDF[OffenseDF["Offense_Labels"] == 1])/len(OffenseDF)]
+        data2 = [len(OffenseDF[OffenseDF["HS_Label"] == 0])/len(OffenseDF), len(OffenseDF[OffenseDF["HS_Label"] == 1])/len(OffenseDF)]
+        labels = ['Offensive', 'Not Offensive']
+        labels2 = ['Hatespeech', "Not Hatespeech"]
 
-    OffenseDF = OffenseDF.reset_index(drop=True)
+        fig, ax = plt.subplots(1,2, figsize=(16,7))
+        _,_,autotexts0=ax[0].pie(data, labels=labels, colors=['#00695c','#b71c1c'],explode=(0, 0.1), autopct='%1.1f%%', shadow=True)
+        _,_,autotexts1=ax[1].pie(data2, labels=labels2, autopct='%1.1f%%',colors=['#00695c','#b71c1c'],explode=(0, 0.1), shadow=True)
+        for autotext in autotexts0:
+            autotext.set_color('white')
+        for autotext in autotexts1:
+            autotext.set_color('white')
+        plt.tight_layout()
+        fig.suptitle("Insult label ratio to hatespeech label ratio comparison:")
+        st.pyplot(fig)
 
-    def agreement_func():
-        results = []
-        for i in range(0, 11916):
-            if OffenseDF["Offense_Labels"][i] == 1 and  OffenseDF["HS_Label"][i] == 1:
-                results.append("Agree Offense")
-            elif OffenseDF["Offense_Labels"][i] == 0 and  OffenseDF["HS_Label"][i] == 0:
-                results.append("Agree Not Offense")
-            elif OffenseDF["Offense_Labels"][i] == 1 and OffenseDF["HS_Label"][i] == 0:
-                results.append("False Negative")
-            elif OffenseDF["Offense_Labels"][i] == 0 and OffenseDF["HS_Label"][i] == 1:
-                results.append("False Positive")
-        return results
+        OffenseDF = OffenseDF.reset_index(drop=True)
 
-    OffenseDF["Agreement"] = agreement_func()
-    
-    agreement_ratio = [
-    len(OffenseDF[OffenseDF["Agreement"] == "Agree Offense"])/len(OffenseDF),
-    len(OffenseDF[OffenseDF["Agreement"] == "Agree Not Offense"])/len(OffenseDF), 
-    len(OffenseDF[OffenseDF["Agreement"] == "False Positive"])/len(OffenseDF), 
-    len(OffenseDF[OffenseDF["Agreement"] == "False Negative"])/len(OffenseDF)
-    ]
-    fig, ax = plt.subplots(figsize=(16,7))
-    _,_,autotexts=ax.pie(agreement_ratio, labels = ["Offensive and Hatespeech", "Neither Offensive nor Hatespeech", "Offensive but not Hatespeech", "Not Offensive but Hatespeech"],colors=['#795548','#ad9176','#00695c','#b71c1c'],explode=(0.05,0.05,0.05,0.05), autopct='%1.1f%%')
-    for autotext in autotexts:
-        autotext.set_color('white')
-    fig.suptitle("Offensive labeling to Hatespeech classification agreement ratio:")
-    plt.tight_layout()
+        def agreement_func():
+            results = []
+            for i in range(0, 11916):
+                if OffenseDF["Offense_Labels"][i] == 1 and  OffenseDF["HS_Label"][i] == 1:
+                    results.append("Agree Offense")
+                elif OffenseDF["Offense_Labels"][i] == 0 and  OffenseDF["HS_Label"][i] == 0:
+                    results.append("Agree Not Offense")
+                elif OffenseDF["Offense_Labels"][i] == 1 and OffenseDF["HS_Label"][i] == 0:
+                    results.append("False Negative")
+                elif OffenseDF["Offense_Labels"][i] == 0 and OffenseDF["HS_Label"][i] == 1:
+                    results.append("False Positive")
+            return results
 
-    st.pyplot()
+        OffenseDF["Agreement"] = agreement_func()
+        
+        agreement_ratio = [
+        len(OffenseDF[OffenseDF["Agreement"] == "Agree Offense"])/len(OffenseDF),
+        len(OffenseDF[OffenseDF["Agreement"] == "Agree Not Offense"])/len(OffenseDF), 
+        len(OffenseDF[OffenseDF["Agreement"] == "False Positive"])/len(OffenseDF), 
+        len(OffenseDF[OffenseDF["Agreement"] == "False Negative"])/len(OffenseDF)
+        ]
+        fig, ax = plt.subplots(figsize=(16,7))
+        _,_,autotexts=ax.pie(agreement_ratio, labels = ["Offensive and Hatespeech", "Neither Offensive nor Hatespeech", "Offensive but not Hatespeech", "Not Offensive but Hatespeech"],colors=['#795548','#ad9176','#00695c','#b71c1c'],explode=(0.05,0.05,0.05,0.05), autopct='%1.1f%%')
+        for autotext in autotexts:
+            autotext.set_color('white')
+        fig.suptitle("Offensive labeling to Hatespeech classification agreement ratio:")
+        plt.tight_layout()
+
+        st.pyplot()
 
     return 
 
