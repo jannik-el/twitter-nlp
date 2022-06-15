@@ -483,10 +483,10 @@ def data_aug():
     st.markdown("## 2. Testing our Hatespeech model on the Offensive tweets dataset:")
 
     def load_file(file):
-    with open(file, mode='r') as f:
-        data = f.readlines()
-        data = [i.strip("\n") for i in data]
-    return data
+        with open(file, mode='r') as f:
+            data = f.readlines()
+            data = [i.strip("\n") for i in data]
+        return data
 
     train_text = load_file("/work/twitter-nlp/data/tweeteval/datasets/offensive/train_text.txt")
     train_labels = load_file("/work/twitter-nlp/data/tweeteval/datasets/offensive/train_labels.txt")
