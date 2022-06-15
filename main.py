@@ -310,7 +310,7 @@ def auto_predic():
 
     st.write("------------------------------------------------------------------")
     
-    hate_scores = pd.read_csv("./streamlit/data/hate_scores.csv")
+    hate_scores = pd.read_csv("./streamlit/data/hs_scores.csv")
     hate_scores = hate_scores[['F1 score', 'Accuracy Score', 'Recall Score', 'Precision Score']]
     
     lst = hate_scores.values.tolist()
