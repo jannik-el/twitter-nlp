@@ -357,7 +357,7 @@ def auto_predic():
 
     col1, col2 = st.columns(2)
     with col1:
-        st.write("Confusion matrix - Hatespeech")
+        st.markdown('Confusion matrix - Hatespeech', align_text='center')
         im = Image.open("./streamlit/data/confusion_matrix_hate.png")
         st.image(im, width=750)
 
