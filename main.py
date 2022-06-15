@@ -312,7 +312,7 @@ def auto_predic():
     col2a.metric("Not Hatespeech Prob.", f"{not_hs_preda}%")
     col3a.metric("Most likely emoji predicted", emoji_pred)
     
-    st.write("--------------")
+    st.write("---------------------------------")
     
 
     scores = pd.read_csv("./streamlit/data/hs_scores.csv")
