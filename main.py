@@ -460,7 +460,9 @@ def data_aug():
             autotext.set_color('white')
         plt.tight_layout()
         fig1.suptitle("Insult label ratio to hatespeech label ratio comparison:")
-        st.pyplot(fig1)
+
+        col1, col2, col3 = st.columns(3)
+        col3.pyplot(fig1)
 
     st.markdown("### Looking more closely however:")
 
