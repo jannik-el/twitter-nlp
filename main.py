@@ -98,7 +98,7 @@ def preprocessing():
     with st.expander("Testing tokenizers"):
         st.write("We created our own regex tokenizer and looked at how it worked compared to other tokenizers:")
 
-        line = st.text_input('Try it out below:', "Time for some BBQ and whiskey libations. Chomp, belch, chomp! (@ Lucille's Smokehouse Bar-B-Que)😍")
+        line = st.text_input('Try it out below:', "Time for some BBQ and whiskey libations. Chomp, belch, chomp! 😍")
         tokenizers = ["Regex", "NLTKTweetModified", "NLTKTweet", "NLTKTreeBank"]
 
         for i in tokenizers:
