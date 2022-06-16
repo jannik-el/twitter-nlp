@@ -495,7 +495,9 @@ def data_aug():
             autotext.set_color('white')
         # fig2.suptitle("Trumps twitter insults, labeled by the New York Times and our Hatespeech Model:")
         plt.tight_layout()
-        st.pyplot(fig2, clear_figure=True)
+
+        col1, col2, col3 = st.columns(3)
+        col2.pyplot(fig2, clear_figure=True)
 
     st.write("---------------")
 
@@ -535,7 +537,8 @@ def data_aug():
             autotext.set_color('white')
         plt.tight_layout()
         fig.suptitle("Insult label ratio to hatespeech label ratio comparison:")
-        st.pyplot(fig)
+        col1, col2, col3 = st.columns(3)
+        col2.pyplot(fig)
 
         OffenseDF = OffenseDF.reset_index(drop=True)
 
@@ -566,8 +569,9 @@ def data_aug():
             autotext.set_color('white')
         fig.suptitle("Offensive labeling to Hatespeech classification agreement ratio:")
         plt.tight_layout()
-
-        st.pyplot()
+        
+        col1, col2, col3 = st.columns(3)
+        col2.pyplot()
 
     return 
 
