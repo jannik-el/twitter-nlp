@@ -61,7 +61,7 @@ def start_page():
 
 
     
-    col1, col2 = st.columns(2)
+    col1, col2, col3 = st.columns(3)
 
     with col1:
         st.write("""**This interactive app is designed as a representation of our group submission
