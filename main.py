@@ -537,8 +537,8 @@ def data_aug():
             autotext.set_color('white')
         plt.tight_layout()
         fig.suptitle("Insult label ratio to hatespeech label ratio comparison:")
-        col1, col2, col3 = st.columns(3)
-        col2.pyplot(fig)
+        col1, col2 = st.columns(2)
+        col1.pyplot(fig)
 
         OffenseDF = OffenseDF.reset_index(drop=True)
 
@@ -569,8 +569,7 @@ def data_aug():
             autotext.set_color('white')
         fig.suptitle("Offensive labeling to Hatespeech classification agreement ratio:")
         plt.tight_layout()
-        
-        col1, col2, col3 = st.columns(3)
+
         col2.pyplot()
 
     return 
