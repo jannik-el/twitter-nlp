@@ -462,7 +462,7 @@ def data_aug():
         fig1.suptitle("Insult label ratio to hatespeech label ratio comparison:")
 
         col1, col2, col3 = st.columns(3)
-        col3.pyplot(fig1)
+        col2.pyplot(fig1)
 
     st.markdown("### Looking more closely however:")
 
