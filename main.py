@@ -367,9 +367,9 @@ def auto_predic():
     st.write("------------------------------------------------------------------")
 
     st.markdown("Below is an interactive example of how our models work:")
-    test_input = st.text_input("Input anything here, and see what our model classifies it as:", "Democrats Hillary Weak #MAGA")
+    test_input = st.text_input("Input anything here, and see what our model classifies it as:", "Democrats are weak. Hillary to jail. ")
 
-    models = ["SGDC", "DTC", "KNN", "MultinomialNB2", "RF"]
+    models = ["SGDC", "DTC", "KNN", "MultinomialNB2", "RF"] 
     emoji_models = ["MultinomialNB", "KNN","SGDC", "DTC"]
 
     col1f, col2f = st.columns(2)
@@ -420,7 +420,7 @@ def data_aug():
 
     st.write("Below is a random tweet from our dataset, with it's insult label, and hatespeech probability according to our model:")
     random_tweet = trump_df.iloc[random.randrange(0, len(trump_df), 1)]
-    st.markdown(f">_"+random_tweet["Tweets"]+"_")
+    st.markdown(f">**_"+random_tweet["Tweets"]+"_**")
     st.markdown("_(You can press `r` to refresh and see a new tweet)_")
 
     st.markdown("""
