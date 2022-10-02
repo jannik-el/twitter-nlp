@@ -167,9 +167,6 @@ def trump_demo():
     trump_df2 = trump_df[['Labels', 'Tweets', 'HS_Label']]
     trump_df2 = trump_df2.rename(columns={"Insult Labels": "Labels", "Tweets": "Tweets", "HS_Label":"HS_Label"})
 
-    with st.expander("Click here to see what the data frame looks like after labelling each tweet based on our model:"):
-        st.table(trump_df2.iloc[0:10])
-
     st.write("Below is a random tweet from our dataset, with it's insult label, and hatespeech probability according to our model:")
     random_tweet = trump_df.iloc[random.randrange(0, len(trump_df), 1)]
     st.markdown(f">**_"+random_tweet["Tweets"]+"_**")
@@ -188,7 +185,7 @@ def trump_demo():
     col1, col2, col3, col4 = st.columns(4)
     col1.metric("Hatespeech Prob.", f"{hs_pred}%")
     col2.metric("Not Hatespeech Prob.", f"{not_hs_pred}%")
-    col3.metric("Insult Label", bool(random_tweet["Labels"]))
+    col3.metric("Insult Label (According to NYT)", bool(random_tweet["Labels"]))
     col4.metric("And for fun the emoji prediction:", trump_emoji)    
 
 ############## NLP Code ###################
