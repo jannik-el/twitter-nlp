@@ -41,10 +41,7 @@ sidebar_options = (
     "Start Page",
     "Tokenizer",
     "Model Demo",
-    "Data Characterisation", 
-    "Manual Annotation", 
-    "Automatic Prediction", 
-    "Data Augmentation")
+    "Labeling Trump's twitter insults")
 
 ##### PAGE CODE ##########
 
@@ -110,6 +107,16 @@ def model_demo():
     col2a.metric("Not Hatespeech Prob.", f"{not_hs_preda}%")
     col3a.metric("Most likely emoji predicted", emoji_pred)
 
+    with st.expander("Confusion Matrixes:"):
+        col1, col2 = st.columns(2)
+        with col1:
+            im = Image.open("./streamlit/data/confusion_matrix_hate.png")
+            st.image(im, width=750)
+
+        with col2:
+            im = Image.open("./streamlit/data/confusion_matrix_emoji.png")
+            st.image(im, width=750)
+
 
 def tokenizer_page():
 
@@ -123,170 +130,6 @@ def tokenizer_page():
         st.code(str(tokenize_lines(i, line)))
 
     return
-    
-def data_char():
-
-    with st.expander("Corpora statistics"):
-        corpus_data = pd.read_csv("./streamlit/data/corpus_data.csv")
-        corpus_data = corpus_data[['Dataset', 'Corpus size', 'Vocabulary size', 'Type to Token ratio']]
-        st.dataframe(corpus_data)
-
-    with st.expander("Most frequent tokens"):
-
-        hsw_stopwords = pd.read_csv("./streamlit/data/hsw_stopwords.csv")
-        emoji_stopwords = pd.read_csv("./streamlit/data/emojiw_stopwords.csv")
-        # creating dicts, to make wordclouds
-        hs_wo_stopwords_dict = dict(zip(list(hsw_stopwords['token']), list(hsw_stopwords['frequency'])))
-        emoji_wo_stopwords_dict = dict(zip(list(emoji_stopwords['token']), list(emoji_stopwords['frequency'])))
-        hs_wo_stopwords_dict_lf = dict((k, v) for k, v in hs_wo_stopwords_dict.items() if v <= 3) #least frequent hate (value <= 3)
-        emoji_wo_stopwords_dict_lf = dict((k,v) for k, v in emoji_wo_stopwords_dict.items() if v <= 3) #least frequent emoji (value <=3)
-
-        col1, col2 = st.columns(2)
-        with col1:
-            fig = plt.figure(figsize = (5,10))
-            hsw_stopwords.iloc[0:30].plot.barh(x='token',y='frequency', figsize=(5,14))
-            plt.title("Most frequent words in hatespeech dataset (top 50) without stopwords")
-            plt.xticks(rotation = 90)
-            st.pyplot(fig=plt)
-            st.write("**Least frequent words in hatespeech dataset**")
-            custom_wc(hs_wo_stopwords_dict_lf)
-            
-        with col2: 
-            fig = plt.figure(figsize = (5,10))
-            emoji_stopwords.iloc[0:30].plot.barh(x='token',y='frequency', figsize=(5,13))
-            plt.title("Most frequent words in emoji dataset (top 50) without stopwords")
-            plt.xticks(rotation = 90)
-            st.pyplot(fig=plt)
-            st.write("**Least frequent words in emoji dataset**")
-            custom_wc(emoji_wo_stopwords_dict_lf)
-
-        ############### HATESPEECH Plots
-        hsw_stopwords['idx'] = hsw_stopwords.index + 1
-        hsw_stopwords['norm_freq'] = hsw_stopwords.frequency / len(hsw_stopwords)
-        hsw_stopwords['cumul_frq'] = hsw_stopwords.norm_freq.cumsum()
-
-        sns.set()
-        fig, axes = plt.subplots(2,3, figsize=(25,16))
-        fig.suptitle("Corpus Frequent Word Statistics", size=30)
-        sns.set_theme(style='whitegrid')
-        plt.subplots_adjust(hspace = 0.3)
-
-        # axes[0,0].set_xscale('log')
-        sns.scatterplot(ax=axes[0,0], x='idx', y='cumul_frq', data=hsw_stopwords).set_title("Hatespeech Cumulative frequency by index", size=18)
-
-        sns.lineplot(x='idx', y='cumul_frq', data=hsw_stopwords[:10000], ax=axes[0,1]).set_title("Hatespeech Cumulative frequency by index, top 10000 tokens", size=18)
-
-        hsw_stopwords['log_frq'] = np.log(hsw_stopwords.frequency)
-        hsw_stopwords['log_rank'] = np.log(hsw_stopwords.frequency.rank(ascending=False))
-        sns.regplot(x='log_rank', y='log_frq', data=hsw_stopwords, ax=axes[0,2], line_kws={"color": "red"}).set_title("Hatespeech Log-log plot for Zipf's law", size=18)
-
-        ###################### EMOJI PLOTS
-        #doing zipfs law on our frq dataframe and plotting
-        emoji_stopwords['idx'] = emoji_stopwords.index + 1
-        emoji_stopwords['norm_freq'] = emoji_stopwords.frequency / len(emoji_stopwords)
-        emoji_stopwords['cumul_frq'] = emoji_stopwords.norm_freq.cumsum()
-
-        # Plots
-        # axes[1,0].set_xscale('log')
-        sns.scatterplot(ax=axes[1,0], x='idx', y='cumul_frq', data=emoji_stopwords).set_title("Emoji Cumulative frequency by index", size=18)
-
-        sns.lineplot(x='idx', y='cumul_frq', data=emoji_stopwords[:10000], ax=axes[1,1]).set_title("Emoji Cumulative frequency by index, top 10000 tokens", size=18)
-
-        emoji_stopwords['log_frq'] = np.log(emoji_stopwords.frequency)
-        emoji_stopwords['log_rank'] = np.log(emoji_stopwords.frequency.rank(ascending=False))
-        sns.regplot(x='log_rank', y='log_frq', data=emoji_stopwords, ax=axes[1,2], line_kws={"color": "red"}).set_title("Emoji Log-log plot for Zipf's law", size=18);
-        st.pyplot(fig)
-    return
-
-
-def man_anot():
-    st.set_option('deprecation.showPyplotGlobalUse', False)
-
-    st.write("")
-
-    with st.expander("Group manual annotation"):
-        st.write("""
-        For the manual annotation, a random sample of 100 tweets from the hate speech dataset was selected. 
-        To annotate the data semi-automatically, a script was created and run locally. 
-        The group members went through the sample independently and without consulting the ground truth,
-        and labelled them according to the same scheme. """)
-
-        st.write("")
-
-        st.markdown("""
-        For disagreement in 19 cases the reasons could be:
-        - the tweets were manually labelled before reading the definition of hate speech (some group members could already have prior knowledge)
-        - some tweets could be understood in varying ways depending on the context
-        - for some tweets, the intentions of the author were unclear (given tweet could be understood as a joke in some settings)
-        """)
-        
-        st.write("")
-
-        #Plot (group annotation)
-        fig = plt.figure(figsize = (10,2))
-        dfcrowd = pd.read_csv("./streamlit/data/survey.csv")
-        GT = pd.read_csv("./streamlit/data/GT.csv")
-        plt.plot(dfcrowd['ours'],label='Group annotation',color='red',linewidth=3.0)
-        plt.plot(GT['value'],label='Original label',color='blue',linewidth=3.0)
-        plt.title('Result of our manual annotation compared to the Ground Truth')
-        plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0);
-        st.pyplot(fig=plt)
-    
-    with st.expander("Survey (external annotation)"):
-        st.write("""In addition to group members annotated the sample,
-        survey was created. 11 participants in the age group 18-25,
-        assigned if the tweets from the random sample are hate speech or not.""")
-
-        #Plot (survey annotation)
-        fig2 = plt.figure(figsize = (10,2))
-        plt.plot(dfcrowd['annotation'],label='Crowd annotation',color='red',linewidth=3)
-        plt.plot(dfcrowd['ours'],color='green',label='Group annotation',linewidth=3)
-        plt.title('Result of our manual annotation compared to the survey')
-        plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0);
-        #plt.plot(dfcrowd['annotation'],label='Crowd annotation')
-        st.pyplot(fig2=plt)
-
-    with st.expander("Agreement with the ground truth"):
-        st.write("""We have looked at the agreeement with the ground truth provided
-         along with the dataset. It was annotated by annotators (crowd)
-          and 2 experts (native or near-native speakers of British English, 
-          having an extensive experience in annotating data for the task's subject).""")
-
-        col1, col2 = st.columns(2)
-        with col1:
-            fig = plt.figure(figsize = (5,5))
-            plt.pie([81,19],labels=['Agreed','Disagreed'],colors=['#2596be','#eab676'],explode=(0, 0.1),autopct='%1.1f%%');
-            plt.title('Agreement of group annotation and ground truth labels')
-            st.pyplot(fig=plt)
-        
-        with col2: 
-            fig = plt.figure(figsize = (5,5))
-            plt.pie([77,23],labels=['Agreed','Disagreed'],colors=['#eab676','#2596be'],explode=(0, 0.1),autopct='%1.1f%%');
-            plt.title('Agreement of survey results and ground truth labels')
-            st.pyplot(fig=plt)
-    with st.expander("Tweets we have not agreed on"):
-        tweets=pd.read_csv("./streamlit/data/tweets.csv")
-        dfpd=pd.read_csv("./streamlit/data/dfpd.csv")
-        dfpd=dfpd[['Ground Truth','Tweet']]
-        st.table(dfpd)
-        
-    with st.expander("Inter-annotator agreement"):
-        st.markdown("""
-        To report on the inter-annotator we have decided to use the Cohen's kappa as our primary metric, as:
-        - Each coder had their own preferences (individual annotator bias)
-        - Categories were not equally likely
-        As there were more than two annotators, we are using the generalized version 
-        of the metric - multi-κ (Fleiss' kappa)""")
-        
-        #Kappa and agreement table
-        d = {'Name': ['Juraj','Mirka','Gust','Jannik','Franek'], 
-        'Avg Agreement': [0.73,0.78,0.80,0.70,0.84],
-        'Kappa' : [0.4599,0.5600,0.6000,0.3999,0.6799]}
-        kappa_df = pd.DataFrame(data=d)
-        st.table(kappa_df)
-
-    return 
-
 
 def auto_predic():
     st.set_option('deprecation.showPyplotGlobalUse', False)
@@ -384,8 +227,6 @@ def auto_predic():
     col1a.metric("Hatespeech Prob.", f"{hs_preda}%")
     col2a.metric("Not Hatespeech Prob.", f"{not_hs_preda}%")
     col3a.metric("Most likely emoji predicted", emoji_pred)
-    
-    
     
     return
 
