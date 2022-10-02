@@ -74,18 +74,6 @@ def start_page():
     return
 
 def model_demo():
-    with st.expander("Our datasets"):
-        st.write("Both the hatespeech detection and the emoji predicion dataset came from the same source:")
-        st.caption("https://github.com/cardiffnlp/tweeteval")
-
-        st.write("The hatespeech dataset uses the classifiers 1 and 0, hatespeech and not hatespeech respectively, while the emoji dataset had more classifiers:")
-
-        map_df = pd.DataFrame()
-        emoji_map = ['❤', '😍', '😂', '💕', '🔥', '😊', '😎', '✨', '💙', '😘', '📷', '🇺🇸', '☀', '💜', '😉', '💯', '😁', '🎄', '📸', '😜']
-        map_df["Emoji"] = emoji_map
-        map_df = map_df.T
-        st.dataframe(map_df)
-
     st.markdown("Below is an interactive example of how our models work:")
     test_input = st.text_input("Input anything here, and see what our model classifies it as:", "Democrats are weak. Hillary to jail. ")
 
@@ -116,6 +104,31 @@ def model_demo():
         with col2:
             im = Image.open("./streamlit/data/confusion_matrix_emoji.png")
             st.image(im, width=750)
+
+    with st.expander("Dataset Labels:"):
+        st.write("Both the hatespeech detection and the emoji predicion dataset came from the same source:")
+        st.caption("https://github.com/cardiffnlp/tweeteval")
+
+        st.write("The hatespeech dataset uses the classifiers 1 and 0, hatespeech and not hatespeech respectively, while the emoji dataset had more classifiers:")
+
+        map_df = pd.DataFrame()
+        emoji_map = ['❤', '😍', '😂', '💕', '🔥', '😊', '😎', '✨', '💙', '😘', '📷', '🇺🇸', '☀', '💜', '😉', '💯', '😁', '🎄', '📸', '😜']
+        map_df["Emoji"] = emoji_map
+        map_df = map_df.T
+        st.dataframe(map_df)
+
+    with st.expander("Model Scores:"):
+        hate_scores = pd.read_csv("./streamlit/data/hs_scores.csv")
+        hate_scores = hate_scores[['F1 score', 'Accuracy Score', 'Recall Score', 'Precision Score']]
+        hate_scores['Classifier'] = ['DTC', 'K-Nearest neighbors', 'SGDC', 'MultinomialNB', 'Random Forest']
+        hate_scores = hate_scores[["Classifier", "F1 score", "Accuracy Score", "Recall Score", "Precision Score"]]
+        st.table(hate_scores)
+
+        scores = pd.read_csv("./streamlit/data/emoji_scores.csv")
+        scores = scores[['F1 score', 'Accuracy Score', 'Recall Score', 'Precision Score']]
+        scores['Classifier'] = ['DTC', 'K-Nearest neighbors', 'SGDC', 'MultinomialNB']
+        scores = scores[["Classifier", "F1 score", "Accuracy Score", "Recall Score", "Precision Score"]]
+        st.table(scores)
 
 
 def tokenizer_page():
