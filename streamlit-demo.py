@@ -112,37 +112,16 @@ def model_demo():
 
 
 def tokenizer_page():
-    st.write("To be able to create a model for the different tasks we had, we first had to do some prepocessing.")
 
-    with st.expander("Testing tokenizers"):
-        st.write("We created our own regex tokenizer and looked at how it worked compared to other tokenizers:")
+    st.write("We created our own regex tokenizer and looked at how it worked compared to other tokenizers:")
 
-        line = st.text_input('Try it out below:', "Time for some BBQ and whiskey libations. Chomp, belch, chomp! 😍")
-        tokenizers = ["Regex", "NLTKTweetModified", "NLTKTweet", "NLTKTreeBank"]
+    line = st.text_input('Try it out below:', "Time for some BBQ and whiskey libations. Chomp, belch, chomp! 😍")
+    tokenizers = ["Regex", "NLTKTweetModified", "NLTKTweet", "NLTKTreeBank"]
 
-        for i in tokenizers:
-            st.write(i, ":")
-            st.code(str(tokenize_lines(i, line)))
+    for i in tokenizers:
+        st.write(i, ":")
+        st.code(str(tokenize_lines(i, line)))
 
-    with st.expander("Comparing tokenizers on the hatespeech dataset"):
-        st.write("First we looked at how many tokens are 'leftover', after tokenizing:")
-    
-        token_stats = pd.DataFrame()
-        token_stats["Regex"] = [185976]
-        token_stats["NLTKTweetModified"] = [197307]
-        token_stats["NLTKTweet"] = [213182]
-        token_stats["NLTKTreeBank"] = [218934]
-        # token_stats = token_stats.transpose()
-        # token_stats.columns.name = 'No. Tokens'
-        st.table(token_stats)
-    
-        st.write("We also looked at how the tokenizers compare across the top 100 most frequent tokens:")
-
-        col1, col2, col3 = st.columns(3)
-
-        with col2:
-            st.image("./streamlit/data/token_comparison.png", width = 500)
-            st.write("TODO, change this image to svg cus its shite quality")
     return
     
 def data_char():
