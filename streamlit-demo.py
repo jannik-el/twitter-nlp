@@ -74,6 +74,8 @@ def start_page():
     return
 
 def model_demo():
+    st.markdown("## Our Machine Learning Models")
+
     st.markdown("Below is an interactive example of how our models work:")
     test_input = st.text_input("Input anything here, and see what our model classifies it as:", "Democrats are weak. Hillary to jail. ")
 
@@ -133,6 +135,8 @@ def model_demo():
 
 
 def tokenizer_page():
+    st.markdown("## Tokenizing")
+
 
     st.write("We created our own regex tokenizer and looked at how it worked compared to other tokenizers:")
 
@@ -161,7 +165,7 @@ def trump_demo():
         we hoped to get quite accurate and interesting results.
         """)
 
-    st.write("So using those datasets, and our hatespeech model, we were able to create a dataset with all of Trump's tweets, labelled for being insulting and hatespeech.")
+    st.write("Using those datasets, and our hatespeech model, we were able to create a dataset with all of Trump's tweets, labelled for being insulting and hatespeech.")
 
     trump_df = pd.read_csv("./streamlit/data/trump_df.csv")
     trump_df2 = trump_df[['Labels', 'Tweets', 'HS_Label']]
