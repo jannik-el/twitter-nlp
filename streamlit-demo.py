@@ -38,8 +38,8 @@ st.sidebar.image(itu_logo)
 
 
 sidebar_options = (
-    "Start Page", 
-    "Preprocessing",
+    "Start Page",
+    "Model Demo",
     "Data Characterisation", 
     "Manual Annotation", 
     "Automatic Prediction", 
@@ -782,7 +782,7 @@ def main():
         start_page()
 
     elif mode_two == sidebar_options[1]:
-        preprocessing()
+        model_demo()
 
     elif mode_two == sidebar_options[2]:
         data_char()
