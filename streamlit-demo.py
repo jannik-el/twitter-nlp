@@ -39,6 +39,7 @@ st.sidebar.image(itu_logo)
 
 sidebar_options = (
     "Start Page",
+    "Tokenizer",
     "Model Demo",
     "Data Characterisation", 
     "Manual Annotation", 
@@ -110,21 +111,8 @@ def model_demo():
     col3a.metric("Most likely emoji predicted", emoji_pred)
 
 
-def preprocessing():
+def tokenizer_page():
     st.write("To be able to create a model for the different tasks we had, we first had to do some prepocessing.")
-
-    with st.expander("Our datasets"):
-        st.write("Both the hatespeech detection and the emoji predicion dataset came from the same source:")
-        st.caption("https://github.com/cardiffnlp/tweeteval")
-
-        st.write("The hatespeech dataset uses the classifiers 1 and 0, hatespeech and not hatespeech respectively, while the emoji dataset had more classifiers:")
-
-        map_df = pd.DataFrame()
-        emoji_map = ['❤', '😍', '😂', '💕', '🔥', '😊', '😎', '✨', '💙', '😘', '📷', '🇺🇸', '☀', '💜', '😉', '💯', '😁', '🎄', '📸', '😜']
-        map_df["Emoji"] = emoji_map
-        map_df = map_df.T
-        st.dataframe(map_df)
-
 
     with st.expander("Testing tokenizers"):
         st.write("We created our own regex tokenizer and looked at how it worked compared to other tokenizers:")
@@ -782,10 +770,10 @@ def main():
         start_page()
 
     elif mode_two == sidebar_options[1]:
-        model_demo()
+        tokenizer_page()
 
     elif mode_two == sidebar_options[2]:
-        data_char()
+        model_demo()
 
     elif mode_two == sidebar_options[3]:
         man_anot()
