@@ -118,6 +118,7 @@ def model_demo():
         st.dataframe(map_df)
 
     with st.expander("Model Scores:"):
+        st.write("(Higher is better)")
         hate_scores = pd.read_csv("./streamlit/data/hs_scores.csv")
         hate_scores = hate_scores[['F1 score', 'Accuracy Score', 'Recall Score', 'Precision Score']]
         hate_scores['Classifier'] = ['DTC', 'K-Nearest neighbors', 'SGDC', 'MultinomialNB', 'Random Forest']
@@ -144,104 +145,52 @@ def tokenizer_page():
 
     return
 
-def auto_predic():
-    st.set_option('deprecation.showPyplotGlobalUse', False)
+def trump_demo():
+    st.write("Using our models, we decided to looked at two datasets that we thought could prove interesting results:")
+    st.markdown("## 1. Labeling Trump's twitter insults")
+    with st.expander("A little background on why we chose this dataset:"):
+        st.markdown("""
+        We took Trumps insults (provided by the New York Times) and combined those with all his other tweets.
+        >https://www.nytimes.com/interactive/2021/01/19/upshot/trump-complete-insult-list.html \\
+        >https://www.thetrumparchive.com/faq (all Tweets from 2009 to 2020)
 
-    col1, col2 = st.columns(2)
-    with col1:
-        fig1 = plt.figure(figsize = (3,3))
-        y_train_counts = open_jar("./streamlit/ytraincounts.pkl")
-        plt.rcParams['font.size'] = 16.0
-        plt.pie(collections.Counter(list(y_train_counts)).values(), labels=['Not hate speech','Hate speech'],colors=['#00695c','#b71c1c'],explode=(0, 0.1), autopct = lambda p:f'{p:.2f}%', textprops={'fontsize': 4})
-        st.pyplot(fig1=plt)
-    with col2:
-        fig2 = plt.figure(figsize = (40,40))
-        y_train_emoji_counts = open_jar("./streamlit/ytrainemojicounts.pkl")
-        emoji_classes= pd.read_csv("./streamlit/data/mapping-2.txt", sep = "	", header=None)
-        plt.rcParams['font.size'] = 11.0
-        plt.pie(collections.Counter(list(y_train_emoji_counts)).values(), labels=list(emoji_classes[2]), autopct = lambda p:f'{p:.2f}%', textprops={'fontsize': 14});
-        st.pyplot(fig2=plt)
+        The idea behind this was also that Trump tweets would be very similiar to the data, which our model had been trained on. \\
+        The most frequent unique keywords throughout the hatespeech dataset were: 
+        > _migrant, refugee, #buildthatwall, bitch, hoe, women_
+        These keywords are quite relevant when you look at Donald Trump's presidency, and since all the data was collected during the \\
+        period of July to September 2018 and, Trump's insult tweet/_normal_ tweet dataset also included tweets from this time period, \\
+        we hoped to get quite accurate and interesting results.
+        """)
 
-    st.write("------------------------------------------------------------------")
-    
-    hate_scores = pd.read_csv("./streamlit/data/hs_scores.csv")
-    hate_scores = hate_scores[['F1 score', 'Accuracy Score', 'Recall Score', 'Precision Score']]
-    
-    lst = hate_scores.values.tolist()
-    fig, axes = plt.subplots(figsize=(10, 4))
-    x = [1,2,3,4]
-    axes.plot(x,lst[0],label='DTC', marker='o')
-    axes.plot(x,lst[1],label='K-Nearest neighbors', marker='o')
-    axes.plot(x,lst[2],label='SGDC', marker='o')
-    axes.plot(x,lst[3],label='MultinomialNB', marker='o')
-    axes.plot(x,lst[4],label='Random Forest', marker='o')
-    axes.set_xticks([1,2,3,4])
-    axes.legend()
-    axes.set_xticklabels(["F1 score", "Accuracy Score", "Recall Score", "Precision Score"])
-    axes.set_title("Hatespeech Different Model Scores")
-    st.pyplot()
+    st.write("So using those datasets, and our hatespeech model, we were able to create a dataset with all of Trump's tweets, labelled for being insulting and hatespeech.")
 
-    hate_scores['Classifier'] = ['DTC', 'K-Nearest neighbors', 'SGDC', 'MultinomialNB', 'Random Forest']
-    hate_scores = hate_scores[["Classifier", "F1 score", "Accuracy Score", "Recall Score", "Precision Score"]]
-    st.table(hate_scores)
+    trump_df = pd.read_csv("./streamlit/data/trump_df.csv")
+    trump_df2 = trump_df[['Labels', 'Tweets', 'HS_Label']]
+    trump_df2 = trump_df2.rename(columns={"Insult Labels": "Labels", "Tweets": "Tweets", "HS_Label":"HS_Label"})
 
-    st.write("------------------------------------------------------------------")
+    with st.expander("Click here to see what the data frame looks like after labelling each tweet based on our model:"):
+        st.table(trump_df2.iloc[0:10])
 
-    scores = pd.read_csv("./streamlit/data/emoji_scores.csv")
-    scores = scores[['F1 score', 'Accuracy Score', 'Recall Score', 'Precision Score']]
-    
-    lst = scores.values.tolist()
-    fig, axes = plt.subplots(figsize=(10, 4))
-    x = [1,2,3,4]
-    axes.plot(x,lst[0],label='DTC', marker='o')
-    axes.plot(x,lst[1],label='K-Nearest neighbors', marker='o')
-    axes.plot(x,lst[2],label='SGDC', marker='o')
-    axes.plot(x,lst[3],label='MultinomialNB', marker='o')
-    axes.set_xticks([1,2,3,4])
-    axes.legend()
-    axes.set_xticklabels(["F1 score", "Accuracy Score", "Recall Score", "Precision Score"])
-    axes.set_title("Emoji Different Model Scores")
-    st.pyplot()
+    st.write("Below is a random tweet from our dataset, with it's insult label, and hatespeech probability according to our model:")
+    random_tweet = trump_df.iloc[random.randrange(0, len(trump_df), 1)]
+    st.markdown(f">**_"+random_tweet["Tweets"]+"_**")
+    st.markdown("_(You can press `r` to refresh and see a new tweet)_")
 
-    scores['Classifier'] = ['DTC', 'K-Nearest neighbors', 'SGDC', 'MultinomialNB']
-    scores = scores[["Classifier", "F1 score", "Accuracy Score", "Recall Score", "Precision Score"]]
-    st.table(scores)
+    st.markdown("""
+    Here you can see what label our Model is giving the tweet, and what label was given by the New York Times: \\
+    _(Hatespeech ML Model is SGDC, and Emoji Prediction ML Model is KNN)_
+    """)
 
-    st.write("------------------------------------------------------------------")
+    hs_pred, not_hs_pred = classify_and_seperate(str(random_tweet["Tweets"]))
+    hs_pred = str(float(hs_pred)*100)[0:6] 
+    not_hs_pred = str(float(not_hs_pred)*100)[0:6]
+    trump_emoji = label_to_emoji(str(random_tweet["Tweets"]))
 
-    col1, col2 = st.columns(2)
-    with col1:
-        im = Image.open("./streamlit/data/confusion_matrix_hate.png")
-        st.image(im, width=750)
-
-    with col2:
-        im = Image.open("./streamlit/data/confusion_matrix_emoji.png")
-        st.image(im, width=750)
-
-    st.write("------------------------------------------------------------------")
-
-    st.markdown("Below is an interactive example of how our models work:")
-    test_input = st.text_input("Input anything here, and see what our model classifies it as:", "Democrats are weak. Hillary to jail. ")
-
-    models = ["SGDC", "DTC", "KNN", "MultinomialNB2", "RF"] 
-    emoji_models = ["MultinomialNB", "KNN","SGDC", "DTC"]
-
-    col1f, col2f = st.columns(2)
-    hs_mod = col1f.radio("Choose a Hatespeech Model (SGDC is best)", models)
-    emo_mod = col2f.radio("Choose an emoji model (MultinomialNB is best)", emoji_models)
-
-
-    hs_preda, not_hs_preda = classify_and_seperate(test_input, hs_mod)
-    hs_preda = str(float(hs_preda)*100)[0:5] 
-    not_hs_preda = str(float(not_hs_preda)*100)[0:5]
-    emoji_pred = label_to_emoji(test_input, emo_mod)
-
-    col1a, col2a, col3a = st.columns(3)
-    col1a.metric("Hatespeech Prob.", f"{hs_preda}%")
-    col2a.metric("Not Hatespeech Prob.", f"{not_hs_preda}%")
-    col3a.metric("Most likely emoji predicted", emoji_pred)
-    
-    return
+    col1, col2, col3, col4 = st.columns(4)
+    col1.metric("Hatespeech Prob.", f"{hs_pred}%")
+    col2.metric("Not Hatespeech Prob.", f"{not_hs_pred}%")
+    col3.metric("Insult Label", bool(random_tweet["Labels"]))
+    col4.metric("And for fun the emoji prediction:", trump_emoji)
 
 def data_aug():
 
@@ -609,14 +558,7 @@ def main():
         model_demo()
 
     elif mode_two == sidebar_options[3]:
-        man_anot()
-
-    elif mode_two == sidebar_options[4]:
-        auto_predic()
-
-    elif mode_two == sidebar_options[5]:
-        data_aug()
-
+        trump_demo()
 
 
 if __name__ == "__main__":
