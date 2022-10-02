@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import re, nltk, csv
 from PIL import Image
-from wordcloud import 
+from wordcloud import *
 import seaborn as sns
 import numpy as np
 import pandas as pd
@@ -75,8 +75,42 @@ def start_page():
 
     return
 
-def preprocessing():
+def model_demo():
+    with st.expander("Our datasets"):
+        st.write("Both the hatespeech detection and the emoji predicion dataset came from the same source:")
+        st.caption("https://github.com/cardiffnlp/tweeteval")
 
+        st.write("The hatespeech dataset uses the classifiers 1 and 0, hatespeech and not hatespeech respectively, while the emoji dataset had more classifiers:")
+
+        map_df = pd.DataFrame()
+        emoji_map = ['❤', '😍', '😂', '💕', '🔥', '😊', '😎', '✨', '💙', '😘', '📷', '🇺🇸', '☀', '💜', '😉', '💯', '😁', '🎄', '📸', '😜']
+        map_df["Emoji"] = emoji_map
+        map_df = map_df.T
+        st.dataframe(map_df)
+
+    st.markdown("Below is an interactive example of how our models work:")
+    test_input = st.text_input("Input anything here, and see what our model classifies it as:", "Democrats are weak. Hillary to jail. ")
+
+    models = ["SGDC", "DTC", "KNN", "MultinomialNB2", "RF"] 
+    emoji_models = ["MultinomialNB", "KNN","SGDC", "DTC"]
+
+    col1f, col2f = st.columns(2)
+    hs_mod = col1f.radio("Choose a Hatespeech Model (SGDC is best)", models)
+    emo_mod = col2f.radio("Choose an emoji model (MultinomialNB is best)", emoji_models)
+
+
+    hs_preda, not_hs_preda = classify_and_seperate(test_input, hs_mod)
+    hs_preda = str(float(hs_preda)*100)[0:5] 
+    not_hs_preda = str(float(not_hs_preda)*100)[0:5]
+    emoji_pred = label_to_emoji(test_input, emo_mod)
+
+    col1a, col2a, col3a = st.columns(3)
+    col1a.metric("Hatespeech Prob.", f"{hs_preda}%")
+    col2a.metric("Not Hatespeech Prob.", f"{not_hs_preda}%")
+    col3a.metric("Most likely emoji predicted", emoji_pred)
+
+
+def preprocessing():
     st.write("To be able to create a model for the different tasks we had, we first had to do some prepocessing.")
 
     with st.expander("Our datasets"):
@@ -719,27 +753,27 @@ def main():
     mode_two = st.sidebar.radio("Choose a page here:", sidebar_options)
     st.sidebar.success(f"{mode_two} showing on the right:")
 
-    st.sidebar.title("Checkout the following:")
-    st.sidebar.markdown("""
-    - _Start Page_
-        - Introduction to the project
-    - _Preprocessing_
-        - The datasets we used
-        - Our tokenizers
-        - A comparison of these on the hatespeech dataset
-    - _Data Characterisation_
-        - Corpora Statistics
-        - Most frequent tokens
-    - _Manual Annotation_
-        - Group Manual Annotation results
-        - Survey Manual Annotation results
-        - Comparisons of these
-    - _Automatic Prediction_
-        - Comparisons between different machine learning models used
-    - _Data Augmentation_
-        - Interactive classification
-        - **Labeling Trump's twitter insults**
-        - Hatespeech and Offensive tweet classification comparison
+    # st.sidebar.title("Checkout the following:")
+    # st.sidebar.markdown("""
+    # - _Start Page_
+    #     - Introduction to the project
+    # - _Preprocessing_
+    #     - The datasets we used
+    #     - Our tokenizers
+    #     - A comparison of these on the hatespeech dataset
+    # - _Data Characterisation_
+    #     - Corpora Statistics
+    #     - Most frequent tokens
+    # - _Manual Annotation_
+    #     - Group Manual Annotation results
+    #     - Survey Manual Annotation results
+    #     - Comparisons of these
+    # - _Automatic Prediction_
+    #     - Comparisons between different machine learning models used
+    # - _Data Augmentation_
+    #     - Interactive classification
+    #     - **Labeling Trump's twitter insults**
+    #     - Hatespeech and Offensive tweet classification comparison
     """)
     st.sidebar.write("-----------------")
 
