@@ -58,9 +58,6 @@ hide_table_row_index = """
 st.markdown(hide_table_row_index, unsafe_allow_html=True)
 
 def start_page():
-
-
-    
     col1, col2, col3 = st.columns(3)
 
     with col1:
