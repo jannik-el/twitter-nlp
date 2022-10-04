@@ -68,7 +68,7 @@ def start_page():
         
     with col2:
     
-        im = Image.open("./misc/Twitter.png")
+        im = Image.open("./misc/twitter-logo-2-1.png")
         st.image(im, width=550)
 
     return
