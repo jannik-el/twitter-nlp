@@ -68,7 +68,7 @@ def start_page():
         
     with col2:
     
-        im = Image.open("./misc/wordart.png")
+        im = Image.open("./misc/Twitter.png")
         st.image(im, width=550)
 
     return
@@ -337,29 +337,6 @@ def main():
 
     mode_two = st.sidebar.radio("Choose a page here:", sidebar_options)
     st.sidebar.success(f"{mode_two} showing on the right:")
-
-    # st.sidebar.title("Checkout the following:")
-    # st.sidebar.markdown("""
-    # - _Start Page_
-    #     - Introduction to the project
-    # - _Preprocessing_
-    #     - The datasets we used
-    #     - Our tokenizers
-    #     - A comparison of these on the hatespeech dataset
-    # - _Data Characterisation_
-    #     - Corpora Statistics
-    #     - Most frequent tokens
-    # - _Manual Annotation_
-    #     - Group Manual Annotation results
-    #     - Survey Manual Annotation results
-    #     - Comparisons of these
-    # - _Automatic Prediction_
-    #     - Comparisons between different machine learning models used
-    # - _Data Augmentation_
-    #     - Interactive classification
-    #     - **Labeling Trump's twitter insults**
-    #     - Hatespeech and Offensive tweet classification comparison
-    # """)
     st.sidebar.write("-----------------")
 
     
