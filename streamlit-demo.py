@@ -63,8 +63,7 @@ def start_page():
         for the First Year Project course, using different NLP Machine Learning Models to classify hatespeech, and emojis.
         The hatespeech model is our binary classification task, and the emoji detection is our multi classification task.
         Both datasets consist of data scraped off twitter, and therefore our project is also later in the data augmentation task, focused on twitter datasets.
-        On the left hand side you can choose different options from the sidebar.
-        These are all different tasks of our project.""")
+        On the left hand side you can choose different options from the sidebar.""")
         
     with col2:
     
