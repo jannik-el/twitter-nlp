@@ -22,7 +22,7 @@ import collections
 import utils as utl
 from sklearn.metrics import plot_confusion_matrix
 
-st.set_page_config(layout="wide")
+# st.set_page_config(layout="wide")
 
 ##### HEADER #####
 
