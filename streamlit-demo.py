@@ -96,15 +96,15 @@ def model_demo():
     col2a.metric("Not Hatespeech Prob.", f"{not_hs_preda}%")
     col3a.metric("Most likely emoji predicted", emoji_pred)
 
-    with st.expander("Confusion Matrixes:"):
-        col1, col2 = st.columns(2)
-        with col1:
-            im = Image.open("./streamlit/data/confusion_matrix_hate.png")
-            st.image(im, width=750)
+    # with st.expander("Confusion Matrixes:"):
+        # col1, col2 = st.columns(2)
+        # with col1:
+        #     im = Image.open("./streamlit/data/confusion_matrix_hate.png")
+        #     st.image(im, width=750)
 
-        with col2:
-            im = Image.open("./streamlit/data/confusion_matrix_emoji.png")
-            st.image(im, width=750)
+        # with col2:
+        #     im = Image.open("./streamlit/data/confusion_matrix_emoji.png")
+        #     st.image(im, width=750)
 
     with st.expander("Dataset Labels:"):
         st.write("Both the hatespeech detection and the emoji predicion dataset came from the same source:")

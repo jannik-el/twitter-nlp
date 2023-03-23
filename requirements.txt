@@ -6,5 +6,5 @@ snscrape
 twitterscraper
 emoji
 seaborn
-sklearn
+scikit-learn
 utils
