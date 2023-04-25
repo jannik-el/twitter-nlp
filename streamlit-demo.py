@@ -117,19 +117,19 @@ def model_demo():
         map_df = map_df.T
         st.dataframe(map_df)
 
-    with st.expander("Model Scores:"):
-        st.write("(Higher is better)")
-        hate_scores = pd.read_csv("./streamlit/data/hs_scores.csv")
-        hate_scores = hate_scores[['F1 score', 'Accuracy Score', 'Recall Score', 'Precision Score']]
-        hate_scores['Classifier'] = ['DTC', 'K-Nearest neighbors', 'SGDC', 'MultinomialNB', 'Random Forest']
-        hate_scores = hate_scores[["Classifier", "F1 score", "Accuracy Score", "Recall Score", "Precision Score"]]
-        st.table(hate_scores)
+#     with st.expander("Model Scores:"):
+#         st.write("(Higher is better)")
+#         hate_scores = pd.read_csv("./streamlit/data/hs_scores.csv")
+#         hate_scores = hate_scores[['F1 score', 'Accuracy Score', 'Recall Score', 'Precision Score']]
+#         hate_scores['Classifier'] = ['DTC', 'K-Nearest neighbors', 'SGDC', 'MultinomialNB', 'Random Forest']
+#         hate_scores = hate_scores[["Classifier", "F1 score", "Accuracy Score", "Recall Score", "Precision Score"]]
+#         st.table(hate_scores)
 
-        scores = pd.read_csv("./streamlit/data/emoji_scores.csv")
-        scores = scores[['F1 score', 'Accuracy Score', 'Recall Score', 'Precision Score']]
-        scores['Classifier'] = ['DTC', 'K-Nearest neighbors', 'SGDC', 'MultinomialNB']
-        scores = scores[["Classifier", "F1 score", "Accuracy Score", "Recall Score", "Precision Score"]]
-        st.table(scores)
+#         scores = pd.read_csv("./streamlit/data/emoji_scores.csv")
+#         scores = scores[['F1 score', 'Accuracy Score', 'Recall Score', 'Precision Score']]
+#         scores['Classifier'] = ['DTC', 'K-Nearest neighbors', 'SGDC', 'MultinomialNB']
+#         scores = scores[["Classifier", "F1 score", "Accuracy Score", "Recall Score", "Precision Score"]]
+#         st.table(scores)
 
 
 def tokenizer_page():
